@@ -12,6 +12,11 @@
 		35C376D61D5CF5300069D7A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D41D5CF5300069D7A1 /* Main.storyboard */; };
 		35C376D81D5CF5300069D7A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D71D5CF5300069D7A1 /* Assets.xcassets */; };
 		35C376DB1D5CF5300069D7A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D91D5CF5300069D7A1 /* LaunchScreen.storyboard */; };
+		35C376E71D5CF9400069D7A1 /* JCColorAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E21D5CF9400069D7A1 /* JCColorAddButton.swift */; };
+		35C376E81D5CF9400069D7A1 /* JCColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E31D5CF9400069D7A1 /* JCColorHandle.swift */; };
+		35C376E91D5CF9400069D7A1 /* JCColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E41D5CF9400069D7A1 /* JCColorPicker.swift */; };
+		35C376EA1D5CF9400069D7A1 /* JCShadeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E51D5CF9400069D7A1 /* JCShadeSlider.swift */; };
+		35C376EB1D5CF9400069D7A1 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		35C376D71D5CF5300069D7A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35C376DA1D5CF5300069D7A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35C376DC1D5CF5300069D7A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35C376E21D5CF9400069D7A1 /* JCColorAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCColorAddButton.swift; path = JCColorPicker/JCColorAddButton.swift; sourceTree = SOURCE_ROOT; };
+		35C376E31D5CF9400069D7A1 /* JCColorHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCColorHandle.swift; path = JCColorPicker/JCColorHandle.swift; sourceTree = SOURCE_ROOT; };
+		35C376E41D5CF9400069D7A1 /* JCColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCColorPicker.swift; path = JCColorPicker/JCColorPicker.swift; sourceTree = SOURCE_ROOT; };
+		35C376E51D5CF9400069D7A1 /* JCShadeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCShadeSlider.swift; path = JCColorPicker/JCShadeSlider.swift; sourceTree = SOURCE_ROOT; };
+		35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Utilities.swift"; path = "JCColorPicker/UIColor+Utilities.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,7 @@
 		35C376CF1D5CF5300069D7A1 /* JCColorPicker-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				35C376EC1D5CF9450069D7A1 /* JCColorPicker */,
 				35C376D01D5CF5300069D7A1 /* AppDelegate.swift */,
 				35C376D21D5CF5300069D7A1 /* ViewController.swift */,
 				35C376D41D5CF5300069D7A1 /* Main.storyboard */,
@@ -62,6 +73,18 @@
 				35C376DC1D5CF5300069D7A1 /* Info.plist */,
 			);
 			path = "JCColorPicker-Demo";
+			sourceTree = "<group>";
+		};
+		35C376EC1D5CF9450069D7A1 /* JCColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				35C376E41D5CF9400069D7A1 /* JCColorPicker.swift */,
+				35C376E31D5CF9400069D7A1 /* JCColorHandle.swift */,
+				35C376E21D5CF9400069D7A1 /* JCColorAddButton.swift */,
+				35C376E51D5CF9400069D7A1 /* JCShadeSlider.swift */,
+				35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */,
+			);
+			name = JCColorPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +119,7 @@
 				TargetAttributes = {
 					35C376CC1D5CF5300069D7A1 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 43DKZUY8C6;
 					};
 				};
 			};
@@ -135,8 +159,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35C376E91D5CF9400069D7A1 /* JCColorPicker.swift in Sources */,
 				35C376D31D5CF5300069D7A1 /* ViewController.swift in Sources */,
 				35C376D11D5CF5300069D7A1 /* AppDelegate.swift in Sources */,
+				35C376E81D5CF9400069D7A1 /* JCColorHandle.swift in Sources */,
+				35C376EB1D5CF9400069D7A1 /* UIColor+Utilities.swift in Sources */,
+				35C376E71D5CF9400069D7A1 /* JCColorAddButton.swift in Sources */,
+				35C376EA1D5CF9400069D7A1 /* JCShadeSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "JCColorPicker-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathancardasis.JCColorPicker-Demo";
@@ -260,6 +290,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "JCColorPicker-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathancardasis.JCColorPicker-Demo";
@@ -286,6 +317,7 @@
 				35C376E11D5CF5300069D7A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
