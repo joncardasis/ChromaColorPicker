@@ -16,31 +16,52 @@ pod 'JCColorPicker'
 Add all files from the JCColorPicker folder to your project.
 
 
-## Examples
+## Example
 ```Swift
 let neatColorPicker = JCColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+neatColorPicker.padding = 5
+neatColorPicker.stroke = 2
+neatColorPicker.hexLabel.textColor = UIColor.whiteColor()
 
-
+self.view.addSubview(neatColorPicker)
 ```
+
+#INSERT EXAMPLE RESULT GIF HERE
+
 
 ## Customization
 
 <img src="../assets/Design_Breakdown.png?raw=true" width="350">
-```
-colorPicker.delegate = self
-colorPicker.padding = 10
-colorPicker.stroke = 3 //stroke of the rainbow circle
-colorPicker.currentAngle = Float(M_PI)
-colorPicker.hexLabel.textColor = UIColor.whiteColor()
-```
 
+### Properties
+
+| Property        | Description           |
+| :-------------:          |:-------------|
+| delegate                 | JCColorPickerDelegate |
+| padding                  | The padding on each side of the view (default=10)    |
+| stroke                   | The stroke of the rainbow track (deafult=1)    |
+| currentColor | The currently set color by the control. It is displayed in the add button. |
+| currentAngle | The angle which the handle is currently sitting at. Can be changed and the view can be re-drawn to show the change.
+| handleSize | Returns the size of the handle. |
+
+
+### Sub-Components
+Sub-Components can be hidden and customized to the preferred liking.
+
+| Component        | Description           |
+| :-------------:          |:-------------|
+| hexLabel | A UILabel which displays the hex value of the current color. |
+| shadeSlider | A custom slider which adjusts the shade of the current color. |
+| addButton | A UIButton in the center of the control. The `colorPickerDidChooseColor(colorPicker: color:)` delegate function is called when this is tapped. |
+| handleView | A JCColorHandle (custom UIView) which displays the current color and can be moved around the circle.|
+| handleLine | A line which is drawn from the addButton to the handleView. |
 
 ### Supported UIControlEvents
-`.TouchDown` -> called when the handle is first grabbed
+`.TouchDown`       -> called when the handle is first grabbed
 
-`.TouchUpInside` -> called when handle is let go
+`.TouchUpInside`   -> called when handle is let go
 
-`.ValueChanged` -> called whenever the color has changed hue or shade
+`.ValueChanged`    -> called whenever the color has changed hue or shade
 
 `.TouchDragInside` -> called when the handle has moved by a drag action
 
