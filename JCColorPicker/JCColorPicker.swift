@@ -22,7 +22,7 @@ class JCColorPicker: UIControl {
     var currentColor = UIColor()
     var delegate: JCColorPickerDelegate?
     var currentAngle: Float = 0
-    var radius: CGFloat = 0
+    private (set) var radius: CGFloat = 0
     var stroke: CGFloat = 1
     var padding: CGFloat = 15
     var handleSize: CGSize{
