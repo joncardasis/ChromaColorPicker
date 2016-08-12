@@ -65,7 +65,7 @@ Sub-Components can be hidden and customized to the preferred liking.
 
 
 ## Additional Info
-Check out the [Wiki](https://github.com/joncardasis/JCColorPicker/wiki/Challenges-and-Solutions) for more.
+Check out the [Wiki](https://github.com/joncardasis/JCColorPicker/wiki/Challenges-and-Solutions) if you're intrested in reading into how the color wheel was created.
 
 ## License
 JCColorPicker is available under the MIT license. See the LICENSE file for more info.
