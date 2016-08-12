@@ -1,4 +1,4 @@
-# JCColorPicker
+# JCColorPicker :art:
 ![Supported Version](https://img.shields.io/badge/Swift-2.2-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgray.svg)
