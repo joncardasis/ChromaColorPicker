@@ -1,8 +1,8 @@
 # JCColorPicker :art:
 ![Supported Version](https://img.shields.io/badge/Swift-2.2-yellow.svg)
-![Platform](https://img.shields.io/badge/Platform-iOS-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-iOS-lightgray.svg)
 ![CocoaPods](https://img.shields.io/badge/CocoaPods-1.0-green.svg)
-![License](https://img.shields.io/badge/License-MIT-lightgray.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 An intuitive iOS color picker built in Swift.
 
