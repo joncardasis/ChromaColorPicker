@@ -25,11 +25,9 @@ neatColorPicker.hexLabel.textColor = UIColor.whiteColor()
 
 self.view.addSubview(neatColorPicker)
 ```
-
 <img src="../assets/demo.gif?raw=true" width="225">
 
 ## Customization
-
 <img src="../assets/Design_Breakdown.png?raw=true" width="350">
 
 ### Properties
@@ -64,6 +62,9 @@ Sub-Components can be hidden and customized to the preferred liking.
 
 `.TouchDragInside` -> called when the handle has moved by a drag action
 
+
+## Additional Info
+Check out the [Wiki](https://github.com/joncardasis/JCColorPicker/wiki/Challenges-and-Solutions) for more.
 
 ## License
 JCColorPicker is available under the MIT license. See the LICENSE file for more info.
