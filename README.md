@@ -3,9 +3,9 @@
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgray.svg)
 
-An iOS color picker built in Swift
+An intuitive iOS color picker built in Swift.
 
-<img src="../assets/Screenshot.png?raw=true" width="350">
+<img src="../assets/Screenshot-With-BG.png?raw=true" width="350">
 
 ## Installation
 ### Cocoapods
@@ -20,14 +20,13 @@ Add all files from the JCColorPicker folder to your project.
 ```Swift
 let neatColorPicker = JCColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 neatColorPicker.padding = 5
-neatColorPicker.stroke = 2
+neatColorPicker.stroke = 3
 neatColorPicker.hexLabel.textColor = UIColor.whiteColor()
 
 self.view.addSubview(neatColorPicker)
 ```
 
-#INSERT EXAMPLE RESULT GIF HERE
-
+<img src="../assets/demo.gif?raw=true" width="225">
 
 ## Customization
 
