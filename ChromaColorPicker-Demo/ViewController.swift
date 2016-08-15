@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  JCColorPicker-Demo
+//  ChromaColorPicker-Demo
 //
 //  Created by Cardasis, Jonathan (J.) on 8/11/16.
 //  Copyright © 2016 Jonathan Cardasis. All rights reserved.
@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var colorDisplayView: UIView!
-    var colorPicker: JCColorPicker!
+    var colorPicker: ChromaColorPicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let pickerOrigin = CGPoint(x: CGRectGetMidX(view.bounds) - pickerSize.width/2, y: CGRectGetMidY(view.bounds) - pickerSize.height/2)
         
         //Create Color Picker
-        colorPicker = JCColorPicker(frame: CGRect(origin: pickerOrigin, size: pickerSize))
+        colorPicker = ChromaColorPicker(frame: CGRect(origin: pickerOrigin, size: pickerSize))
         colorPicker.delegate = self
         
         //Customize the view (optional)
@@ -37,8 +37,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: JCColorPickerDelegate{
-    func colorPickerDidChooseColor(colorPicker: JCColorPicker, color: UIColor) {
+extension ViewController: ChromaColorPickerDelegate{
+    func colorPickerDidChooseColor(colorPicker: ChromaColorPicker, color: UIColor) {
         
         //Set color for the display view
         colorDisplayView.backgroundColor = color

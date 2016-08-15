@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  JCColorPicker-Demo
+//  ChromaColorPicker-Demo
 //
 //  Created by Cardasis, Jonathan (J.) on 8/11/16.
 //  Copyright © 2016 Jonathan Cardasis. All rights reserved.

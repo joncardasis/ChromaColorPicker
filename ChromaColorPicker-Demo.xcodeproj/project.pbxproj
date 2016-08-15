@@ -12,26 +12,26 @@
 		35C376D61D5CF5300069D7A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D41D5CF5300069D7A1 /* Main.storyboard */; };
 		35C376D81D5CF5300069D7A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D71D5CF5300069D7A1 /* Assets.xcassets */; };
 		35C376DB1D5CF5300069D7A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D91D5CF5300069D7A1 /* LaunchScreen.storyboard */; };
-		35C376E71D5CF9400069D7A1 /* JCColorAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E21D5CF9400069D7A1 /* JCColorAddButton.swift */; };
-		35C376E81D5CF9400069D7A1 /* JCColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E31D5CF9400069D7A1 /* JCColorHandle.swift */; };
-		35C376E91D5CF9400069D7A1 /* JCColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E41D5CF9400069D7A1 /* JCColorPicker.swift */; };
-		35C376EA1D5CF9400069D7A1 /* JCShadeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E51D5CF9400069D7A1 /* JCShadeSlider.swift */; };
+		35C376E71D5CF9400069D7A1 /* ChromaAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E21D5CF9400069D7A1 /* ChromaAddButton.swift */; };
+		35C376E81D5CF9400069D7A1 /* ChromaHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E31D5CF9400069D7A1 /* ChromaHandle.swift */; };
+		35C376E91D5CF9400069D7A1 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E41D5CF9400069D7A1 /* ChromaColorPicker.swift */; };
+		35C376EA1D5CF9400069D7A1 /* ChromaShadeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E51D5CF9400069D7A1 /* ChromaShadeSlider.swift */; };
 		35C376EB1D5CF9400069D7A1 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		35C376CD1D5CF5300069D7A1 /* JCColorPicker-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JCColorPicker-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChromaColorPicker-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C376D01D5CF5300069D7A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35C376D21D5CF5300069D7A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		35C376D51D5CF5300069D7A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35C376D71D5CF5300069D7A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35C376DA1D5CF5300069D7A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35C376DC1D5CF5300069D7A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35C376E21D5CF9400069D7A1 /* JCColorAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCColorAddButton.swift; path = JCColorPicker/JCColorAddButton.swift; sourceTree = SOURCE_ROOT; };
-		35C376E31D5CF9400069D7A1 /* JCColorHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCColorHandle.swift; path = JCColorPicker/JCColorHandle.swift; sourceTree = SOURCE_ROOT; };
-		35C376E41D5CF9400069D7A1 /* JCColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCColorPicker.swift; path = JCColorPicker/JCColorPicker.swift; sourceTree = SOURCE_ROOT; };
-		35C376E51D5CF9400069D7A1 /* JCShadeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCShadeSlider.swift; path = JCColorPicker/JCShadeSlider.swift; sourceTree = SOURCE_ROOT; };
-		35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Utilities.swift"; path = "JCColorPicker/UIColor+Utilities.swift"; sourceTree = SOURCE_ROOT; };
+		35C376E21D5CF9400069D7A1 /* ChromaAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromaAddButton.swift; path = ChromaColorPicker/ChromaAddButton.swift; sourceTree = SOURCE_ROOT; };
+		35C376E31D5CF9400069D7A1 /* ChromaHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromaHandle.swift; path = ChromaColorPicker/ChromaHandle.swift; sourceTree = SOURCE_ROOT; };
+		35C376E41D5CF9400069D7A1 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromaColorPicker.swift; path = ChromaColorPicker/ChromaColorPicker.swift; sourceTree = SOURCE_ROOT; };
+		35C376E51D5CF9400069D7A1 /* ChromaShadeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromaShadeSlider.swift; path = ChromaColorPicker/ChromaShadeSlider.swift; sourceTree = SOURCE_ROOT; };
+		35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Utilities.swift"; path = "ChromaColorPicker/UIColor+Utilities.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 		35C376C41D5CF5300069D7A1 = {
 			isa = PBXGroup;
 			children = (
-				35C376CF1D5CF5300069D7A1 /* JCColorPicker-Demo */,
+				35C376CF1D5CF5300069D7A1 /* ChromaColorPicker-Demo */,
 				35C376CE1D5CF5300069D7A1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +56,15 @@
 		35C376CE1D5CF5300069D7A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35C376CD1D5CF5300069D7A1 /* JCColorPicker-Demo.app */,
+				35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		35C376CF1D5CF5300069D7A1 /* JCColorPicker-Demo */ = {
+		35C376CF1D5CF5300069D7A1 /* ChromaColorPicker-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				35C376EC1D5CF9450069D7A1 /* JCColorPicker */,
+				35C376EC1D5CF9450069D7A1 /* ChromaColorPicker */,
 				35C376D01D5CF5300069D7A1 /* AppDelegate.swift */,
 				35C376D21D5CF5300069D7A1 /* ViewController.swift */,
 				35C376D41D5CF5300069D7A1 /* Main.storyboard */,
@@ -72,27 +72,28 @@
 				35C376D91D5CF5300069D7A1 /* LaunchScreen.storyboard */,
 				35C376DC1D5CF5300069D7A1 /* Info.plist */,
 			);
-			path = "JCColorPicker-Demo";
+			path = "ChromaColorPicker-Demo";
 			sourceTree = "<group>";
 		};
-		35C376EC1D5CF9450069D7A1 /* JCColorPicker */ = {
+		35C376EC1D5CF9450069D7A1 /* ChromaColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				35C376E41D5CF9400069D7A1 /* JCColorPicker.swift */,
-				35C376E31D5CF9400069D7A1 /* JCColorHandle.swift */,
-				35C376E21D5CF9400069D7A1 /* JCColorAddButton.swift */,
-				35C376E51D5CF9400069D7A1 /* JCShadeSlider.swift */,
+				35C376E41D5CF9400069D7A1 /* ChromaColorPicker.swift */,
+				35C376E31D5CF9400069D7A1 /* ChromaHandle.swift */,
+				35C376E21D5CF9400069D7A1 /* ChromaAddButton.swift */,
+				35C376E51D5CF9400069D7A1 /* ChromaShadeSlider.swift */,
 				35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */,
 			);
-			name = JCColorPicker;
+			name = ChromaColorPicker;
+			path = ../ChromaPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		35C376CC1D5CF5300069D7A1 /* JCColorPicker-Demo */ = {
+		35C376CC1D5CF5300069D7A1 /* ChromaColorPicker-Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 35C376DF1D5CF5300069D7A1 /* Build configuration list for PBXNativeTarget "JCColorPicker-Demo" */;
+			buildConfigurationList = 35C376DF1D5CF5300069D7A1 /* Build configuration list for PBXNativeTarget "ChromaColorPicker-Demo" */;
 			buildPhases = (
 				35C376C91D5CF5300069D7A1 /* Sources */,
 				35C376CA1D5CF5300069D7A1 /* Frameworks */,
@@ -102,9 +103,9 @@
 			);
 			dependencies = (
 			);
-			name = "JCColorPicker-Demo";
+			name = "ChromaColorPicker-Demo";
 			productName = "JCColorPicker-Demo";
-			productReference = 35C376CD1D5CF5300069D7A1 /* JCColorPicker-Demo.app */;
+			productReference = 35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +124,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "JCColorPicker-Demo" */;
+			buildConfigurationList = 35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "ChromaColorPicker-Demo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -136,7 +137,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				35C376CC1D5CF5300069D7A1 /* JCColorPicker-Demo */,
+				35C376CC1D5CF5300069D7A1 /* ChromaColorPicker-Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -159,13 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35C376E91D5CF9400069D7A1 /* JCColorPicker.swift in Sources */,
+				35C376E91D5CF9400069D7A1 /* ChromaColorPicker.swift in Sources */,
 				35C376D31D5CF5300069D7A1 /* ViewController.swift in Sources */,
 				35C376D11D5CF5300069D7A1 /* AppDelegate.swift in Sources */,
-				35C376E81D5CF9400069D7A1 /* JCColorHandle.swift in Sources */,
+				35C376E81D5CF9400069D7A1 /* ChromaHandle.swift in Sources */,
 				35C376EB1D5CF9400069D7A1 /* UIColor+Utilities.swift in Sources */,
-				35C376E71D5CF9400069D7A1 /* JCColorAddButton.swift in Sources */,
-				35C376EA1D5CF9400069D7A1 /* JCShadeSlider.swift in Sources */,
+				35C376E71D5CF9400069D7A1 /* ChromaAddButton.swift in Sources */,
+				35C376EA1D5CF9400069D7A1 /* ChromaShadeSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +280,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "JCColorPicker-Demo/Info.plist";
+				INFOPLIST_FILE = "ChromaColorPicker-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathancardasis.JCColorPicker-Demo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathancardasis.ChromaPicker-Demo";
+				PRODUCT_NAME = "ChromaColorPicker-Demo";
 			};
 			name = Debug;
 		};
@@ -291,17 +292,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "JCColorPicker-Demo/Info.plist";
+				INFOPLIST_FILE = "ChromaColorPicker-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathancardasis.JCColorPicker-Demo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathancardasis.ChromaPicker-Demo";
+				PRODUCT_NAME = "ChromaColorPicker-Demo";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "JCColorPicker-Demo" */ = {
+		35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "ChromaColorPicker-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35C376DD1D5CF5300069D7A1 /* Debug */,
@@ -310,7 +311,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35C376DF1D5CF5300069D7A1 /* Build configuration list for PBXNativeTarget "JCColorPicker-Demo" */ = {
+		35C376DF1D5CF5300069D7A1 /* Build configuration list for PBXNativeTarget "ChromaColorPicker-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35C376E01D5CF5300069D7A1 /* Debug */,

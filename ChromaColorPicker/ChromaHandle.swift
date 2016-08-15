@@ -1,5 +1,5 @@
 //
-//  JCColorHandle.swift
+//  ChromaHandle.swift
 //
 //  Copyright © 2016 Jonathan Cardasis. All rights reserved.
 //
@@ -24,7 +24,7 @@
 
 import UIKit
 
-class JCColorHandle: UIView {
+class ChromaHandle: UIView {
     var color = UIColor.blackColor() {
         didSet{
             circleLayer.fillColor = color.CGColor

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "35C376CC1D5CF5300069D7A1"
-               BuildableName = "JCColorPicker-Demo.app"
-               BlueprintName = "JCColorPicker-Demo"
-               ReferencedContainer = "container:JCColorPicker-Demo.xcodeproj">
+               BuildableName = "ChromaColorPicker-Demo.app"
+               BlueprintName = "ChromaColorPicker-Demo"
+               ReferencedContainer = "container:ChromaColorPicker-Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35C376CC1D5CF5300069D7A1"
-            BuildableName = "JCColorPicker-Demo.app"
-            BlueprintName = "JCColorPicker-Demo"
-            ReferencedContainer = "container:JCColorPicker-Demo.xcodeproj">
+            BuildableName = "ChromaColorPicker-Demo.app"
+            BlueprintName = "ChromaColorPicker-Demo"
+            ReferencedContainer = "container:ChromaColorPicker-Demo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35C376CC1D5CF5300069D7A1"
-            BuildableName = "JCColorPicker-Demo.app"
-            BlueprintName = "JCColorPicker-Demo"
-            ReferencedContainer = "container:JCColorPicker-Demo.xcodeproj">
+            BuildableName = "ChromaColorPicker-Demo.app"
+            BlueprintName = "ChromaColorPicker-Demo"
+            ReferencedContainer = "container:ChromaColorPicker-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35C376CC1D5CF5300069D7A1"
-            BuildableName = "JCColorPicker-Demo.app"
-            BlueprintName = "JCColorPicker-Demo"
-            ReferencedContainer = "container:JCColorPicker-Demo.xcodeproj">
+            BuildableName = "ChromaColorPicker-Demo.app"
+            BlueprintName = "ChromaColorPicker-Demo"
+            ReferencedContainer = "container:ChromaColorPicker-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -1,5 +1,5 @@
 //
-//  JCColorPicker.swift
+//  ChromaColorPicker.swift
 //
 //  Copyright © 2016 Jonathan Cardasis. All rights reserved.
 //
@@ -24,20 +24,20 @@
 
 import UIKit
 
-protocol JCColorPickerDelegate {
+protocol ChromaColorPickerDelegate {
     /* Called when the user tapps the add button in the center */
-    func colorPickerDidChooseColor(colorPicker: JCColorPicker, color: UIColor)
+    func colorPickerDidChooseColor(colorPicker: ChromaColorPicker, color: UIColor)
 }
 
-class JCColorPicker: UIControl {
+class ChromaColorPicker: UIControl {
     var hexLabel: UILabel!
-    var shadeSlider: JCShadeSlider!
-    var handleView: JCColorHandle!
+    var shadeSlider: ChromaShadeSlider!
+    var handleView: ChromaHandle!
     var handleLine: CAShapeLayer!
-    var addButton: JCColorAddButton!
+    var addButton: ChromaAddButton!
     
     var currentColor = UIColor()
-    var delegate: JCColorPickerDelegate?
+    var delegate: ChromaColorPickerDelegate?
     var currentAngle: Float = 0
     private (set) var radius: CGFloat = 0
     var stroke: CGFloat = 1
@@ -64,17 +64,17 @@ class JCColorPicker: UIControl {
         radius = minDimension/2 - handleSize.width/2
         
         /* Setup Handle */
-        handleView = JCColorHandle(frame: CGRectMake(0,0, handleSize.width, handleSize.height))
+        handleView = ChromaHandle(frame: CGRectMake(0,0, handleSize.width, handleSize.height))
         handleView.shadowOffset = CGSizeMake(0,2)
         
         /* Setup pan gesture for handle */
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(JCColorPicker.handleWasMoved(_:)))
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ChromaColorPicker.handleWasMoved(_:)))
         handleView.addGestureRecognizer(panRecognizer)
         
         /* Setup Add Button */
-        addButton = JCColorAddButton()
+        addButton = ChromaAddButton()
         self.layoutAddButton() //layout frame
-        addButton.addTarget(self, action: #selector(JCColorPicker.addButtonPressed(_:)), forControlEvents: .TouchUpInside)
+        addButton.addTarget(self, action: #selector(ChromaColorPicker.addButtonPressed(_:)), forControlEvents: .TouchUpInside)
         
         /* Setup Handle Line */
         handleLine = CAShapeLayer()
@@ -90,7 +90,7 @@ class JCColorPicker: UIControl {
         hexLabel.textColor = UIColor(red: 51/255.0, green:51/255.0, blue: 51/255.0, alpha: 0.65)
         
         /* Setup Shade Slider */
-        shadeSlider = JCShadeSlider()
+        shadeSlider = ChromaShadeSlider()
         shadeSlider.delegate = self
         self.layoutShadeSlider()
         
@@ -186,7 +186,7 @@ class JCColorPicker: UIControl {
     }
     
     
-    func addButtonPressed(sender: JCColorAddButton){
+    func addButtonPressed(sender: ChromaAddButton){
         //Do a 'bob' animation
         UIView.animateWithDuration(0.2,
                 delay: 0,
@@ -368,8 +368,8 @@ class JCColorPicker: UIControl {
 }
 
 
-extension JCColorPicker: JCShadeSliderDelegate{
-    func shadeSliderChoseColor(slider: JCShadeSlider, color: UIColor) {
+extension ChromaColorPicker: ChromaShadeSliderDelegate{
+    func shadeSliderChoseColor(slider: ChromaShadeSlider, color: UIColor) {
         self.updateCurrentColor(color) //update main controller for selected color
         self.updateHexLabel()
     }

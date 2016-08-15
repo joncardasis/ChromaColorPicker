@@ -1,5 +1,5 @@
 //
-//  JCColorAddButton.swift
+//  ChromaAddButton.swift
 //
 //  Copyright © 2016 Jonathan Cardasis. All rights reserved.
 //
@@ -24,7 +24,7 @@
 
 import UIKit
 
-class JCColorAddButton: UIButton {
+class ChromaAddButton: UIButton {
     var color = UIColor.grayColor(){
         didSet{
             if let layer = circleLayer{

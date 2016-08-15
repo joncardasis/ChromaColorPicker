@@ -1,5 +1,5 @@
 //
-//  JCShadeSlider.swift
+//  ChromaShadeSlider.swift
 //
 //  Copyright © 2016 Jonathan Cardasis. All rights reserved.
 //
@@ -24,7 +24,7 @@
 
 import UIKit
 
-class JCSliderTrackLayer: CALayer{
+class ChromaSliderTrackLayer: CALayer{
     let gradient = CAGradientLayer()
     
     override init() {
@@ -40,18 +40,18 @@ class JCSliderTrackLayer: CALayer{
     }
 }
 
-protocol JCShadeSliderDelegate {
-    func shadeSliderChoseColor(slider: JCShadeSlider, color: UIColor)
+protocol ChromaShadeSliderDelegate {
+    func shadeSliderChoseColor(slider: ChromaShadeSlider, color: UIColor)
 }
 
-class JCShadeSlider: UIControl {
+class ChromaShadeSlider: UIControl {
     var currentValue: CGFloat = 0.0 //range of {-1,1}
     
-    let trackLayer = JCSliderTrackLayer()
-    let handleView = JCColorHandle()
+    let trackLayer = ChromaSliderTrackLayer()
+    let handleView = ChromaHandle()
     var handleWidth: CGFloat{ return self.bounds.height }
     var handleCenterX: CGFloat = 0.0
-    var delegate: JCShadeSliderDelegate?
+    var delegate: ChromaShadeSliderDelegate?
     
     var primaryColor = UIColor.grayColor(){
         didSet{
