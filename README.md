@@ -17,7 +17,7 @@ pod 'ChromaColorPicker'
 Add all files from the ChromaColorPicker folder to your project.
 
 
-## Example
+## Examples
 ```Swift
 let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 neatColorPicker.padding = 5
@@ -27,6 +27,18 @@ neatColorPicker.hexLabel.textColor = UIColor.whiteColor()
 self.view.addSubview(neatColorPicker)
 ```
 <img src="../assets/demo.gif?raw=true" width="225">
+
+If the ChromaColorPicker or any of its properties are later updated, the `layout()` function should be called to update the view.
+
+```Swift
+let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+self.view.addSubview(neatColorPicker)
+
+neatColorPicker.padding = 0
+neatColorPicker.hexLabel.hidden = true
+
+neatColorPicker.layout()
+```
 
 ## Customization
 <img src="../assets/Design_Breakdown.png?raw=true" width="350">
@@ -39,7 +51,7 @@ self.view.addSubview(neatColorPicker)
 | padding                  | The padding on each side of the view (default=10)    |
 | stroke                   | The stroke of the rainbow track (deafult=1)    |
 | currentColor | The currently set color by the control. It is displayed in the add button. |
-| currentAngle | The angle which the handle is currently sitting at. Can be changed and the view can be re-drawn to show the change.
+| currentAngle | The angle which the handle is currently sitting at. Can be changed and the view can be re-drawn using `layout()` to show the change.
 | handleSize | Returns the size of the handle. |
 
 
@@ -50,7 +62,7 @@ Sub-Components can be hidden and customized to the preferred liking.
 | :-------------:          |:-------------|
 | hexLabel | A UILabel which displays the hex value of the current color. |
 | shadeSlider | A custom slider which adjusts the shade of the current color. |
-| addButton | A UIButton in the center of the control. The `colorPickerDidChooseColor(colorPicker: color:)` delegate function is called when this is tapped. |
+| addButton | A custom UIButton in the center of the control. The `colorPickerDidChooseColor(colorPicker: color:)` delegate function is called when this is tapped. |
 | handleView | A ChromaHandle (custom UIView) which displays the current color and can be moved around the circle.|
 | handleLine | A line which is drawn from the addButton to the handleView. |
 
