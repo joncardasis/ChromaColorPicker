@@ -24,8 +24,8 @@
 
 import UIKit
 
-class ChromaAddButton: UIButton {
-    var color = UIColor.grayColor(){
+public class ChromaAddButton: UIButton {
+    public var color = UIColor.grayColor(){
         didSet{
             if let layer = circleLayer{
                 layer.fillColor = color.CGColor
@@ -33,26 +33,26 @@ class ChromaAddButton: UIButton {
             }
         }
     }
-    override var frame: CGRect{ //update on frame change
+    override public var frame: CGRect{ //update on frame change
         didSet{
             self.layoutCircleLayer()
             self.layoutPlusIconLayer()
         }
     }
-    var circleLayer: CAShapeLayer?
-    var plusIconLayer: CAShapeLayer?
+    public var circleLayer: CAShapeLayer?
+    public var plusIconLayer: CAShapeLayer?
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.createGraphics()
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.createGraphics()
     }
     
-    func createGraphics(){
+    public func createGraphics(){
         circleLayer = CAShapeLayer()
         self.layoutCircleLayer()
         circleLayer!.fillColor = color.CGColor
@@ -71,14 +71,14 @@ class ChromaAddButton: UIButton {
         self.layer.addSublayer(plusIconLayer!)
     }
     
-    func layoutCircleLayer(){
+    public func layoutCircleLayer(){
         if let layer = circleLayer{
             layer.path = UIBezierPath(ovalInRect: self.bounds).CGPath
             layer.lineWidth = frame.width * 0.04 //4 for size (100,100)
         }
     }
     
-    func layoutPlusIconLayer(){
+    public func layoutPlusIconLayer(){
         if let layer = plusIconLayer{
             let plusPath = UIBezierPath()
             plusPath.moveToPoint(CGPointMake(self.bounds.width/2 - self.bounds.width/8, self.bounds.height/2))

@@ -24,25 +24,25 @@
 
 import UIKit
 
-protocol ChromaColorPickerDelegate {
+public protocol ChromaColorPickerDelegate {
     /* Called when the user tapps the add button in the center */
     func colorPickerDidChooseColor(colorPicker: ChromaColorPicker, color: UIColor)
 }
 
-class ChromaColorPicker: UIControl {
-    var hexLabel: UILabel!
-    var shadeSlider: ChromaShadeSlider!
-    var handleView: ChromaHandle!
-    var handleLine: CAShapeLayer!
-    var addButton: ChromaAddButton!
+public class ChromaColorPicker: UIControl {
+    public var hexLabel: UILabel!
+    public var shadeSlider: ChromaShadeSlider!
+    public var handleView: ChromaHandle!
+    public var handleLine: CAShapeLayer!
+    public var addButton: ChromaAddButton!
     
-    var currentColor = UIColor()
-    var delegate: ChromaColorPickerDelegate?
-    var currentAngle: Float = 0
+    public var currentColor = UIColor()
+    public var delegate: ChromaColorPickerDelegate?
+    public var currentAngle: Float = 0
     private (set) var radius: CGFloat = 0
-    var stroke: CGFloat = 1
-    var padding: CGFloat = 15
-    var handleSize: CGSize{
+    public var stroke: CGFloat = 1
+    public var padding: CGFloat = 15
+    public var handleSize: CGSize{
         get{ return CGSizeMake(self.bounds.width * 0.1, self.bounds.height * 0.1) }
     }
     
@@ -52,7 +52,7 @@ class ChromaColorPicker: UIControl {
         self.commonInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.commonInit()
     }
@@ -103,7 +103,7 @@ class ChromaColorPicker: UIControl {
         self.addSubview(addButton)
     }
     
-    override func willMoveToSuperview(newSuperview: UIView?) {
+    override public func willMoveToSuperview(newSuperview: UIView?) {
         /* Get the starting color */
         currentColor = colorOnWheelFromAngle(currentAngle)
         handleView.center = positionOnWheelFromAngle(currentAngle) //update pos for angle
@@ -117,10 +117,10 @@ class ChromaColorPicker: UIControl {
     
     
     //MARK: - Handle Touches
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?){
+    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?){
         //Overriden to prevent uicontrolevents being called from the super
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
         let touchPoint = touches.first!.locationInView(self)
         if CGRectContainsPoint(handleView.frame, touchPoint) {
             self.sendActionsForControlEvents(.TouchDown)
@@ -131,7 +131,7 @@ class ChromaColorPicker: UIControl {
                 }, completion: nil)
         }
     }
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         //Run this animation after a pan or here if touches are released
         if handleView.transform.d > 1 { //if scale is larger than 1 (already animated)
             self.executeHandleShrinkAnimation()
@@ -204,7 +204,7 @@ class ChromaColorPicker: UIControl {
     
     
     //MARK: - Drawing
-    override func drawRect(rect: CGRect) {
+    override public func drawRect(rect: CGRect) {
         super.drawRect(rect)
         let ctx = UIGraphicsGetCurrentContext()
         drawRainbowCircle(in: ctx, outerRadius: radius - padding, innerRadius: radius - stroke - padding, resolution: 1)
@@ -250,7 +250,7 @@ class ChromaColorPicker: UIControl {
     
     //MARK: - Layout Updates
     /* re-layout view and all its subview and drawings */
-    func layout() {
+    public func layout() {
         self.setNeedsDisplay() //mark view as dirty
         
         let minDimension = min(self.bounds.size.width, self.bounds.size.height)
@@ -271,7 +271,7 @@ class ChromaColorPicker: UIControl {
         self.layoutHexLabel()
     }
     
-    func layoutAddButton(){
+    public func layoutAddButton(){
         let addButtonSize = CGSize(width: self.bounds.width/5, height: self.bounds.height/5)
         addButton.frame = CGRect(x: CGRectGetMidX(self.bounds) - addButtonSize.width/2, y: CGRectGetMidY(self.bounds) - addButtonSize.height/2, width: addButtonSize.width, height: addButtonSize.height)
     }
@@ -369,7 +369,7 @@ class ChromaColorPicker: UIControl {
 
 
 extension ChromaColorPicker: ChromaShadeSliderDelegate{
-    func shadeSliderChoseColor(slider: ChromaShadeSlider, color: UIColor) {
+    public func shadeSliderChoseColor(slider: ChromaShadeSlider, color: UIColor) {
         self.updateCurrentColor(color) //update main controller for selected color
         self.updateHexLabel()
     }

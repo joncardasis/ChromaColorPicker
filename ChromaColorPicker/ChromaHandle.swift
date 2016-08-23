@@ -24,18 +24,18 @@
 
 import UIKit
 
-class ChromaHandle: UIView {
-    var color = UIColor.blackColor() {
+public class ChromaHandle: UIView {
+    public var color = UIColor.blackColor() {
         didSet{
             circleLayer.fillColor = color.CGColor
         }
     }
-    override var frame: CGRect{
+    override public var frame: CGRect{
         didSet { self.layoutCircleLayer() }
     }
-    var circleLayer = CAShapeLayer()
+    public var circleLayer = CAShapeLayer()
     
-    var shadowOffset: CGSize?{
+    public var shadowOffset: CGSize?{
         set{
             if let offset = newValue {
                 circleLayer.shadowColor = UIColor.blackColor().CGColor
@@ -62,13 +62,13 @@ class ChromaHandle: UIView {
         self.layer.addSublayer(circleLayer)
     }
     
-    func layoutCircleLayer(){
+    public func layoutCircleLayer(){
         circleLayer.path = UIBezierPath(ovalInRect: self.bounds).CGPath
         circleLayer.strokeColor = UIColor.whiteColor().CGColor
         circleLayer.lineWidth = frame.width/8.75 //4
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

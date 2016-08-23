@@ -23,8 +23,8 @@
 //
 
 import UIKit
-extension UIColor{
-    var hexCode: String {
+public extension UIColor{
+    public var hexCode: String {
         get{
             let colorComponents = CGColorGetComponents(self.CGColor)
             return String(format: "%02x%02x%02x", Int(colorComponents[0]*255.0), Int(colorComponents[1]*255.0),Int(colorComponents[2]*255.0)).uppercaseString
@@ -32,15 +32,15 @@ extension UIColor{
     }
     
     //Amount should be between 0 and 1
-    func lighterColor(amount: CGFloat) -> UIColor{
+    public func lighterColor(amount: CGFloat) -> UIColor{
         return UIColor.blendColors(color: self, destinationColor: UIColor.whiteColor(), amount: amount)
     }
     
-    func darkerColor(amount: CGFloat) -> UIColor{
+    public func darkerColor(amount: CGFloat) -> UIColor{
         return UIColor.blendColors(color: self, destinationColor: UIColor.blackColor(), amount: amount)
     }
     
-    static func blendColors(color color: UIColor, destinationColor: UIColor, amount : CGFloat) -> UIColor{
+    public static func blendColors(color color: UIColor, destinationColor: UIColor, amount : CGFloat) -> UIColor{
         var amountToBlend = amount;
         if amountToBlend > 1{
             amountToBlend = 1.0
