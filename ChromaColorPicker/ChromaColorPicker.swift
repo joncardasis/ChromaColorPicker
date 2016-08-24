@@ -25,7 +25,7 @@
 import UIKit
 
 public protocol ChromaColorPickerDelegate {
-    /* Called when the user tapps the add button in the center */
+    /* Called when the user taps the add button in the center */
     func colorPickerDidChooseColor(colorPicker: ChromaColorPicker, color: UIColor)
 }
 
@@ -185,7 +185,6 @@ public class ChromaColorPicker: UIControl {
         self.updateHexLabel()
     }
     
-    
     func addButtonPressed(sender: ChromaAddButton){
         //Do a 'bob' animation
         UIView.animateWithDuration(0.2,
@@ -249,7 +248,7 @@ public class ChromaColorPicker: UIControl {
     
     
     //MARK: - Layout Updates
-    /* re-layout view and all its subview and drawings */
+    /* Re-layout view and all its subview and drawings */
     public func layout() {
         self.setNeedsDisplay() //mark view as dirty
         
