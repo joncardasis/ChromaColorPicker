@@ -27,7 +27,7 @@ import UIKit
 public class ChromaSliderTrackLayer: CALayer{
     public let gradient = CAGradientLayer()
     
-    override init() {
+    override public init() {
         super.init()
         gradient.actions = ["position" : NSNull(), "bounds" : NSNull(), "path" : NSNull()]
         self.addSublayer(gradient)
@@ -71,7 +71,7 @@ public class ChromaShadeSlider: UIControl {
         }
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
     }
