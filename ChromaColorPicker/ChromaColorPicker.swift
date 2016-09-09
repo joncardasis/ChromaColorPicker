@@ -36,10 +36,10 @@ public class ChromaColorPicker: UIControl {
     public var handleLine: CAShapeLayer!
     public var addButton: ChromaAddButton!
     
-    public var currentColor = UIColor()
+    public private(set) var currentColor = UIColor.redColor()
     public var delegate: ChromaColorPickerDelegate?
     public var currentAngle: Float = 0
-    private (set) var radius: CGFloat = 0
+    public private(set) var radius: CGFloat = 0
     public var stroke: CGFloat = 1
     public var padding: CGFloat = 15
     public var handleSize: CGSize{
@@ -115,6 +115,36 @@ public class ChromaColorPicker: UIControl {
         self.updateHexLabel() //update for hex value
     }
     
+    public func adjustToColor(color: UIColor){
+        /* Apply saturation and brightness from previous color to current one */
+        var saturation: CGFloat = 0.0
+        var brightness: CGFloat = 0.0
+        //currentColor.getHue(nil, saturation: &saturation, brightness: &brightness, alpha: nil)
+        
+        var hue: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
+        color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        let newColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+        
+        /* Update the angle and currentColor */
+        currentAngle = angleForColor(newColor)
+        currentColor = newColor
+        
+        /* Set the slider value for the new color and update addButton */
+        shadeSlider.primaryColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1) //Set a color recognzied on the color wheel
+        if brightness < 1.0 { //currentValue is on the left side of the slider
+            shadeSlider.currentValue = brightness-1
+        }else{
+            shadeSlider.currentValue = -(saturation-1)
+        }
+        shadeSlider.updateHandleLocation() //update the handle location now that the value is set
+        addButton.color = shadeSlider.currentColor
+        
+        /* Will layout based on new angle */
+        self.layoutHandle()
+        self.layoutHandleLine()
+        self.updateHexLabel()
+    }
     
     //MARK: - Handle Touches
     override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?){
@@ -291,7 +321,7 @@ public class ChromaColorPicker: UIControl {
     
     /*
     Updates the line view's position for the current angle
-    Pre: dependant on addButtons position
+    Pre: dependant on addButtons position & current angle
     */
     func layoutHandleLine(){
         let linePath = UIBezierPath()
@@ -357,6 +387,12 @@ public class ChromaColorPicker: UIControl {
     /* Find the angle relative to the center of the frame and uses the angle to find what color lies there */
     private func colorOnWheelFromAngle(angle: Float) -> UIColor {
         return UIColor(hue: CGFloat(Double(angle)/(2*M_PI)), saturation: 1, brightness: 1, alpha: 1)
+    }
+    
+    private func angleForColor(color: UIColor) -> Float {
+        var hue: CGFloat = 0
+        color.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+        return Float(hue * CGFloat(2*M_PI))
     }
     
     /* Returns a position centered on the wheel for a given angle */

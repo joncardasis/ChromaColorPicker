@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         colorPicker.padding = 10
         colorPicker.stroke = 3 //stroke of the rainbow circle
         colorPicker.currentAngle = Float(M_PI)
+        
         colorPicker.hexLabel.textColor = UIColor.whiteColor()
         
         //Don't want an element like the shade slider? Just hide it:
@@ -39,7 +40,7 @@ class ViewController: UIViewController {
 
 extension ViewController: ChromaColorPickerDelegate{
     func colorPickerDidChooseColor(colorPicker: ChromaColorPicker, color: UIColor) {
-        
+
         //Set color for the display view
         colorDisplayView.backgroundColor = color
         

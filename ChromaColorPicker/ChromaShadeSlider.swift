@@ -95,7 +95,7 @@ public class ChromaShadeSlider: UIControl {
         handleView.userInteractionEnabled = false //disable interaction for touch events
         self.layer.addSublayer(handleView.layer)
         
-        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(resetHandleToCenter))
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapRecognized))
         doubleTapGesture.numberOfTapsRequired = 2
         self.addGestureRecognizer(doubleTapGesture)
         
@@ -113,7 +113,7 @@ public class ChromaShadeSlider: UIControl {
         trackLayer.cornerRadius = trackLayer.bounds.height/2
         
         self.updateGradientTrack(for: primaryColor)
-        handleCenterX = (currentValue+1)/2 * (bounds.width - handleView.bounds.width) +  handleView.bounds.width/2 //Update where the handles center should be
+        self.updateHandleLocation()
         self.layoutHandleFrame()
     }
     
@@ -138,6 +138,12 @@ public class ChromaShadeSlider: UIControl {
         trackLayer.gradient.colors = [color.darkerColor(0.65).CGColor, color.CGColor, color.lighterColor(0.65).CGColor]
     }
     
+    //Updates handeles location based on currentValue
+    public func updateHandleLocation(){
+        handleCenterX = (currentValue+1)/2 * (bounds.width - handleView.bounds.width) +  handleView.bounds.width/2
+        handleView.color = currentColor
+        self.layoutHandleFrame()
+    }
     
     override public func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
         let location = touch.locationInView(self)
@@ -172,13 +178,18 @@ public class ChromaShadeSlider: UIControl {
         return true
     }
     
-    public func resetHandleToCenter(recognizer: UITapGestureRecognizer){
+    func doubleTapRecognized(recognizer: UITapGestureRecognizer){
         let location = recognizer.locationInView(self)
         guard handleView.frame.contains(location) else {
             return
         }
+        //Tap is on handle
         
-        //tap is on handle
+        resetHandleToCenter()
+    }
+    
+    public func resetHandleToCenter(){
+        
         handleCenterX = self.bounds.width/2
         self.layoutHandleFrame()
         handleView.color = primaryColor

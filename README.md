@@ -2,7 +2,7 @@
 ![Supported Version](https://img.shields.io/badge/Swift-2.2-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgray.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![CocoaPods](https://img.shields.io/badge/CocoaPods-1.0-green.svg)
+![CocoaPods](https://img.shields.io/badge/CocoaPods-1.1-green.svg)
 
 An intuitive iOS color picker built in Swift.
 
@@ -20,6 +20,7 @@ Add all files from the ChromaColorPicker folder to your project.
 ## Examples
 ```Swift
 let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+neatColorPicker.delegate = self //ChromaColorPickerDelegate
 neatColorPicker.padding = 5
 neatColorPicker.stroke = 3
 neatColorPicker.hexLabel.textColor = UIColor.whiteColor()
@@ -28,7 +29,7 @@ self.view.addSubview(neatColorPicker)
 ```
 <img src="../assets/demo.gif?raw=true" width="225">
 
-If the ChromaColorPicker or any of its properties are later updated, the `layout()` function should be called to update the view.
+If the ChromaColorPicker or any of its properties are later updated after being added to a view, the `layout()` function should be called to update the view.
 
 ```Swift
 let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
@@ -38,6 +39,15 @@ neatColorPicker.padding = 0
 neatColorPicker.hexLabel.hidden = true
 
 neatColorPicker.layout()
+```
+
+You can also set the color of the picker anytime by using the `adjustToColor(color:)` function.
+
+```Swift
+let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+...
+neatColorPicker.adjustToColor(UIColor.greenColor())
+...
 ```
 
 ## Customization
@@ -50,10 +60,15 @@ neatColorPicker.layout()
 | delegate                 | ChromaColorPickerDelegate |
 | padding                  | The padding on each side of the view (default=10)    |
 | stroke                   | The stroke of the rainbow track (deafult=1)    |
-| currentColor | The currently set color by the control. It is displayed in the add button. |
+| currentColor | The currently set color by the control. It is displayed in the add button. Use `adjustToColor(color:)` to update the color.|
 | currentAngle | The angle which the handle is currently sitting at. Can be changed and the view can be re-drawn using `layout()` to show the change.
 | handleSize | Returns the size of the handle. |
 
+### Functions
+| Function        | Description           |
+| :-------------:          |:-------------|
+|layout() | Layout the entire picker and all its subviews.|
+|adjustToColor(color: UIColor) | Updates the picker to a specific color.|
 
 ### Sub-Components
 Sub-Components can be hidden and customized to the preferred liking.
