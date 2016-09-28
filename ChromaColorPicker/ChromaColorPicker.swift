@@ -36,14 +36,14 @@ public class ChromaColorPicker: UIControl {
     public var handleLine: CAShapeLayer!
     public var addButton: ChromaAddButton!
     
-    public private(set) var currentColor = UIColor.redColor()
+    public private(set) var currentColor = UIColor.red
     public var delegate: ChromaColorPickerDelegate?
     public var currentAngle: Float = 0
     public private(set) var radius: CGFloat = 0
     public var stroke: CGFloat = 1
     public var padding: CGFloat = 15
     public var handleSize: CGSize{
-        get{ return CGSizeMake(self.bounds.width * 0.1, self.bounds.height * 0.1) }
+        get{ return CGSize(width:self.bounds.width * 0.1, height:self.bounds.height * 0.1) }
     }
     
     //MARK: - Initialization
@@ -58,35 +58,36 @@ public class ChromaColorPicker: UIControl {
     }
     
     private func commonInit(){
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         let minDimension = min(self.bounds.size.width, self.bounds.size.height)
         radius = minDimension/2 - handleSize.width/2
         
         /* Setup Handle */
-        handleView = ChromaHandle(frame: CGRectMake(0,0, handleSize.width, handleSize.height))
-        handleView.shadowOffset = CGSizeMake(0,2)
+        handleView = ChromaHandle(frame: CGRect(x:0,y:0, width:handleSize.width, height:handleSize.height))
+        handleView.shadowOffset = CGSize(width:0, height:2)
         
         /* Setup pan gesture for handle */
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ChromaColorPicker.handleWasMoved(_:)))
+        
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handleWasMoved(_:)))
         handleView.addGestureRecognizer(panRecognizer)
         
         /* Setup Add Button */
         addButton = ChromaAddButton()
         self.layoutAddButton() //layout frame
-        addButton.addTarget(self, action: #selector(ChromaColorPicker.addButtonPressed(_:)), forControlEvents: .TouchUpInside)
+        addButton.addTarget(self, action: #selector(self.addButtonPressed(_:)), for: .touchUpInside)
         
         /* Setup Handle Line */
         handleLine = CAShapeLayer()
         handleLine.lineWidth = 2
-        handleLine.strokeColor = UIColor.whiteColor().colorWithAlphaComponent(0.2).CGColor
+        handleLine.strokeColor = UIColor.white.withAlphaComponent(0.2).cgColor
         
         /* Setup Color Hex Label */
         hexLabel = UILabel()
         self.layoutHexLabel() //layout frame
         hexLabel.layer.cornerRadius = 2
         hexLabel.adjustsFontSizeToFitWidth = true
-        hexLabel.textAlignment = .Center
+        hexLabel.textAlignment = .center
         hexLabel.textColor = UIColor(red: 51/255.0, green:51/255.0, blue: 51/255.0, alpha: 0.65)
         
         /* Setup Shade Slider */
@@ -103,10 +104,10 @@ public class ChromaColorPicker: UIControl {
         self.addSubview(addButton)
     }
     
-    override public func willMoveToSuperview(newSuperview: UIView?) {
+    override public func willMove(toSuperview newSuperview: UIView?) {
         /* Get the starting color */
-        currentColor = colorOnWheelFromAngle(currentAngle)
-        handleView.center = positionOnWheelFromAngle(currentAngle) //update pos for angle
+        currentColor = colorOnWheelFromAngle(angle: currentAngle)
+        handleView.center = positionOnWheelFromAngle(angle: currentAngle) //update pos for angle
         self.layoutHandleLine() //layout the lines positioning
         
         handleView.color = currentColor
@@ -127,7 +128,7 @@ public class ChromaColorPicker: UIControl {
         let newColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
         
         /* Update the angle and currentColor */
-        currentAngle = angleForColor(newColor)
+        currentAngle = angleForColor(color: newColor)
         currentColor = newColor
         
         /* Set the slider value for the new color and update addButton */
@@ -147,37 +148,39 @@ public class ChromaColorPicker: UIControl {
     }
     
     //MARK: - Handle Touches
-    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?){
+    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Overriden to prevent uicontrolevents being called from the super
     }
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
-        let touchPoint = touches.first!.locationInView(self)
-        if CGRectContainsPoint(handleView.frame, touchPoint) {
-            self.sendActionsForControlEvents(.TouchDown)
+    
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touchPoint = touches.first!.location(in: self)
+        if handleView.frame.contains(touchPoint) {
+            self.sendActions(for: .touchDown)
             
             /* Enlarge Animation */
-            UIView.animateWithDuration(0.15, delay: 0, options: .CurveEaseIn, animations: { () -> Void in
-                self.handleView.transform = CGAffineTransformMakeScale(1.45, 1.45)
+            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: { () -> Void in
+                self.handleView.transform = CGAffineTransform(scaleX: 1.45, y: 1.45)
                 }, completion: nil)
         }
     }
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Run this animation after a pan or here if touches are released
         if handleView.transform.d > 1 { //if scale is larger than 1 (already animated)
             self.executeHandleShrinkAnimation()
         }
     }
     
-    func handleWasMoved(recognizer: UIPanGestureRecognizer) {
+    func handleWasMoved(_ recognizer: UIPanGestureRecognizer) {
         switch(recognizer.state){
-
-        case UIGestureRecognizerState.Changed:
-            let touchPosition = recognizer.locationInView(self)
-            self.moveHandleTowardPoint(touchPosition)
-            self.sendActionsForControlEvents(.TouchDragInside)
+            
+        case UIGestureRecognizerState.changed:
+            let touchPosition = recognizer.location(in: self)
+            self.moveHandleTowardPoint(point: touchPosition)
+            self.sendActions(for: .touchDragInside)
             break
-        
-        case UIGestureRecognizerState.Ended:
+            
+        case UIGestureRecognizerState.ended:
             /* Shrink Animation */
             self.executeHandleShrinkAnimation()
             break
@@ -188,14 +191,14 @@ public class ChromaColorPicker: UIControl {
     }
     
     private func executeHandleShrinkAnimation(){
-        self.sendActionsForControlEvents(.TouchUpInside)
-        UIView.animateWithDuration(0.15, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
-            self.handleView.transform = CGAffineTransformMakeScale(1, 1)
+        self.sendActions(for: .touchUpInside)
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: { () -> Void in
+            self.handleView.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
     }
     
     private func moveHandleTowardPoint(point: CGPoint){
-        currentAngle = angleToCenterFromPoint(point) //Find the angle of point to the frames center
+        currentAngle = angleToCenterFromPoint(point: point) //Find the angle of point to the frames center
         
         //Layout Handle
         self.layoutHandle()
@@ -208,43 +211,43 @@ public class ChromaColorPicker: UIControl {
         
         //Update color for add button if a shade isnt selected
         if shadeSlider.currentValue == 0 {
-            self.updateCurrentColor(shadeSlider.currentColor)
+            self.updateCurrentColor(color: shadeSlider.currentColor)
         }
         
         //Update Text Field display value
         self.updateHexLabel()
     }
     
-    func addButtonPressed(sender: ChromaAddButton){
+    func addButtonPressed(_ sender: ChromaAddButton){
         //Do a 'bob' animation
-        UIView.animateWithDuration(0.2,
-                delay: 0,
-                options: .CurveEaseIn,
-                animations: { () -> Void in
-                    sender.transform = CGAffineTransformMakeScale(1.1, 1.1)
-                }, completion: { (done) -> Void in
-                    UIView.animateWithDuration(0.1, animations: { () -> Void in
-                        sender.transform = CGAffineTransformMakeScale(1, 1)
-                    })
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: { () -> Void in
+                        sender.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            }, completion: { (done) -> Void in
+                UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                    sender.transform = CGAffineTransform(scaleX: 1, y: 1)
                 })
+        })
         
-        delegate?.colorPickerDidChooseColor(self, color: sender.color) //Delegate call
+        delegate?.colorPickerDidChooseColor(colorPicker: self, color: sender.color) //Delegate call
     }
     
     
     //MARK: - Drawing
-    override public func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override public func draw(_ rect: CGRect) {
+        super.draw(rect)
         let ctx = UIGraphicsGetCurrentContext()
         drawRainbowCircle(in: ctx, outerRadius: radius - padding, innerRadius: radius - stroke - padding, resolution: 1)
     }
     
     /*
-    Resolution should be between 0.1 and 1
-    */
-    func drawRainbowCircle(in context: CGContextRef?, outerRadius: CGFloat, innerRadius: CGFloat, resolution: Float){
-        CGContextSaveGState(context)
-        CGContextTranslateCTM(context, CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)) //Move context to center
+     Resolution should be between 0.1 and 1
+     */
+    func drawRainbowCircle(in context: CGContext?, outerRadius: CGFloat, innerRadius: CGFloat, resolution: Float){
+        context!.saveGState()
+        context!.translateBy(x: self.bounds.midX, y: self.bounds.midY) //Move context to center
         
         let subdivisions:CGFloat = CGFloat(resolution * 512) //Max subdivisions of 512
         
@@ -252,11 +255,11 @@ public class ChromaColorPicker: UIControl {
         let outterHeight = (CGFloat(M_PI)*outerRadius)/subdivisions
         
         let segment = UIBezierPath()
-        segment.moveToPoint(CGPointMake(innerRadius, -innerHeight/2))
-        segment.addLineToPoint(CGPointMake(innerRadius, innerHeight/2))
-        segment.addLineToPoint(CGPointMake(outerRadius, outterHeight/2))
-        segment.addLineToPoint(CGPointMake(outerRadius, -outterHeight/2))
-        segment.closePath()
+        segment.move(to: CGPoint(x:innerRadius, y:-innerHeight/2))
+        segment.addLine(to: CGPoint(x:innerRadius, y:innerHeight/2))
+        segment.addLine(to: CGPoint(x:outerRadius, y:outterHeight/2))
+        segment.addLine(to: CGPoint(x:outerRadius, y:-outterHeight/2))
+        segment.close()
         
         
         //Draw each segment and rotate around the center
@@ -268,12 +271,12 @@ public class ChromaColorPicker: UIControl {
             segment.stroke()
             
             //Rotate to correct location
-            let rotate = CGAffineTransformMakeRotation(-(CGFloat(M_PI*2)/subdivisions)) //rotates each segment
-            segment.applyTransform(rotate)
+            let rotate = CGAffineTransform(rotationAngle: -(CGFloat(M_PI*2)/subdivisions)) //rotates each segment
+            segment.apply(rotate)
         }
         
-        CGContextTranslateCTM(context, -CGRectGetMidX(self.bounds), -CGRectGetMidY(self.bounds)) //Move context back to original position
-        CGContextRestoreGState(context)
+        context!.translateBy(x: -self.bounds.midX, y: -self.bounds.midY) //Move context back to original position
+        context!.restoreGState()
     }
     
     
@@ -292,7 +295,7 @@ public class ChromaColorPicker: UIControl {
         self.layoutHandle()
         
         //Ensure colors are updated
-        self.updateCurrentColor(handleView.color)
+        self.updateCurrentColor(color: handleView.color)
         shadeSlider.primaryColor = handleView.color
         
         self.layoutShadeSlider()
@@ -302,56 +305,56 @@ public class ChromaColorPicker: UIControl {
     
     public func layoutAddButton(){
         let addButtonSize = CGSize(width: self.bounds.width/5, height: self.bounds.height/5)
-        addButton.frame = CGRect(x: CGRectGetMidX(self.bounds) - addButtonSize.width/2, y: CGRectGetMidY(self.bounds) - addButtonSize.height/2, width: addButtonSize.width, height: addButtonSize.height)
+        addButton.frame = CGRect(x: self.bounds.midX - addButtonSize.width/2, y: self.bounds.midY - addButtonSize.height/2, width: addButtonSize.width, height: addButtonSize.height)
     }
     
     /*
-    Update the handleView's position and color for the currentAngle
-    */
+     Update the handleView's position and color for the currentAngle
+     */
     func layoutHandle(){
         let angle = currentAngle //Preserve value in case it changes
-        let newPosition = positionOnWheelFromAngle(angle) //find the correct position on the color wheel
+        let newPosition = positionOnWheelFromAngle(angle: angle) //find the correct position on the color wheel
         
         //Update handle position
         handleView.center = newPosition
         
         //Update color for the movement
-        handleView.color = colorOnWheelFromAngle(angle)
+        handleView.color = colorOnWheelFromAngle(angle: angle)
     }
     
     /*
-    Updates the line view's position for the current angle
-    Pre: dependant on addButtons position & current angle
-    */
+     Updates the line view's position for the current angle
+     Pre: dependant on addButtons position & current angle
+     */
     func layoutHandleLine(){
         let linePath = UIBezierPath()
-        linePath.moveToPoint(addButton.center)
-        linePath.addLineToPoint(positionOnWheelFromAngle(currentAngle))
-        handleLine.path = linePath.CGPath
+        linePath.move(to: addButton.center)
+        linePath.addLine(to: positionOnWheelFromAngle(angle: currentAngle))
+        handleLine.path = linePath.cgPath
     }
     
     /*
-    Pre: dependant on addButtons position
-    */
+     Pre: dependant on addButtons position
+     */
     func layoutHexLabel(){
         hexLabel.frame = CGRect(x: 0, y: 0, width: addButton.bounds.width*1.5, height: addButton.bounds.height/3)
-        hexLabel.center = CGPointMake(CGRectGetMidX(self.bounds), (addButton.frame.origin.y + (padding + handleView.frame.height/2 + stroke/2))/1.75) //Divided by 1.75 not 2 to make it a bit lower
+        hexLabel.center = CGPoint(x:self.bounds.midX, y:(addButton.frame.origin.y + (padding + handleView.frame.height/2 + stroke/2))/1.75) //Divided by 1.75 not 2 to make it a bit lower
         hexLabel.font = UIFont(name: "Menlo-Regular", size: hexLabel.bounds.height)
     }
     
     /*
-    Pre: dependant on radius
-    */
+     Pre: dependant on radius
+     */
     func layoutShadeSlider(){
         /* Calculate proper length for slider */
-        let centerPoint = CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetMidY(bounds))
+        let centerPoint = CGPoint(x: bounds.midX, y: bounds.midY)
         let insideRadius = radius - padding
         
         let pointLeft = CGPoint(x: centerPoint.x + insideRadius*CGFloat(cos(7*M_PI/6)), y: centerPoint.y - insideRadius*CGFloat(sin(7*M_PI/6)))
         let pointRight = CGPoint(x: centerPoint.x + insideRadius*CGFloat(cos(11*M_PI/6)), y: centerPoint.y - insideRadius*CGFloat(sin(11*M_PI/6)))
         let deltaX = pointRight.x - pointLeft.x //distance on circle between points at 7pi/6 and 11pi/6
         
-
+        
         let sliderSize = CGSize(width: deltaX * 0.75, height: 0.08 * (bounds.height - padding*2))//bounds.height
         shadeSlider.frame = CGRect(x: bounds.midX - sliderSize.width/2, y: pointLeft.y - sliderSize.height/2, width: sliderSize.width, height: sliderSize.height)
         shadeSlider.handleCenterX = shadeSlider.bounds.width/2 //set handle starting position
@@ -365,14 +368,14 @@ public class ChromaColorPicker: UIControl {
     func updateCurrentColor(color: UIColor){
         currentColor = color
         addButton.color = color
-        self.sendActionsForControlEvents(.ValueChanged)
+        self.sendActions(for: .valueChanged)
     }
     
     
     //MARK: - Helper Methods
     private func angleToCenterFromPoint(point: CGPoint) -> Float {
-        let deltaX = Float(CGRectGetMidX(self.bounds) - point.x)
-        let deltaY = Float(CGRectGetMidY(self.bounds) - point.y)
+        let deltaX = Float(self.bounds.midX - point.x)
+        let deltaY = Float(self.bounds.midY - point.y)
         let angle = atan2f(deltaX, deltaY)
         
         // Convert the angle to be between 0 and 2PI
@@ -380,7 +383,7 @@ public class ChromaColorPicker: UIControl {
         if (adjustedAngle < 0){ //Left side (Q2 and Q3)
             adjustedAngle += Float(M_PI*2)
         }
-
+        
         return adjustedAngle
     }
     
@@ -398,14 +401,14 @@ public class ChromaColorPicker: UIControl {
     /* Returns a position centered on the wheel for a given angle */
     private func positionOnWheelFromAngle(angle: Float) -> CGPoint{
         let buffer = padding + stroke/2
-        return CGPoint(x: CGRectGetMidX(self.bounds) + ((radius - buffer) * CGFloat(cos(-angle))), y: CGRectGetMidY(self.bounds) + ((radius - buffer) * CGFloat(sin(-angle))))
+        return CGPoint(x: self.bounds.midX + ((radius - buffer) * CGFloat(cos(-angle))), y: self.bounds.midY + ((radius - buffer) * CGFloat(sin(-angle))))
     }
 }
 
 
 extension ChromaColorPicker: ChromaShadeSliderDelegate{
     public func shadeSliderChoseColor(slider: ChromaShadeSlider, color: UIColor) {
-        self.updateCurrentColor(color) //update main controller for selected color
+        self.updateCurrentColor(color: color) //update main controller for selected color
         self.updateHexLabel()
     }
 }
