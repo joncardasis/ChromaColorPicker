@@ -32,7 +32,7 @@ public class ChromaSliderTrackLayer: CALayer{
         gradient.actions = ["position" : NSNull(), "bounds" : NSNull(), "path" : NSNull()]
         self.addSublayer(gradient)
     }
-    override init(layer: AnyObject) {
+    override init(layer: Any) {
         super.init(layer: layer)
     }
     required public init?(coder aDecoder: NSCoder) {
@@ -53,7 +53,7 @@ public class ChromaShadeSlider: UIControl {
     public var handleCenterX: CGFloat = 0.0
     public var delegate: ChromaShadeSliderDelegate?
     
-    public var primaryColor = UIColor.grayColor(){
+    public var primaryColor = UIColor.gray{
         didSet{
             self.changeColorHue(to: currentColor)
             self.updateGradientTrack(for: primaryColor)
@@ -63,10 +63,10 @@ public class ChromaShadeSlider: UIControl {
     public var currentColor: UIColor{
         get{
             if currentValue < 0 {//darken
-                return primaryColor.darkerColor(-currentValue)
+                return primaryColor.darkerColor(amount: -currentValue)
             }
             else{ //lighten
-                return primaryColor.lighterColor(currentValue)
+                return primaryColor.lighterColor(amount: currentValue)
             }
         }
     }
@@ -85,14 +85,14 @@ public class ChromaShadeSlider: UIControl {
         self.backgroundColor = nil
         handleCenterX = self.bounds.width/2
         
-        trackLayer.backgroundColor = UIColor.blueColor().CGColor
+        trackLayer.backgroundColor = UIColor.blue.cgColor
         trackLayer.masksToBounds = true
         trackLayer.actions = ["position" : NSNull(), "bounds" : NSNull(), "path" : NSNull()] //disable implicit animations
         self.layer.addSublayer(trackLayer)
         
-        handleView.color = UIColor.blueColor()
+        handleView.color = UIColor.blue
         handleView.circleLayer.borderWidth = 3
-        handleView.userInteractionEnabled = false //disable interaction for touch events
+        handleView.isUserInteractionEnabled = false //disable interaction for touch events
         self.layer.addSublayer(handleView.layer)
         
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapRecognized))
@@ -125,7 +125,7 @@ public class ChromaShadeSlider: UIControl {
     public func changeColorHue(to newColor: UIColor){
         handleView.color = newColor
         if currentValue != 0 { //Don't call delegate if the color hasnt changed
-            self.delegate?.shadeSliderChoseColor(self, color: newColor)
+            self.delegate?.shadeSliderChoseColor(slider: self, color: newColor)
         }
     }
     
@@ -135,7 +135,7 @@ public class ChromaShadeSlider: UIControl {
         trackLayer.gradient.endPoint = CGPoint(x: 1, y: 0.5)
         
         //Gradient is for astetics - the slider is actually between black and white
-        trackLayer.gradient.colors = [color.darkerColor(0.65).CGColor, color.CGColor, color.lighterColor(0.65).CGColor]
+        trackLayer.gradient.colors = [color.darkerColor(amount: 0.65).cgColor, color.cgColor, color.lighterColor(amount: 0.65).cgColor]
     }
     
     //Updates handeles location based on currentValue
@@ -145,8 +145,8 @@ public class ChromaShadeSlider: UIControl {
         self.layoutHandleFrame()
     }
     
-    override public func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let location = touch.locationInView(self)
+    override public func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let location = touch.location(in: self)
         
         if handleView.frame.contains(location) {
             return true
@@ -154,12 +154,12 @@ public class ChromaShadeSlider: UIControl {
         return false
     }
     
-    override public func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let location = touch.locationInView(self)
+    override public func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let location = touch.location(in: self)
         
         //Update for center point
         handleCenterX = location.x
-        handleCenterX = fittedValueInBounds(handleCenterX) //adjust value to fit in bounds if needed
+        handleCenterX = fittedValueInBounds(value: handleCenterX) //adjust value to fit in bounds if needed
         
         
         //Update current value
@@ -174,12 +174,12 @@ public class ChromaShadeSlider: UIControl {
         self.layoutHandleFrame()
         CATransaction.commit()
         
-        self.sendActionsForControlEvents(.ValueChanged)
+        self.sendActions(for: .valueChanged)
         return true
     }
     
     func doubleTapRecognized(recognizer: UITapGestureRecognizer){
-        let location = recognizer.locationInView(self)
+        let location = recognizer.location(in: self)
         guard handleView.frame.contains(location) else {
             return
         }
@@ -195,8 +195,8 @@ public class ChromaShadeSlider: UIControl {
         handleView.color = primaryColor
         currentValue = 0.0
         
-        self.sendActionsForControlEvents(.ValueChanged)
-        self.delegate?.shadeSliderChoseColor(self, color: currentColor)
+        self.sendActions(for: .valueChanged)
+        self.delegate?.shadeSliderChoseColor(slider: self, color: currentColor)
     }
     
     /* Helper Methods */

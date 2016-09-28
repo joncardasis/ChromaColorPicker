@@ -25,9 +25,9 @@
 import UIKit
 
 public class ChromaHandle: UIView {
-    public var color = UIColor.blackColor() {
+    public var color = UIColor.black {
         didSet{
-            circleLayer.fillColor = color.CGColor
+            circleLayer.fillColor = color.cgColor
         }
     }
     override public var frame: CGRect{
@@ -38,7 +38,7 @@ public class ChromaHandle: UIView {
     public var shadowOffset: CGSize?{
         set{
             if let offset = newValue {
-                circleLayer.shadowColor = UIColor.blackColor().CGColor
+                circleLayer.shadowColor = UIColor.black.cgColor
                 circleLayer.shadowRadius = 3
                 circleLayer.shadowOpacity = 0.3
                 circleLayer.shadowOffset = offset
@@ -51,20 +51,20 @@ public class ChromaHandle: UIView {
     
     override public init(frame: CGRect) {
         super.init(frame:frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         /* Add Shape Layer */
         //circleLayer.shouldRasterize = true
         self.layoutCircleLayer()
-        circleLayer.strokeColor = UIColor.whiteColor().CGColor
-        circleLayer.fillColor = color.CGColor
+        circleLayer.strokeColor = UIColor.white.cgColor
+        circleLayer.fillColor = color.cgColor
         
         self.layer.addSublayer(circleLayer)
     }
     
     public func layoutCircleLayer(){
-        circleLayer.path = UIBezierPath(ovalInRect: self.bounds).CGPath
-        circleLayer.strokeColor = UIColor.whiteColor().CGColor
+        circleLayer.path = UIBezierPath(ovalIn: self.bounds).cgPath
+        circleLayer.strokeColor = UIColor.white.cgColor
         circleLayer.lineWidth = frame.width/8.75 //4
     }
     

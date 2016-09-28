@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         
         //Calculate relative size and origin in bounds
         let pickerSize = CGSize(width: view.bounds.width*0.8, height: view.bounds.width*0.8)
-        let pickerOrigin = CGPoint(x: CGRectGetMidX(view.bounds) - pickerSize.width/2, y: CGRectGetMidY(view.bounds) - pickerSize.height/2)
+        let pickerOrigin = CGPoint(x: view.bounds.midX - pickerSize.width/2, y: view.bounds.midY - pickerSize.height/2)
         
         //Create Color Picker
         colorPicker = ChromaColorPicker(frame: CGRect(origin: pickerOrigin, size: pickerSize))
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         colorPicker.stroke = 3 //stroke of the rainbow circle
         colorPicker.currentAngle = Float(M_PI)
         
-        colorPicker.hexLabel.textColor = UIColor.whiteColor()
+        colorPicker.hexLabel.textColor = UIColor.white
         
         //Don't want an element like the shade slider? Just hide it:
         //colorPicker.shadeSlider.hidden = true
@@ -45,14 +45,14 @@ extension ViewController: ChromaColorPickerDelegate{
         colorDisplayView.backgroundColor = color
         
         //Perform zesty animation
-        UIView.animateWithDuration(0.2,
+        UIView.animate(withDuration: 0.2,
                 animations: {
-                    self.colorDisplayView.transform = CGAffineTransformMakeScale(1.05, 1.05)
-                }) { (done) in
-                UIView.animateWithDuration(0.2, animations: { 
-                    self.colorDisplayView.transform = CGAffineTransformIdentity
+                    self.colorDisplayView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                }, completion: { (done) in
+                UIView.animate(withDuration: 0.2, animations: { 
+                    self.colorDisplayView.transform = CGAffineTransform.identity
                 })
-        }
+        }) 
     }
 }
 

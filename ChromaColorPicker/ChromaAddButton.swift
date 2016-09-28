@@ -25,11 +25,13 @@
 import UIKit
 
 public class ChromaAddButton: UIButton {
-    public var color = UIColor.grayColor(){
+    public var color = UIColor.gray
+        
+        {
         didSet{
             if let layer = circleLayer{
-                layer.fillColor = color.CGColor
-                layer.strokeColor = color.darkerColor(0.075).CGColor
+                layer.fillColor = color.cgColor
+                layer.strokeColor = color.darkerColor(amount: 0.075).cgColor
             }
         }
     }
@@ -55,25 +57,28 @@ public class ChromaAddButton: UIButton {
     public func createGraphics(){
         circleLayer = CAShapeLayer()
         self.layoutCircleLayer()
-        circleLayer!.fillColor = color.CGColor
+        circleLayer!.fillColor = color.cgColor
         self.layer.addSublayer(circleLayer!)
         
         /* Create Plus Icon */
         let plusPath = UIBezierPath()
-        plusPath.moveToPoint(CGPointMake(self.bounds.width/2 - self.bounds.width/8, self.bounds.height/2))
-        plusPath.addLineToPoint(CGPointMake(self.bounds.width/2 + self.bounds.width/8, self.bounds.height/2))
-        plusPath.moveToPoint(CGPointMake(self.bounds.width/2, self.bounds.height/2 + self.bounds.height/8))
-        plusPath.addLineToPoint(CGPointMake(self.bounds.width/2, self.bounds.height/2 - self.bounds.height/8))
+        plusPath.move(to: CGPoint(x:self.bounds.width/2 - self.bounds.width/8, y:self.bounds.height/2))
+        plusPath.addLine(to: CGPoint(x:self.bounds.width/2 + self.bounds.width/8, y:self.bounds.height/2))
+        plusPath.move(to: CGPoint(x:self.bounds.width/2, y:self.bounds.height/2 + self.bounds.height/8))
+        plusPath.addLine(to: CGPoint(x:self.bounds.width/2, y:self.bounds.height/2 - self.bounds.height/8))
         
         plusIconLayer = CAShapeLayer()
         self.layoutPlusIconLayer()
-        plusIconLayer!.strokeColor = UIColor.whiteColor().CGColor
+        plusIconLayer!.strokeColor
+            
+            
+            = UIColor.white.cgColor
         self.layer.addSublayer(plusIconLayer!)
     }
     
     public func layoutCircleLayer(){
         if let layer = circleLayer{
-            layer.path = UIBezierPath(ovalInRect: self.bounds).CGPath
+            layer.path = UIBezierPath(ovalIn: self.bounds).cgPath
             layer.lineWidth = frame.width * 0.04 //4 for size (100,100)
         }
     }
@@ -81,12 +86,12 @@ public class ChromaAddButton: UIButton {
     public func layoutPlusIconLayer(){
         if let layer = plusIconLayer{
             let plusPath = UIBezierPath()
-            plusPath.moveToPoint(CGPointMake(self.bounds.width/2 - self.bounds.width/8, self.bounds.height/2))
-            plusPath.addLineToPoint(CGPointMake(self.bounds.width/2 + self.bounds.width/8, self.bounds.height/2))
-            plusPath.moveToPoint(CGPointMake(self.bounds.width/2, self.bounds.height/2 + self.bounds.height/8))
-            plusPath.addLineToPoint(CGPointMake(self.bounds.width/2, self.bounds.height/2 - self.bounds.height/8))
+            plusPath.move(to: CGPoint(x:self.bounds.width/2 - self.bounds.width/8, y:self.bounds.height/2))
+            plusPath.addLine(to: CGPoint(x:self.bounds.width/2 + self.bounds.width/8, y:self.bounds.height/2))
+            plusPath.move(to: CGPoint(x:self.bounds.width/2, y:self.bounds.height/2 + self.bounds.height/8))
+            plusPath.addLine(to: CGPoint(x:self.bounds.width/2, y:self.bounds.height/2 - self.bounds.height/8))
             
-            layer.path = plusPath.CGPath
+            layer.path = plusPath.cgPath
             layer.lineWidth = frame.width * 0.03
         }
     }
