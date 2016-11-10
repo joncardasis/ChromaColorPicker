@@ -126,7 +126,7 @@ public class ChromaColorPicker: UIControl {
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         let newColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
         
-        /* Update the angle and currentColor */
+        /* Update the angle */
         currentAngle = angleForColor(newColor)
         currentColor = newColor
         
@@ -144,6 +144,9 @@ public class ChromaColorPicker: UIControl {
         self.layoutHandle()
         self.layoutHandleLine()
         self.updateHexLabel()
+
+        /* Update the currentColor */
+        currentColor = newColor
     }
     
     //MARK: - Handle Touches
