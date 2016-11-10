@@ -128,7 +128,6 @@ public class ChromaColorPicker: UIControl {
         
         /* Update the angle */
         currentAngle = angleForColor(newColor)
-        currentColor = newColor
         
         /* Set the slider value for the new color and update addButton */
         shadeSlider.primaryColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1) //Set a color recognzied on the color wheel
