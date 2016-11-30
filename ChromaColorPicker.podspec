@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "ChromaColorPicker"
-  s.version      = "1.1"
-  s.summary      = "An intuitive iOS color picker built in Swift."
+  s.version      = "2.0"
+  s.summary      = "An intuitive iOS color picker built in Swift 3."
 
   s.description  = <<-DESC
   ChromaColorPicker is a Swift UIControl which allows a user to pick a color on a color wheel and lighten or darken the selected color. Great for drawing applications!
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/joncardasis/ChromaColorPicker"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author    = "Jonathan Cardasis"
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/joncardasis/ChromaColorPicker.git", :tag => "1.1" }
   s.source_files  = "ChromaColorPicker", "ChromaColorPicker/*.swift"
 

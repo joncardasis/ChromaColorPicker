@@ -1,17 +1,17 @@
 # ChromaColorPicker :art:
-![Supported Version](https://img.shields.io/badge/Swift-2.2-yellow.svg)
+![Supported Version](https://img.shields.io/badge/Swift-3-green.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgray.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![CocoaPods](https://img.shields.io/badge/CocoaPods-1.1-green.svg)
+![CocoaPods](https://img.shields.io/badge/CocoaPods-2.0-green.svg)
 
-An intuitive iOS color picker built in Swift.
+An intuitive iOS color picker built in Swift. Written by joncardasis, adapted to Swift 3 by Laptopmini.
 
 <img src="../assets/Screenshot-With-BG.png?raw=true" width="350">
 
 ## Installation
 ### Cocoapods
 ```
-pod 'ChromaColorPicker'
+pod 'ChromaColorPicker', :git => 'https://github.com/Laptopmini/ChromaColorPicker.git'
 ```
 ### Manually
 Add all files from the ChromaColorPicker folder to your project.
