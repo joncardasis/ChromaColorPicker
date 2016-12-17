@@ -1,17 +1,17 @@
 # ChromaColorPicker :art:
-![Supported Version](https://img.shields.io/badge/Swift-2.2-yellow.svg)
+![Supported Version](https://img.shields.io/badge/Swift-3-green.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgray.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![CocoaPods](https://img.shields.io/badge/CocoaPods-1.1-green.svg)
 
-An intuitive iOS color picker built in Swift.
+An intuitive iOS color picker built in Swift. Written by joncardasis, adapted to Swift 3 by Laptopmini.
 
 <img src="../assets/Screenshot-With-BG.png?raw=true" width="350">
 
 ## Installation
 ### Cocoapods
 ```
-pod 'ChromaColorPicker'
+pod 'ChromaColorPicker', :git => 'https://github.com/Laptopmini/ChromaColorPicker.git'
 ```
 ### Manually
 Add all files from the ChromaColorPicker folder to your project.
@@ -23,7 +23,7 @@ let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, he
 neatColorPicker.delegate = self //ChromaColorPickerDelegate
 neatColorPicker.padding = 5
 neatColorPicker.stroke = 3
-neatColorPicker.hexLabel.textColor = UIColor.whiteColor()
+neatColorPicker.hexLabel.textColor = .white
 
 self.view.addSubview(neatColorPicker)
 ```
@@ -46,7 +46,7 @@ You can also set the color of the picker anytime by using the `adjustToColor(col
 ```Swift
 let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 ...
-neatColorPicker.adjustToColor(UIColor.greenColor())
+neatColorPicker.adjustToColor(.green)
 ...
 ```
 
@@ -82,13 +82,13 @@ Sub-Components can be hidden and customized to the preferred liking.
 | handleLine | A line which is drawn from the addButton to the handleView. |
 
 ### Supported UIControlEvents
-`.TouchDown`       -> called when the handle is first grabbed
+`.touchDown`       -> called when the handle is first grabbed
 
-`.TouchUpInside`   -> called when handle is let go
+`.touchUpInside`   -> called when handle is let go
 
-`.ValueChanged`    -> called whenever the color has changed hue or shade
+`.valueChanged`    -> called whenever the color has changed hue or shade
 
-`.TouchDragInside` -> called when the handle has moved by a drag action
+`.touchDragInside` -> called when the handle has moved by a drag action
 
 
 ## Additional Info
