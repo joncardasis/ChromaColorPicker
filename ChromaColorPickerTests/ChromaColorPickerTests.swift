@@ -36,6 +36,8 @@ class ChromaColorPickerTests: XCTestCase {
         let pickerColor = colorPicker.currentColor
         
         XCTAssertEqual(pickerColor.description, testColor.description, "Picker did not properly adjust to color") //Compare description because of fractional differences
+        
+        XCTAssertEqual(colorPicker.hexLabel.text, "#\(testColor.hexCode)", "Picker displays incorrect Hex Value")
     }
     
     func testButtonDelegateRecieved() {
