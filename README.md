@@ -1,5 +1,5 @@
 # ChromaColorPicker :art:
-![Supported Version](https://img.shields.io/badge/Swift-3.0-yellow.svg)
+![Supported Version](https://img.shields.io/badge/Swift-3-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgray.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![CocoaPods](https://img.shields.io/badge/CocoaPods-1.2-green.svg)
@@ -82,13 +82,13 @@ Sub-Components can be hidden and customized to the preferred liking.
 | handleLine | A line which is drawn from the addButton to the handleView. |
 
 ### Supported UIControlEvents
-`.TouchDown`       -> called when the handle is first grabbed
+`.touchDown`       -> called when the handle is first grabbed
 
-`.TouchUpInside`   -> called when handle is let go
+`.touchUpInside`   -> called when handle is let go
 
-`.ValueChanged`    -> called whenever the color has changed hue or shade
+`.valueChanged`    -> called whenever the color has changed hue or shade
 
-`.TouchDragInside` -> called when the handle has moved by a drag action
+`.touchDragInside` -> called when the handle has moved by a drag action
 
 
 ## Additional Info

@@ -119,19 +119,19 @@ open class ChromaColorPicker: UIControl {
         /* Apply saturation and brightness from previous color to current one */
         var saturation: CGFloat = 0.0
         var brightness: CGFloat = 0.0
-        //currentColor.getHue(nil, saturation: &saturation, brightness: &brightness, alpha: nil)
-        
         var hue: CGFloat = 0.0
         var alpha: CGFloat = 0.0
+        
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         let newColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+        
+        /* Set the slider value for the new color and update addButton */
+        shadeSlider.primaryColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1) //Set a color recognzied on the color wheel
         
         /* Update the angle and currentColor */
         currentAngle = angleForColor(newColor)
         currentColor = newColor
         
-        /* Set the slider value for the new color and update addButton */
-        shadeSlider.primaryColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1) //Set a color recognzied on the color wheel
         if brightness < 1.0 { //currentValue is on the left side of the slider
             shadeSlider.currentValue = brightness-1
         }else{
