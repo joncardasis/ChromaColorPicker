@@ -49,4 +49,6 @@ class ChromaColorPickerTests: XCTestCase {
             
         XCTAssertTrue(viewController.colorDisplayView.backgroundColor!.description == colorOnTap.description)
     }
+    
+    
 }

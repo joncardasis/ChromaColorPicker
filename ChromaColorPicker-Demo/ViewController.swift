@@ -34,7 +34,8 @@ class ViewController: UIViewController {
         //Don't want an element like the shade slider? Just hide it:
         //colorPicker.shadeSlider.hidden = true
         
-        self.view.addSubview(colorPicker)    }
+        self.view.addSubview(colorPicker)
+    }
 }
 
 extension ViewController: ChromaColorPickerDelegate{
