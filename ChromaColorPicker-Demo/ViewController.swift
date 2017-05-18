@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         //Customize the view (optional)
         colorPicker.padding = 10
         colorPicker.stroke = 3 //stroke of the rainbow circle
-        colorPicker.currentAngle = Float(M_PI)
+        colorPicker.currentAngle = Float.pi
         
         colorPicker.hexLabel.textColor = UIColor.white
         
