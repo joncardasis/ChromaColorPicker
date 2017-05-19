@@ -90,6 +90,8 @@ Sub-Components can be hidden and customized to the preferred liking.
 
 `.touchDragInside` -> called when the handle has moved by a drag action
 
+`.editingDidEnd`   -> called when either the handle is let go or slider is let go
+
 
 ## Additional Info
 Check out the [Wiki](https://github.com/joncardasis/ChromaColorPicker/wiki/Challenges-and-Solutions) if you're interested in reading into how the color wheel was created.

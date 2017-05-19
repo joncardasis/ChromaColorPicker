@@ -178,6 +178,10 @@ open class ChromaShadeSlider: UIControl {
         return true
     }
     
+    override open func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        self.sendActions(for: .editingDidEnd)
+    }
+    
     func doubleTapRecognized(_ recognizer: UITapGestureRecognizer){
         let location = recognizer.location(in: self)
         guard handleView.frame.contains(location) else {
