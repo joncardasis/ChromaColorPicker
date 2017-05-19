@@ -93,7 +93,7 @@ open class ChromaColorPicker: UIControl {
         shadeSlider = ChromaShadeSlider()
         shadeSlider.delegate = self
         self.layoutShadeSlider()
-        
+        shadeSlider.addTarget(self, action: #selector(ChromaColorPicker.sliderEditingDidEnd(_:)), for: .editingDidEnd)
         
         /* Add components to view */
         self.layer.addSublayer(handleLine)
@@ -189,6 +189,7 @@ open class ChromaColorPicker: UIControl {
     
     private func executeHandleShrinkAnimation(){
         self.sendActions(for: .touchUpInside)
+        self.sendActions(for: .editingDidEnd)
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: { () -> Void in
             self.handleView.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
@@ -231,6 +232,9 @@ open class ChromaColorPicker: UIControl {
         delegate?.colorPickerDidChooseColor(self, color: sender.color) //Delegate call
     }
     
+    func sliderEditingDidEnd(_ sender: ChromaShadeSlider){
+        self.sendActions(for: .editingDidEnd)
+    }
     
     //MARK: - Drawing
     override open func draw(_ rect: CGRect) {

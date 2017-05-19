@@ -3,7 +3,7 @@
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgray.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Carthage](https://img.shields.io/badge/Carthage-✔-green.svg)
-![CocoaPods](https://img.shields.io/badge/CocoaPods-1.4-green.svg)
+![CocoaPods](https://img.shields.io/badge/CocoaPods-1.4.1-green.svg)
 
 An intuitive iOS color picker built in Swift.
 
@@ -95,6 +95,8 @@ Sub-Components can be hidden and customized to the preferred liking.
 `.valueChanged`    -> called whenever the color has changed hue or shade
 
 `.touchDragInside` -> called when the handle has moved by a drag action
+
+`.editingDidEnd`   -> called when either the handle is let go or slider is let go
 
 
 ## Additional Info
