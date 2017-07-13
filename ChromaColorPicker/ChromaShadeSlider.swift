@@ -93,7 +93,7 @@ open class ChromaShadeSlider: UIControl {
         handleView.color = UIColor.blue
         handleView.circleLayer.borderWidth = 3
         handleView.isUserInteractionEnabled = false //disable interaction for touch events
-        self.layer.addSublayer(handleView.layer)
+        self.addSubview(handleView)
         
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapRecognized))
         doubleTapGesture.numberOfTapsRequired = 2
