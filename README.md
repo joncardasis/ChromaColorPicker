@@ -2,7 +2,8 @@
 ![Supported Version](https://img.shields.io/badge/Swift-3-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgray.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![CocoaPods](https://img.shields.io/badge/CocoaPods-1.3-green.svg)
+![CocoaPods](https://img.shields.io/badge/CocoaPods-1.4-green.svg)
+![Carthage](https://img.shields.io/badge/Carthage-✔-green.svg)
 
 An intuitive iOS color picker built in Swift.
 

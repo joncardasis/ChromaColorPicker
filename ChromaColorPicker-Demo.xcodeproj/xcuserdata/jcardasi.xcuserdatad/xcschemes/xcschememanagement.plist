@@ -9,10 +9,30 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ChromaColorPicker.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>ChromaColorPickerTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>3503B82E1F2689BC00750356</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>35C376CC1D5CF5300069D7A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC4AE3D71E16DEA300F02C60</key>
 		<dict>
 			<key>primary</key>
 			<true/>
