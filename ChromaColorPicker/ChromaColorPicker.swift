@@ -433,8 +433,12 @@ open class ChromaColorPicker: UIControl {
         
         // Update subcomponents for color change
         if modeIsGrayscale {
-            let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+            //Change color of colorToggleButton to the last handle color
+            let lightColor = handleView.color
+            let shadedColor = handleView.color.darkerColor(0.25)
+            colorToggleButton.hueColorGradientLayer.colors = [lightColor.cgColor, shadedColor.cgColor]
             
+            let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
             self.handleView.color = gray
             self.updateCurrentColor(gray)
             self.updateHexLabel()
@@ -444,8 +448,20 @@ open class ChromaColorPicker: UIControl {
         }
         else {
             // Update for normal rainbow
-            let currentAngle = angleToCenterFromPoint(handleView.center)
-            let hueColor = colorOnWheelFromAngle(currentAngle)
+            
+            // Use color stored in toggle button (set above), or else default to the angle it is at
+            var hueColor: UIColor
+            if let storedColor = colorToggleButton.hueColorGradientLayer.colors?[0] {
+                hueColor = UIColor(cgColor: (storedColor as! CGColor))
+                
+                currentAngle = angleForColor(hueColor)
+                self.layoutHandleLine()
+                self.layoutHandle()
+            }
+            else {
+                let currentAngle = self.angleToCenterFromPoint(self.handleView.center)
+                hueColor = self.colorOnWheelFromAngle(currentAngle)
+            }
             
             self.handleView.color = hueColor
             self.updateCurrentColor(hueColor)

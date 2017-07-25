@@ -46,8 +46,9 @@ open class ColorModeToggleButton: UIButton {
     
     open lazy var grayColorGradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
-        let colorUpperLeft = UIColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 1)
-        let colorLowerRight = UIColor(red: 100/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1)
+        let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+        let colorUpperLeft = gray
+        let colorLowerRight = gray.darkerColor(0.25)
         gradient.colors = [colorUpperLeft.cgColor, colorLowerRight.cgColor]
         gradient.startPoint = .zero
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
