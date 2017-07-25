@@ -5,9 +5,14 @@
 ![Carthage](https://img.shields.io/badge/Carthage-✔-green.svg)
 ![CocoaPods](https://img.shields.io/badge/CocoaPods-1.4.1-green.svg)
 
-An intuitive iOS color picker built in Swift. Supports hue and grayscale modes to make choosing the right color easy and fun!
+*An intuitive iOS color picker built in Swift.*
 
-<img src="../assets/Screenshot-With-BG.png?raw=true" width="350">
+Supports hue and grayscale modes to make choosing the right color easy and fun!
+
+<div align="right">
+  <img src="../assets/Screenshot-With-BG.png?raw=true" height="350" style="margin:8px;">
+  <img src="../assets/Screenshot-Grayscale.png?raw=true" height="350" style="margin:8px;">
+</div>
 
 ## Installation
 ### Carthage
