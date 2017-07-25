@@ -9,7 +9,7 @@
 
 Supports hue and grayscale modes to make choosing the right color easy and fun!
 
-<div align="right">
+<div align="center">
   <img src="../assets/Screenshot-With-BG.png?raw=true" height="350" style="margin:8px;">
   <img src="../assets/Screenshot-Grayscale.png?raw=true" height="350" style="margin:8px;">
 </div>
