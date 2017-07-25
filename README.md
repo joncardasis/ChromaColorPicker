@@ -5,9 +5,14 @@
 ![Carthage](https://img.shields.io/badge/Carthage-✔-green.svg)
 ![CocoaPods](https://img.shields.io/badge/CocoaPods-1.4.1-green.svg)
 
-An intuitive iOS color picker built in Swift.
+*An intuitive iOS color picker built in Swift.*
 
-<img src="../assets/Screenshot-With-BG.png?raw=true" width="350">
+Supports hue and grayscale modes to make choosing the right color easy and fun!
+
+<div>
+  <img src="../assets/Screenshot-With-BG.png?raw=true" height="350" style="margin:8px;">
+  <img src="../assets/Screenshot-Grayscale.png?raw=true" height="350" style="margin:8px;">
+</div>
 
 ## Installation
 ### Carthage
@@ -56,6 +61,16 @@ neatColorPicker.adjustToColor(UIColor.green)
 ...
 ```
 
+### Enable Grayscale Support
+An toggle button can be enabled/disabled to allow for grayscale selections by using the `supportsShadesOfGray` property.
+
+```Swift
+let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+...
+neatColorPicker.supportsShadesOfGray = true // Normally false be default
+```
+
+
 ## Customization
 <img src="../assets/Design_Breakdown.png?raw=true" width="350">
 
@@ -69,6 +84,7 @@ neatColorPicker.adjustToColor(UIColor.green)
 | currentColor | The currently set color by the control. It is displayed in the add button. Use `adjustToColor(color: UIColor)` to update the color.|
 | currentAngle | The angle which the handle is currently sitting at. Can be changed and the view can be re-drawn using `layout()` to show the change.
 | handleSize | Returns the size of the handle. |
+| supportsShadesOfGray | True/False if a toggle for supporting grayscale colors should be shown. |
 
 ### Functions
 | Function        | Description           |
@@ -86,6 +102,7 @@ Sub-Components can be hidden and customized to the preferred liking.
 | addButton | A custom UIButton in the center of the control. The `colorPickerDidChooseColor(colorPicker: color:)` delegate function is called when this is tapped. |
 | handleView | A ChromaHandle (custom UIView) which displays the current color and can be moved around the circle.|
 | handleLine | A line which is drawn from the addButton to the handleView. |
+| colorToggleButton | A custom UIButton which appears if `supportsShadesOfGray` is set to true and will switch the picker to a grayscale mode if pressed.|
 
 ### Supported UIControlEvents
 `.touchDown`       -> called when the handle is first grabbed

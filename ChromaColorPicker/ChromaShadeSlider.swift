@@ -1,4 +1,4 @@
-//
+ //
 //  ChromaShadeSlider.swift
 //
 //  Copyright © 2016 Jonathan Cardasis. All rights reserved.
