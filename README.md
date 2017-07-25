@@ -5,7 +5,7 @@
 ![Carthage](https://img.shields.io/badge/Carthage-✔-green.svg)
 ![CocoaPods](https://img.shields.io/badge/CocoaPods-1.4.1-green.svg)
 
-An intuitive iOS color picker built in Swift.
+An intuitive iOS color picker built in Swift. Supports hue and grayscale modes to make choosing the right color easy and fun!
 
 <img src="../assets/Screenshot-With-BG.png?raw=true" width="350">
 
@@ -55,6 +55,16 @@ let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, he
 neatColorPicker.adjustToColor(UIColor.green)
 ...
 ```
+
+### Enable Grayscale Support
+An toggle button can be enabled/disabled to allow for grayscale selections by using the `supportsShadesOfGray` property.
+
+```Swift
+let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+...
+neatColorPicker.supportsShadesOfGray = true // Normally false be default
+```
+
 
 ## Customization
 <img src="../assets/Design_Breakdown.png?raw=true" width="350">
