@@ -35,8 +35,27 @@ open class ChromaColorPicker: UIControl {
     open var handleView: ChromaHandle!
     open var handleLine: CAShapeLayer!
     open var addButton: ChromaAddButton!
+    open var colorToggleButton: ColorModeToggleButton!
+    
+    private var modeIsGrayscale: Bool {
+        return colorToggleButton.colorState == .grayscale
+    }
+    private enum ColorSpace {
+        case rainbow
+        case grayscale
+    }
     
     open private(set) var currentColor = UIColor.red
+    open var supportsShadesOfGray: Bool = false {
+        didSet {
+            if supportsShadesOfGray {
+                colorToggleButton.isHidden = false
+            }
+            else {
+                colorToggleButton.isHidden = true
+            }
+        }
+    }
     open var delegate: ChromaColorPickerDelegate?
     open var currentAngle: Float = 0
     open private(set) var radius: CGFloat = 0
@@ -95,12 +114,20 @@ open class ChromaColorPicker: UIControl {
         self.layoutShadeSlider()
         shadeSlider.addTarget(self, action: #selector(ChromaColorPicker.sliderEditingDidEnd(_:)), for: .editingDidEnd)
         
+        /* Setup Color Mode Toggle Button */
+        colorToggleButton = ColorModeToggleButton()
+        self.layoutColorToggleButton() //layout frame
+        colorToggleButton.colorState = .hue // Default as starting state is hue
+        colorToggleButton.addTarget(self, action: #selector(togglePickerColorMode), for: .touchUpInside)
+        colorToggleButton.isHidden = !supportsShadesOfGray // default to hiding if not supported
+        
         /* Add components to view */
         self.layer.addSublayer(handleLine)
         self.addSubview(shadeSlider)
         self.addSubview(hexLabel)
         self.addSubview(handleView)
         self.addSubview(addButton)
+        self.addSubview(colorToggleButton)
     }
     
     override open func willMove(toSuperview newSuperview: UIView?) {
@@ -204,6 +231,11 @@ open class ChromaColorPicker: UIControl {
         //Layout Line
         self.layoutHandleLine()
         
+        if modeIsGrayscale {
+            // If mode is grayscale do not update colors and end early
+            return
+        }
+        
         //Update color for shade slider
         shadeSlider.primaryColor = handleView.color//currentColor
         
@@ -240,13 +272,16 @@ open class ChromaColorPicker: UIControl {
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
         let ctx = UIGraphicsGetCurrentContext()
-        drawRainbowCircle(in: ctx, outerRadius: radius - padding, innerRadius: radius - stroke - padding, resolution: 1)
+        let colorSpace: ColorSpace = (modeIsGrayscale) ? .grayscale : .rainbow
+        
+        drawCircleRing(in: ctx, outerRadius: radius - padding, innerRadius: radius - stroke - padding, resolution: 1, colorSpace: colorSpace)
     }
     
     /*
     Resolution should be between 0.1 and 1
+    colorSpace - either rainbow or grayscale
     */
-    func drawRainbowCircle(in context: CGContext?, outerRadius: CGFloat, innerRadius: CGFloat, resolution: Float){
+    private func drawCircleRing(in context: CGContext?, outerRadius: CGFloat, innerRadius: CGFloat, resolution: Float, colorSpace: ColorSpace){
         context?.saveGState()
         context?.translateBy(x: self.bounds.midX, y: self.bounds.midY) //Move context to center
         
@@ -265,7 +300,13 @@ open class ChromaColorPicker: UIControl {
         
         //Draw each segment and rotate around the center
         for i in 0 ..< Int(ceil(subdivisions)) {
-            UIColor(hue: CGFloat(i)/subdivisions, saturation: 1, brightness: 1, alpha: 1).set()
+            if modeIsGrayscale {
+                UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1).set() //Gray
+            }
+            else { // Draw rainbow
+                UIColor(hue: CGFloat(i)/subdivisions, saturation: 1, brightness: 1, alpha: 1).set()
+            }
+            
             segment.fill()
             let lineTailSpace = (CGFloat.pi*2)*outerRadius/subdivisions  //The amount of space between the tails of each segment
             segment.lineWidth = lineTailSpace //allows for seemless scaling
@@ -302,6 +343,7 @@ open class ChromaColorPicker: UIControl {
         self.layoutShadeSlider()
         self.layoutHandleLine()
         self.layoutHexLabel()
+        self.layoutColorToggleButton()
     }
     
     open func layoutAddButton(){
@@ -319,8 +361,10 @@ open class ChromaColorPicker: UIControl {
         //Update handle position
         handleView.center = newPosition
         
-        //Update color for the movement
-        handleView.color = colorOnWheelFromAngle(angle)
+        if !modeIsGrayscale {
+            //Update color for the movement when color mode is hue
+            handleView.color = colorOnWheelFromAngle(angle)
+        }
     }
     
     /*
@@ -362,6 +406,15 @@ open class ChromaColorPicker: UIControl {
         shadeSlider.layoutLayerFrames() //call sliders' layout function
     }
     
+    /*
+     Pre: dependant on addButton
+    */
+    func layoutColorToggleButton() {
+        let inset = bounds.height/16
+        colorToggleButton.frame = CGRect(x: inset, y: inset, width: addButton.frame.width/2.5, height: addButton.frame.width/2.5)
+        colorToggleButton.layoutSubviews()
+    }
+    
     func updateHexLabel(){
         hexLabel.text = "#" + currentColor.hexCode
     }
@@ -370,6 +423,39 @@ open class ChromaColorPicker: UIControl {
         currentColor = color
         addButton.color = color
         self.sendActions(for: .valueChanged)
+    }
+    
+    func togglePickerColorMode() {
+        colorToggleButton.isEnabled = false // Lock
+        
+        // Redraw Assets (i.e. Large circle ring)
+        setNeedsDisplay()
+        
+        // Update subcomponents for color change
+        if modeIsGrayscale {
+            let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+            
+            self.handleView.color = gray
+            self.updateCurrentColor(gray)
+            self.updateHexLabel()
+            
+            //Update color for shade slider
+            shadeSlider.primaryColor = gray
+        }
+        else {
+            // Update for normal rainbow
+            let currentAngle = angleToCenterFromPoint(handleView.center)
+            let hueColor = colorOnWheelFromAngle(currentAngle)
+            
+            self.handleView.color = hueColor
+            self.updateCurrentColor(hueColor)
+            self.updateHexLabel()
+            
+            //Update color for shade slider
+            shadeSlider.primaryColor = hueColor
+        }
+        
+        colorToggleButton.isEnabled = true // Unlock
     }
     
     

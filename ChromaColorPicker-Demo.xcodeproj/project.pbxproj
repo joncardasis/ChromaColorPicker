@@ -16,6 +16,7 @@
 		3503B83E1F2689C400750356 /* ChromaAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E21D5CF9400069D7A1 /* ChromaAddButton.swift */; };
 		3503B83F1F2689C400750356 /* ChromaShadeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E51D5CF9400069D7A1 /* ChromaShadeSlider.swift */; };
 		3503B8401F2689C400750356 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */; };
+		3503B8641F27D2B100750356 /* ColorModeToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B8631F27D2B100750356 /* ColorModeToggleButton.swift */; };
 		35C376D11D5CF5300069D7A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376D01D5CF5300069D7A1 /* AppDelegate.swift */; };
 		35C376D31D5CF5300069D7A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376D21D5CF5300069D7A1 /* ViewController.swift */; };
 		35C376D61D5CF5300069D7A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D41D5CF5300069D7A1 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChromaColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3503B8311F2689BC00750356 /* ChromaColorPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChromaColorPicker.h; sourceTree = "<group>"; };
 		3503B8321F2689BC00750356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3503B8631F27D2B100750356 /* ColorModeToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorModeToggleButton.swift; path = ChromaColorPicker/ColorModeToggleButton.swift; sourceTree = SOURCE_ROOT; };
 		35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChromaColorPicker-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C376D01D5CF5300069D7A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35C376D21D5CF5300069D7A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				35C376E31D5CF9400069D7A1 /* ChromaHandle.swift */,
 				35C376E21D5CF9400069D7A1 /* ChromaAddButton.swift */,
 				35C376E51D5CF9400069D7A1 /* ChromaShadeSlider.swift */,
+				3503B8631F27D2B100750356 /* ColorModeToggleButton.swift */,
 				35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */,
 			);
 			name = ChromaColorPicker;
@@ -390,6 +393,7 @@
 			files = (
 				3503B83C1F2689C400750356 /* ChromaColorPicker.swift in Sources */,
 				3503B83D1F2689C400750356 /* ChromaHandle.swift in Sources */,
+				3503B8641F27D2B100750356 /* ColorModeToggleButton.swift in Sources */,
 				3503B83E1F2689C400750356 /* ChromaAddButton.swift in Sources */,
 				3503B83F1F2689C400750356 /* ChromaShadeSlider.swift in Sources */,
 				3503B8401F2689C400750356 /* UIColor+Utilities.swift in Sources */,
@@ -658,6 +662,7 @@
 				3503B8391F2689BC00750356 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "ChromaColorPicker-Demo" */ = {
 			isa = XCConfigurationList;

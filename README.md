@@ -69,6 +69,7 @@ neatColorPicker.adjustToColor(UIColor.green)
 | currentColor | The currently set color by the control. It is displayed in the add button. Use `adjustToColor(color: UIColor)` to update the color.|
 | currentAngle | The angle which the handle is currently sitting at. Can be changed and the view can be re-drawn using `layout()` to show the change.
 | handleSize | Returns the size of the handle. |
+| supportsShadesOfGray | True/False if a toggle for supporting grayscale colors should be shown. |
 
 ### Functions
 | Function        | Description           |
@@ -86,6 +87,7 @@ Sub-Components can be hidden and customized to the preferred liking.
 | addButton | A custom UIButton in the center of the control. The `colorPickerDidChooseColor(colorPicker: color:)` delegate function is called when this is tapped. |
 | handleView | A ChromaHandle (custom UIView) which displays the current color and can be moved around the circle.|
 | handleLine | A line which is drawn from the addButton to the handleView. |
+| colorToggleButton | A custom UIButton which appears if `supportsShadesOfGray` is set to true and will switch the picker to a grayscale mode if pressed.|
 
 ### Supported UIControlEvents
 `.touchDown`       -> called when the handle is first grabbed
