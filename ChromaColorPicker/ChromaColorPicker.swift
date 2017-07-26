@@ -425,7 +425,7 @@ open class ChromaColorPicker: UIControl {
         self.sendActions(for: .valueChanged)
     }
     
-    func togglePickerColorMode() {
+    open func togglePickerColorMode() {
         colorToggleButton.isEnabled = false // Lock
         
         // Redraw Assets (i.e. Large circle ring)

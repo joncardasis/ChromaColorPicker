@@ -62,7 +62,7 @@ neatColorPicker.adjustToColor(UIColor.green)
 ```
 
 ### Enable Grayscale Support
-An toggle button can be enabled/disabled to allow for grayscale selections by using the `supportsShadesOfGray` property.
+A toggle button can be enabled/disabled to allow for grayscale selections by using the `supportsShadesOfGray` property.
 
 ```Swift
 let neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
