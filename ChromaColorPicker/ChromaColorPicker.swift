@@ -24,7 +24,8 @@
 
 import UIKit
 
-public protocol ChromaColorPickerDelegate {
+@objc
+public protocol ChromaColorPickerDelegate: class{
     /* Called when the user taps the add button in the center */
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor)
 }
