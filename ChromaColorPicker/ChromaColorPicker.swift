@@ -310,7 +310,7 @@ open class ChromaColorPicker: UIControl {
             
             segment.fill()
             let lineTailSpace = (CGFloat.pi*2)*outerRadius/subdivisions  //The amount of space between the tails of each segment
-            segment.lineWidth = lineTailSpace //allows for seemless scaling
+            segment.lineWidth = fabs(lineTailSpace); //allows for seemless scaling
             segment.stroke()
             
             //Rotate to correct location
