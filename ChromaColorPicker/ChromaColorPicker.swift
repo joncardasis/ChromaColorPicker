@@ -151,27 +151,45 @@ open class ChromaColorPicker: UIControl {
         var alpha: CGFloat = 0.0
         
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-        let newColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
-        
-        /* Set the slider value for the new color and update addButton */
-        shadeSlider.primaryColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1) //Set a color recognzied on the color wheel
-        
-        /* Update the angle and currentColor */
-        currentAngle = angleForColor(newColor)
-        currentColor = newColor
-        
-        if brightness < 1.0 { //currentValue is on the left side of the slider
-            shadeSlider.currentValue = brightness-1
-        }else{
-            shadeSlider.currentValue = -(saturation-1)
+        let isGrayScale = (hue == 0 && saturation == 0)
+        let newColor: UIColor
+        if isGrayScale {
+            newColor = UIColor(red: brightness, green: brightness, blue: brightness, alpha: 1)
         }
-        shadeSlider.updateHandleLocation() //update the handle location now that the value is set
+        else {
+            newColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+        }
+        
+        if (!isGrayScale) {
+            
+            shadeSlider.primaryColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
+            currentAngle = angleForColor(newColor)
+           
+            if brightness < 1.0 { //currentValue is on the left side of the slider
+                shadeSlider.currentValue = brightness-1
+            }
+            else {
+                shadeSlider.currentValue = -(saturation-1)
+            }
+            
+        } else {
+            if !modeIsGrayscale {
+                colorToggleButton.colorState = .grayscale
+                togglePickerColorMode()
+            }
+            currentAngle = 0
+            shadeSlider.currentValue = (brightness*2 - 1)
+        }
+        
+        currentColor = newColor
+        shadeSlider.updateHandleLocation()
         addButton.color = shadeSlider.currentColor
         
         /* Will layout based on new angle */
         self.layoutHandle()
         self.layoutHandleLine()
         self.updateHexLabel()
+        
     }
     
     //MARK: - Handle Touches
@@ -426,31 +444,27 @@ open class ChromaColorPicker: UIControl {
         self.sendActions(for: .valueChanged)
     }
     
+    let pickergray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+    
     open func togglePickerColorMode() {
         colorToggleButton.isEnabled = false // Lock
-        
-        // Redraw Assets (i.e. Large circle ring)
         setNeedsDisplay()
         
-        // Update subcomponents for color change
         if modeIsGrayscale {
             //Change color of colorToggleButton to the last handle color
             let lightColor = handleView.color
             let shadedColor = handleView.color.darkerColor(0.25)
             colorToggleButton.hueColorGradientLayer.colors = [lightColor.cgColor, shadedColor.cgColor]
             
-            let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-            self.handleView.color = gray
-            self.updateCurrentColor(gray)
+            self.handleView.color = pickergray
+            self.updateCurrentColor(pickergray)
             self.updateHexLabel()
             
             //Update color for shade slider
-            shadeSlider.primaryColor = gray
+            shadeSlider.primaryColor = pickergray
         }
         else {
             // Update for normal rainbow
-            
-            // Use color stored in toggle button (set above), or else default to the angle it is at
             var hueColor: UIColor
             if let storedColor = colorToggleButton.hueColorGradientLayer.colors?[0] {
                 hueColor = UIColor(cgColor: (storedColor as! CGColor))

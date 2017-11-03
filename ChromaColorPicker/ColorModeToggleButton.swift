@@ -75,13 +75,6 @@ open class ColorModeToggleButton: UIButton {
         addTarget(self, action: #selector(toggleState), for: .touchUpInside)
     }
     
-//    override open func sendActions(for controlEvents: UIControlEvents) {
-//        if controlEvents == .touchUpInside {
-//            toggleState()
-//        }
-//        super.sendActions(for: controlEvents)
-//    }
-//    
     override open func layoutSubviews() {
         super.layoutSubviews()
         
