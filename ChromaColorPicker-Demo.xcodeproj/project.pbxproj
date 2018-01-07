@@ -164,7 +164,7 @@
 				35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */,
 			);
 			name = ChromaColorPicker;
-			path = ../ChromaPicker;
+			path = ../ChromaColorPicker;
 			sourceTree = "<group>";
 		};
 		A18D889CBAEF3E0FD0A65ADB /* Frameworks */ = {
