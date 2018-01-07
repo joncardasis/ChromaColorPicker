@@ -90,7 +90,7 @@ open class ColorModeToggleButton: UIButton {
         layoutGradientLayer()
     }
     
-    open func toggleState() {
+  @objc open func toggleState() {
         if colorState == .hue {
             colorState = .grayscale
         }
