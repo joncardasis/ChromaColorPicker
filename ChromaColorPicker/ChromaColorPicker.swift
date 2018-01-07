@@ -158,14 +158,17 @@ open class ChromaColorPicker: UIControl {
         /* Update the angle and currentColor */
         currentAngle = angleForColor(newColor)
         currentColor = newColor
-        
-        if brightness < 1.0 { //currentValue is on the left side of the slider
+        if brightness < 1.0 && saturation < 1.0 {
+            /* Modifies the Shade Slider to handle adjusting to colors outside of the Chroma scope */
+            shadeSlider.primaryColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+            shadeSlider.currentValue = 0
+        } else if brightness < 1.0 { //currentValue is on the left side of the slider
             shadeSlider.currentValue = brightness-1
         }else{
             shadeSlider.currentValue = -(saturation-1)
         }
         shadeSlider.updateHandleLocation() //update the handle location now that the value is set
-        addButton.color = shadeSlider.currentColor
+        addButton.color = newColor
         
         /* Will layout based on new angle */
         self.layoutHandle()
