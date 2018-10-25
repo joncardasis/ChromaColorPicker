@@ -70,7 +70,7 @@ public extension UIColor{
         r = amountToBlend * (dest_r * 255) + (1 - amountToBlend) * (r * 255)
         g = amountToBlend * (dest_g * 255) + (1 - amountToBlend) * (g * 255)
         b = amountToBlend * (dest_b * 255) + (1 - amountToBlend) * (b * 255)
-        alpha = fabs(alpha / dest_alpha)
+        alpha = abs(alpha / dest_alpha)
         
         return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: alpha)
     }
