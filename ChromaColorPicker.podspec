@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ChromaColorPicker"
-  s.version      = "1.7.1"
+  s.version      = "1.7.2"
   s.summary      = "An intuitive iOS color picker built in Swift."
 
   s.description  = <<-DESC
