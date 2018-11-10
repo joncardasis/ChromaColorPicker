@@ -25,7 +25,7 @@
 import UIKit
 
 open class ChromaSliderTrackLayer: CALayer{
-    open let gradient = CAGradientLayer()
+    public let gradient = CAGradientLayer()
     
     override public init() {
         super.init()
@@ -47,8 +47,8 @@ public protocol ChromaShadeSliderDelegate {
 open class ChromaShadeSlider: UIControl {
     open var currentValue: CGFloat = 0.0 //range of {-1,1}
     
-    open let trackLayer = ChromaSliderTrackLayer()
-    open let handleView = ChromaHandle()
+    public let trackLayer = ChromaSliderTrackLayer()
+    public let handleView = ChromaHandle()
     open var handleWidth: CGFloat{ return self.bounds.height }
     open var handleCenterX: CGFloat = 0.0
     open var delegate: ChromaShadeSliderDelegate?

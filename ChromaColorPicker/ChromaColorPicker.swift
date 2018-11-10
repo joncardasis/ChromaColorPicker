@@ -201,13 +201,13 @@ open class ChromaColorPicker: UIControl {
   @objc func handleWasMoved(_ recognizer: UIPanGestureRecognizer) {
         switch(recognizer.state){
 
-        case UIGestureRecognizerState.changed:
+        case UIGestureRecognizer.State.changed:
             let touchPosition = recognizer.location(in: self)
             self.moveHandleTowardPoint(touchPosition)
             self.sendActions(for: .touchDragInside)
             break
         
-        case UIGestureRecognizerState.ended:
+        case UIGestureRecognizer.State.ended:
             /* Shrink Animation */
             self.executeHandleShrinkAnimation()
             break
