@@ -130,6 +130,11 @@ open class ChromaColorPicker: UIControl {
         self.addSubview(colorToggleButton)
     }
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
+    
     override open func willMove(toSuperview newSuperview: UIView?) {
         /* Get the starting color */
         currentColor = colorOnWheelFromAngle(currentAngle)
