@@ -14,6 +14,19 @@ Supports hue and grayscale modes to make choosing the right color easy and fun!
   <img src="../assets/Screenshot-Grayscale.png?raw=true" height="350" style="margin:8px;">
 </div>
 
+## :exclamation: Project Status :exclamation:
+*Nov 10, 2018*
+
+After some time away from my OSS projects, I am revisiting a number of them. ChromaColorPicker will be recieving updates over the coming weeks. If you'd like to recieve development builds (not recommended for production as the API may change), check out the `develop` branch.
+
+Some changes you can look forward to are:
+  - [ ] A new, easier to use, API for using the picker.
+    - For migration purposes, I plan to bridge the current API to a new one while people migate.
+  - [ ] An updated style for the picker which is more appealing.
+  - [ ] A rewrite of layout logic using Autolayout.
+  - [ ] Multiple types of color pickers to fit your needs (Hue selection (current), color spectrum, etc).
+
+
 ## Installation
 ### Carthage
 ```
