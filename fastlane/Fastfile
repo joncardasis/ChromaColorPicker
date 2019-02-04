@@ -9,7 +9,20 @@ platform :ios do
     #publish_podspec
   end
 
+  desc "Runs unit tests. Installs pods if needed."
+  lane :test do
+    cocoapods
+    run_tests(scheme: "ChromaColorPickerTests")
+  end
+
 end
+
+def app_unit_tests(options)
+  unit_tests(options)
+  generate_tests_coverage(options) if options[:code_coverage]
+end
+
+
 
 def publish_podspec
   podspec = ENV['PODSPEC']

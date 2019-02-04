@@ -21,9 +21,10 @@
 		35C376D61D5CF5300069D7A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D41D5CF5300069D7A1 /* Main.storyboard */; };
 		35C376D81D5CF5300069D7A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D71D5CF5300069D7A1 /* Assets.xcassets */; };
 		35C376DB1D5CF5300069D7A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D91D5CF5300069D7A1 /* LaunchScreen.storyboard */; };
-		65367B6D1E2090654E55ECB9 /* Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9389AEF26357BC9EC5DB8488 /* Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework */; };
+		5F1C3CC9B7FD9F7F4B9C94BA /* Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9389AEF26357BC9EC5DB8488 /* Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework */; };
 		B229F68E819E318E9A4D9B22 /* Pods_ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0C16EA18555BA1F96C07DB /* Pods_ChromaColorPicker.framework */; };
-		FC4AE3DB1E16DEA300F02C60 /* ChromaColorPickerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4AE3DA1E16DEA300F02C60 /* ChromaColorPickerSpec.swift */; };
+		FC1BD8C02207D7B700817AF3 /* ChromaColorPickerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerSpec.swift */; };
+		FC1BD8C22207D7B700817AF3 /* ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +35,7 @@
 			remoteGlobalIDString = 3503B82E1F2689BC00750356;
 			remoteInfo = ChromaColorPicker;
 		};
-		FCE368F72207BA7100B1ECF0 /* PBXContainerItemProxy */ = {
+		FC1BD8C32207D7B700817AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 35C376C51D5CF5300069D7A1 /* Project object */;
 			proxyType = 1;
@@ -83,9 +84,9 @@
 		91485B6B5C58777417441794 /* Pods_ChromaColorPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromaColorPickerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9389AEF26357BC9EC5DB8488 /* Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C887E58E73DFD65E9DEB81 /* Pods-ChromaColorPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromaColorPickerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChromaColorPickerTests/Pods-ChromaColorPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		FC4AE3D81E16DEA300F02C60 /* ChromaColorPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChromaColorPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC4AE3DA1E16DEA300F02C60 /* ChromaColorPickerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPickerSpec.swift; sourceTree = "<group>"; };
-		FC4AE3DC1E16DEA300F02C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC1BD8BD2207D7B700817AF3 /* ChromaColorPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChromaColorPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPickerSpec.swift; sourceTree = "<group>"; };
+		FC1BD8C12207D7B700817AF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,11 +106,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC4AE3D51E16DEA300F02C60 /* Frameworks */ = {
+		FC1BD8BA2207D7B700817AF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65367B6D1E2090654E55ECB9 /* Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework in Frameworks */,
+				FC1BD8C22207D7B700817AF3 /* ChromaColorPicker.framework in Frameworks */,
+				5F1C3CC9B7FD9F7F4B9C94BA /* Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				35C376CF1D5CF5300069D7A1 /* ChromaColorPicker-Demo */,
-				FC4AE3D91E16DEA300F02C60 /* ChromaColorPickerTests */,
 				3503B8301F2689BC00750356 /* ChromaColorPicker */,
+				FC1BD8BE2207D7B700817AF3 /* ChromaColorPickerTests */,
 				35C376CE1D5CF5300069D7A1 /* Products */,
 				A890856BC0D0DD14D667AEA1 /* Pods */,
 				A18D889CBAEF3E0FD0A65ADB /* Frameworks */,
@@ -141,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */,
-				FC4AE3D81E16DEA300F02C60 /* ChromaColorPickerTests.xctest */,
 				3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */,
+				FC1BD8BD2207D7B700817AF3 /* ChromaColorPickerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,11 +200,11 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		FC4AE3D91E16DEA300F02C60 /* ChromaColorPickerTests */ = {
+		FC1BD8BE2207D7B700817AF3 /* ChromaColorPickerTests */ = {
 			isa = PBXGroup;
 			children = (
-				FC4AE3DA1E16DEA300F02C60 /* ChromaColorPickerSpec.swift */,
-				FC4AE3DC1E16DEA300F02C60 /* Info.plist */,
+				FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerSpec.swift */,
+				FC1BD8C12207D7B700817AF3 /* Info.plist */,
 			);
 			path = ChromaColorPickerTests;
 			sourceTree = "<group>";
@@ -260,25 +262,25 @@
 			productReference = 35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FC4AE3D71E16DEA300F02C60 /* ChromaColorPickerTests */ = {
+		FC1BD8BC2207D7B700817AF3 /* ChromaColorPickerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC4AE3DF1E16DEA300F02C60 /* Build configuration list for PBXNativeTarget "ChromaColorPickerTests" */;
+			buildConfigurationList = FC1BD8C52207D7B700817AF3 /* Build configuration list for PBXNativeTarget "ChromaColorPickerTests" */;
 			buildPhases = (
-				4D2433E263D98635B3C35D0C /* [CP] Check Pods Manifest.lock */,
-				FC4AE3D41E16DEA300F02C60 /* Sources */,
-				FC4AE3D51E16DEA300F02C60 /* Frameworks */,
-				FC4AE3D61E16DEA300F02C60 /* Resources */,
-				4E4A672D11FCEFCA120BEF47 /* [CP] Embed Pods Frameworks */,
-				67A1FC05E66B991777CBB6D5 /* [CP] Copy Pods Resources */,
+				BE626E9F9FF56ED9E5B4A858 /* [CP] Check Pods Manifest.lock */,
+				FC1BD8B92207D7B700817AF3 /* Sources */,
+				FC1BD8BA2207D7B700817AF3 /* Frameworks */,
+				FC1BD8BB2207D7B700817AF3 /* Resources */,
+				77B1C2C1CC97939E1F7DB18E /* [CP] Embed Pods Frameworks */,
+				D1F2D465C9F2D952C7B15251 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FCE368F82207BA7100B1ECF0 /* PBXTargetDependency */,
+				FC1BD8C42207D7B700817AF3 /* PBXTargetDependency */,
 			);
 			name = ChromaColorPickerTests;
 			productName = ChromaColorPickerTests;
-			productReference = FC4AE3D81E16DEA300F02C60 /* ChromaColorPickerTests.xctest */;
+			productReference = FC1BD8BD2207D7B700817AF3 /* ChromaColorPickerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -287,7 +289,7 @@
 		35C376C51D5CF5300069D7A1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Jonathan Cardasis";
 				TargetAttributes = {
@@ -301,10 +303,10 @@
 						DevelopmentTeam = 43DKZUY8C6;
 						LastSwiftMigration = 1000;
 					};
-					FC4AE3D71E16DEA300F02C60 = {
-						CreatedOnToolsVersion = 8.2.1;
+					FC1BD8BC2207D7B700817AF3 = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = 9H97MWKJ22;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 35C376CC1D5CF5300069D7A1;
 					};
 				};
 			};
@@ -322,8 +324,8 @@
 			projectRoot = "";
 			targets = (
 				35C376CC1D5CF5300069D7A1 /* ChromaColorPicker-Demo */,
-				FC4AE3D71E16DEA300F02C60 /* ChromaColorPickerTests */,
 				3503B82E1F2689BC00750356 /* ChromaColorPicker */,
+				FC1BD8BC2207D7B700817AF3 /* ChromaColorPickerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -346,7 +348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC4AE3D61E16DEA300F02C60 /* Resources */ = {
+		FC1BD8BB2207D7B700817AF3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,29 +377,18 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4D2433E263D98635B3C35D0C /* [CP] Check Pods Manifest.lock */ = {
+		77B1C2C1CC97939E1F7DB18E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		4E4A672D11FCEFCA120BEF47 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,14 +396,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChromaColorPicker-Tests-ChromaColorPickerTests/Pods-ChromaColorPicker-Tests-ChromaColorPickerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67A1FC05E66B991777CBB6D5 /* [CP] Copy Pods Resources */ = {
+		BE626E9F9FF56ED9E5B4A858 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D1F2D465C9F2D952C7B15251 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,11 +478,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC4AE3D41E16DEA300F02C60 /* Sources */ = {
+		FC1BD8B92207D7B700817AF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC4AE3DB1E16DEA300F02C60 /* ChromaColorPickerSpec.swift in Sources */,
+				FC1BD8C02207D7B700817AF3 /* ChromaColorPickerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,10 +494,10 @@
 			target = 3503B82E1F2689BC00750356 /* ChromaColorPicker */;
 			targetProxy = 3503B8341F2689BC00750356 /* PBXContainerItemProxy */;
 		};
-		FCE368F82207BA7100B1ECF0 /* PBXTargetDependency */ = {
+		FC1BD8C42207D7B700817AF3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3503B82E1F2689BC00750356 /* ChromaColorPicker */;
-			targetProxy = FCE368F72207BA7100B1ECF0 /* PBXContainerItemProxy */;
+			targetProxy = FC1BD8C32207D7B700817AF3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -696,36 +710,53 @@
 			};
 			name = Release;
 		};
-		FC4AE3E01E16DEA300F02C60 /* Debug */ = {
+		FC1BD8C62207D7B700817AF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 097AE9DDB2DC9AF89E2EDE5A /* Pods-ChromaColorPicker-Tests-ChromaColorPickerTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9H97MWKJ22;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ChromaColorPickerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonathancardasis.ChromaColorPickerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChromaColorPicker-Demo.app/ChromaColorPicker-Demo";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		FC4AE3E11E16DEA300F02C60 /* Release */ = {
+		FC1BD8C72207D7B700817AF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A7F02F440BE6423B319B578 /* Pods-ChromaColorPicker-Tests-ChromaColorPickerTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9H97MWKJ22;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ChromaColorPickerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonathancardasis.ChromaColorPickerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChromaColorPicker-Demo.app/ChromaColorPicker-Demo";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -759,11 +790,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC4AE3DF1E16DEA300F02C60 /* Build configuration list for PBXNativeTarget "ChromaColorPickerTests" */ = {
+		FC1BD8C52207D7B700817AF3 /* Build configuration list for PBXNativeTarget "ChromaColorPickerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FC4AE3E01E16DEA300F02C60 /* Debug */,
-				FC4AE3E11E16DEA300F02C60 /* Release */,
+				FC1BD8C62207D7B700817AF3 /* Debug */,
+				FC1BD8C72207D7B700817AF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

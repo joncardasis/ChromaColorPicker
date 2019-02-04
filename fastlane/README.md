@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios pod_publish
 ```
 Publish podspec, incrementing the patch version.
+### ios test
+```
+fastlane ios test
+```
+Runs unit tests. Installs pods if needed.
 
 ----
 
