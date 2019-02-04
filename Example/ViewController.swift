@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: ChromaColorPickerDelegate{
+extension ViewController: ChromaColorPickerDelegate {
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
         //Set color for the display view
         colorDisplayView.backgroundColor = color

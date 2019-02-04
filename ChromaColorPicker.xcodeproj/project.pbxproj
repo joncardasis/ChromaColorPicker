@@ -10,12 +10,6 @@
 		3503B8331F2689BC00750356 /* ChromaColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3503B8311F2689BC00750356 /* ChromaColorPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3503B8361F2689BC00750356 /* ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */; };
 		3503B8371F2689BC00750356 /* ChromaColorPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3503B83C1F2689C400750356 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E41D5CF9400069D7A1 /* ChromaColorPicker.swift */; };
-		3503B83D1F2689C400750356 /* ChromaHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E31D5CF9400069D7A1 /* ChromaHandle.swift */; };
-		3503B83E1F2689C400750356 /* ChromaAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E21D5CF9400069D7A1 /* ChromaAddButton.swift */; };
-		3503B83F1F2689C400750356 /* ChromaShadeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E51D5CF9400069D7A1 /* ChromaShadeSlider.swift */; };
-		3503B8401F2689C400750356 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */; };
-		3503B8641F27D2B100750356 /* ColorModeToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503B8631F27D2B100750356 /* ColorModeToggleButton.swift */; };
 		35C376D11D5CF5300069D7A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376D01D5CF5300069D7A1 /* AppDelegate.swift */; };
 		35C376D31D5CF5300069D7A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C376D21D5CF5300069D7A1 /* ViewController.swift */; };
 		35C376D61D5CF5300069D7A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D41D5CF5300069D7A1 /* Main.storyboard */; };
@@ -25,6 +19,12 @@
 		B229F68E819E318E9A4D9B22 /* Pods_ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0C16EA18555BA1F96C07DB /* Pods_ChromaColorPicker.framework */; };
 		FC1BD8C02207D7B700817AF3 /* ChromaColorPickerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerSpec.swift */; };
 		FC1BD8C22207D7B700817AF3 /* ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */; };
+		FC1BD8CE2207FCE100817AF3 /* ChromaHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8C82207FCE100817AF3 /* ChromaHandle.swift */; };
+		FC1BD8CF2207FCE100817AF3 /* ChromaShadeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8C92207FCE100817AF3 /* ChromaShadeSlider.swift */; };
+		FC1BD8D02207FCE100817AF3 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8CA2207FCE100817AF3 /* ChromaColorPicker.swift */; };
+		FC1BD8D12207FCE100817AF3 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8CB2207FCE100817AF3 /* UIColor+Utilities.swift */; };
+		FC1BD8D22207FCE100817AF3 /* ChromaAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8CC2207FCE100817AF3 /* ChromaAddButton.swift */; };
+		FC1BD8D32207FCE100817AF3 /* ColorModeToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8CD2207FCE100817AF3 /* ColorModeToggleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,25 +68,25 @@
 		3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChromaColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3503B8311F2689BC00750356 /* ChromaColorPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChromaColorPicker.h; sourceTree = "<group>"; };
 		3503B8321F2689BC00750356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3503B8631F27D2B100750356 /* ColorModeToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorModeToggleButton.swift; path = ChromaColorPicker/ColorModeToggleButton.swift; sourceTree = SOURCE_ROOT; };
-		35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChromaColorPicker-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35C376CD1D5CF5300069D7A1 /* ChromaColorPickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromaColorPickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C376D01D5CF5300069D7A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35C376D21D5CF5300069D7A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		35C376D51D5CF5300069D7A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35C376D71D5CF5300069D7A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35C376DA1D5CF5300069D7A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35C376DC1D5CF5300069D7A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35C376E21D5CF9400069D7A1 /* ChromaAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromaAddButton.swift; path = ChromaColorPicker/ChromaAddButton.swift; sourceTree = SOURCE_ROOT; };
-		35C376E31D5CF9400069D7A1 /* ChromaHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromaHandle.swift; path = ChromaColorPicker/ChromaHandle.swift; sourceTree = SOURCE_ROOT; };
-		35C376E41D5CF9400069D7A1 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromaColorPicker.swift; path = ChromaColorPicker/ChromaColorPicker.swift; sourceTree = SOURCE_ROOT; };
-		35C376E51D5CF9400069D7A1 /* ChromaShadeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromaShadeSlider.swift; path = ChromaColorPicker/ChromaShadeSlider.swift; sourceTree = SOURCE_ROOT; };
-		35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Utilities.swift"; path = "ChromaColorPicker/UIColor+Utilities.swift"; sourceTree = SOURCE_ROOT; };
 		91485B6B5C58777417441794 /* Pods_ChromaColorPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromaColorPickerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9389AEF26357BC9EC5DB8488 /* Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromaColorPicker_Tests_ChromaColorPickerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C887E58E73DFD65E9DEB81 /* Pods-ChromaColorPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromaColorPickerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChromaColorPickerTests/Pods-ChromaColorPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC1BD8BD2207D7B700817AF3 /* ChromaColorPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChromaColorPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPickerSpec.swift; sourceTree = "<group>"; };
 		FC1BD8C12207D7B700817AF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC1BD8C82207FCE100817AF3 /* ChromaHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaHandle.swift; sourceTree = "<group>"; };
+		FC1BD8C92207FCE100817AF3 /* ChromaShadeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaShadeSlider.swift; sourceTree = "<group>"; };
+		FC1BD8CA2207FCE100817AF3 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaColorPicker.swift; sourceTree = "<group>"; };
+		FC1BD8CB2207FCE100817AF3 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
+		FC1BD8CC2207FCE100817AF3 /* ChromaAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaAddButton.swift; sourceTree = "<group>"; };
+		FC1BD8CD2207FCE100817AF3 /* ColorModeToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModeToggleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,21 +118,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3503B8301F2689BC00750356 /* ChromaColorPicker */ = {
+		3503B8301F2689BC00750356 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FC1BD8CC2207FCE100817AF3 /* ChromaAddButton.swift */,
+				FC1BD8CA2207FCE100817AF3 /* ChromaColorPicker.swift */,
+				FC1BD8C82207FCE100817AF3 /* ChromaHandle.swift */,
+				FC1BD8C92207FCE100817AF3 /* ChromaShadeSlider.swift */,
+				FC1BD8CD2207FCE100817AF3 /* ColorModeToggleButton.swift */,
+				FC1BD8CB2207FCE100817AF3 /* UIColor+Utilities.swift */,
 				3503B8311F2689BC00750356 /* ChromaColorPicker.h */,
 				3503B8321F2689BC00750356 /* Info.plist */,
 			);
-			path = ChromaColorPicker;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		35C376C41D5CF5300069D7A1 = {
 			isa = PBXGroup;
 			children = (
-				35C376CF1D5CF5300069D7A1 /* ChromaColorPicker-Demo */,
-				3503B8301F2689BC00750356 /* ChromaColorPicker */,
-				FC1BD8BE2207D7B700817AF3 /* ChromaColorPickerTests */,
+				35C376CF1D5CF5300069D7A1 /* Example */,
+				3503B8301F2689BC00750356 /* Source */,
+				FC1BD8BE2207D7B700817AF3 /* Tests */,
 				35C376CE1D5CF5300069D7A1 /* Products */,
 				A890856BC0D0DD14D667AEA1 /* Pods */,
 				A18D889CBAEF3E0FD0A65ADB /* Frameworks */,
@@ -142,17 +148,16 @@
 		35C376CE1D5CF5300069D7A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */,
+				35C376CD1D5CF5300069D7A1 /* ChromaColorPickerExample.app */,
 				3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */,
 				FC1BD8BD2207D7B700817AF3 /* ChromaColorPickerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		35C376CF1D5CF5300069D7A1 /* ChromaColorPicker-Demo */ = {
+		35C376CF1D5CF5300069D7A1 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				35C376EC1D5CF9450069D7A1 /* ChromaColorPicker */,
 				35C376D01D5CF5300069D7A1 /* AppDelegate.swift */,
 				35C376D21D5CF5300069D7A1 /* ViewController.swift */,
 				35C376D41D5CF5300069D7A1 /* Main.storyboard */,
@@ -160,21 +165,7 @@
 				35C376D91D5CF5300069D7A1 /* LaunchScreen.storyboard */,
 				35C376DC1D5CF5300069D7A1 /* Info.plist */,
 			);
-			path = "ChromaColorPicker-Demo";
-			sourceTree = "<group>";
-		};
-		35C376EC1D5CF9450069D7A1 /* ChromaColorPicker */ = {
-			isa = PBXGroup;
-			children = (
-				35C376E41D5CF9400069D7A1 /* ChromaColorPicker.swift */,
-				35C376E31D5CF9400069D7A1 /* ChromaHandle.swift */,
-				35C376E21D5CF9400069D7A1 /* ChromaAddButton.swift */,
-				35C376E51D5CF9400069D7A1 /* ChromaShadeSlider.swift */,
-				3503B8631F27D2B100750356 /* ColorModeToggleButton.swift */,
-				35C376E61D5CF9400069D7A1 /* UIColor+Utilities.swift */,
-			);
-			name = ChromaColorPicker;
-			path = ../ChromaColorPicker;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		A18D889CBAEF3E0FD0A65ADB /* Frameworks */ = {
@@ -200,13 +191,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		FC1BD8BE2207D7B700817AF3 /* ChromaColorPickerTests */ = {
+		FC1BD8BE2207D7B700817AF3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerSpec.swift */,
 				FC1BD8C12207D7B700817AF3 /* Info.plist */,
 			);
-			path = ChromaColorPickerTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,9 +234,9 @@
 			productReference = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		35C376CC1D5CF5300069D7A1 /* ChromaColorPicker-Demo */ = {
+		35C376CC1D5CF5300069D7A1 /* Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 35C376DF1D5CF5300069D7A1 /* Build configuration list for PBXNativeTarget "ChromaColorPicker-Demo" */;
+			buildConfigurationList = 35C376DF1D5CF5300069D7A1 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				35C376C91D5CF5300069D7A1 /* Sources */,
 				35C376CA1D5CF5300069D7A1 /* Frameworks */,
@@ -257,9 +248,9 @@
 			dependencies = (
 				3503B8351F2689BC00750356 /* PBXTargetDependency */,
 			);
-			name = "ChromaColorPicker-Demo";
+			name = Example;
 			productName = "JCColorPicker-Demo";
-			productReference = 35C376CD1D5CF5300069D7A1 /* ChromaColorPicker-Demo.app */;
+			productReference = 35C376CD1D5CF5300069D7A1 /* ChromaColorPickerExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FC1BD8BC2207D7B700817AF3 /* ChromaColorPickerTests */ = {
@@ -295,7 +286,7 @@
 				TargetAttributes = {
 					3503B82E1F2689BC00750356 = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					35C376CC1D5CF5300069D7A1 = {
@@ -310,7 +301,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "ChromaColorPicker-Demo" */;
+			buildConfigurationList = 35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "ChromaColorPicker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -323,7 +314,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				35C376CC1D5CF5300069D7A1 /* ChromaColorPicker-Demo */,
+				35C376CC1D5CF5300069D7A1 /* Example */,
 				3503B82E1F2689BC00750356 /* ChromaColorPicker */,
 				FC1BD8BC2207D7B700817AF3 /* ChromaColorPickerTests */,
 			);
@@ -460,12 +451,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3503B83C1F2689C400750356 /* ChromaColorPicker.swift in Sources */,
-				3503B83D1F2689C400750356 /* ChromaHandle.swift in Sources */,
-				3503B8641F27D2B100750356 /* ColorModeToggleButton.swift in Sources */,
-				3503B83E1F2689C400750356 /* ChromaAddButton.swift in Sources */,
-				3503B83F1F2689C400750356 /* ChromaShadeSlider.swift in Sources */,
-				3503B8401F2689C400750356 /* UIColor+Utilities.swift in Sources */,
+				FC1BD8CF2207FCE100817AF3 /* ChromaShadeSlider.swift in Sources */,
+				FC1BD8CE2207FCE100817AF3 /* ChromaHandle.swift in Sources */,
+				FC1BD8D32207FCE100817AF3 /* ColorModeToggleButton.swift in Sources */,
+				FC1BD8D12207FCE100817AF3 /* UIColor+Utilities.swift in Sources */,
+				FC1BD8D22207FCE100817AF3 /* ChromaAddButton.swift in Sources */,
+				FC1BD8D02207FCE100817AF3 /* ChromaColorPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2E61508E4135F0CC9078125D /* Pods-ChromaColorPicker.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -533,7 +525,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ChromaColorPicker/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -541,6 +533,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -552,6 +545,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A7B83C96B02042BB70821D7 /* Pods-ChromaColorPicker.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -560,7 +554,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ChromaColorPicker/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -687,10 +681,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				INFOPLIST_FILE = "ChromaColorPicker-Demo/Info.plist";
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathancardasis.ChromaPicker-Demo";
-				PRODUCT_NAME = "ChromaColorPicker-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonathancardasis.ChromaColorPickerExample;
+				PRODUCT_NAME = ChromaColorPickerExample;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -702,10 +696,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				INFOPLIST_FILE = "ChromaColorPicker-Demo/Info.plist";
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathancardasis.ChromaPicker-Demo";
-				PRODUCT_NAME = "ChromaColorPicker-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonathancardasis.ChromaColorPickerExample;
+				PRODUCT_NAME = ChromaColorPickerExample;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -714,6 +708,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 097AE9DDB2DC9AF89E2EDE5A /* Pods-ChromaColorPicker-Tests-ChromaColorPickerTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -723,7 +718,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9H97MWKJ22;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ChromaColorPickerTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -740,6 +735,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A7F02F440BE6423B319B578 /* Pods-ChromaColorPicker-Tests-ChromaColorPickerTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -749,7 +745,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9H97MWKJ22;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ChromaColorPickerTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
@@ -772,7 +768,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "ChromaColorPicker-Demo" */ = {
+		35C376C81D5CF5300069D7A1 /* Build configuration list for PBXProject "ChromaColorPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35C376DD1D5CF5300069D7A1 /* Debug */,
@@ -781,7 +777,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35C376DF1D5CF5300069D7A1 /* Build configuration list for PBXNativeTarget "ChromaColorPicker-Demo" */ = {
+		35C376DF1D5CF5300069D7A1 /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35C376E01D5CF5300069D7A1 /* Debug */,
