@@ -1,0 +1,33 @@
+ENV['PODSPEC'] = "ChromaColorPicker.podspec"
+
+default_platform(:ios)
+
+platform :ios do
+
+  desc "Publish podspec, incrementing the patch version."
+  lane :pod_publish do
+    #publish_podspec
+  end
+
+end
+
+def publish_podspec
+  podspec = ENV['PODSPEC']
+  version = bump_podspec_version(podspec)
+  commit(podspec, 'Updated Podspec version.')
+  push_to_git_remote(local_branch: git_branch)
+  tag_build(version)
+  pod_push(path: podspec)
+end
+
+def tag_build(tag)
+  tag_exists_in_remote = `git ls-remote origin refs/tags/"#{tag}"`.length > 0
+  sh "git fetch --tags --prune origin"
+  sh "git push --delete origin #{tag}" unless tag_exists_in_remote == false
+  add_git_tag(
+      tag: tag,
+      force: true,
+      prefix: 'dev' # TEMP: This is temporary only intended for use in the `develop` branch.
+  )
+  push_git_tags
+end

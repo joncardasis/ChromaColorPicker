@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FC4AE3D71E16DEA300F02C60"
+               BuildableName = "ChromaColorPickerTests.xctest"
+               BlueprintName = "ChromaColorPickerTests"
+               ReferencedContainer = "container:ChromaColorPicker-Demo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3503B82E1F2689BC00750356"
+            BuildableName = "ChromaColorPicker.framework"
+            BlueprintName = "ChromaColorPicker"
+            ReferencedContainer = "container:ChromaColorPicker-Demo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

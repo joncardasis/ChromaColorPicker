@@ -1,20 +1,11 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+use_frameworks!
 
-PROJECT_NAME = 'ChromaColorPicker-Demo'
-TEST_TARGET = 'ChromaColorPickerTests'
-SCHEME_FILE = 'ChromaColorPickerTests.xcscheme'
+target "ChromaColorPicker" do
 
-target TEST_TARGET do
-  project PROJECT_NAME
+  abstract_target 'Tests' do
+    target "ChromaColorPickerTests"
 
-  use_frameworks!
-  inherit! :search_paths
-  # Pods for ChromaColorPicker-Demo
-  pod 'EarlGrey'
-end
-
-post_install do |installer|
-  require 'earlgrey'
-  configure_for_earlgrey(installer, PROJECT_NAME, TEST_TARGET, SCHEME_FILE)
+    pod 'Quick'
+    pod 'Nimble'
+  end
 end
