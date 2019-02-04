@@ -2,8 +2,8 @@
 //  ChromaColorPickerSpec.swift
 //  ChromaColorPickerTests
 //
-//  Created by Jon Cardasis on 01/3/19.
-//  Copyright © 2016 Jonathan Cardasis. All rights reserved.
+//  Created by Jon Cardasis on 2/3/19.
+//  Copyright © 2019 Jonathan Cardasis. All rights reserved.
 //
 
 import Quick

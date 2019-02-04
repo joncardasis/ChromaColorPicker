@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FC4AE3D71E16DEA300F02C60"
+               BlueprintIdentifier = "FC1BD8AD2207D67D00817AF3"
                BuildableName = "ChromaColorPickerTests.xctest"
                BlueprintName = "ChromaColorPickerTests"
                ReferencedContainer = "container:ChromaColorPicker-Demo.xcodeproj">
