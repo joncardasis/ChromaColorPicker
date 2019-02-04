@@ -1,5 +1,6 @@
 language: objective-c
 osx_image: xcode10.1
+before_install: gem install bundler --version '2.0.1'
 install:
   - bundle install
 script:
