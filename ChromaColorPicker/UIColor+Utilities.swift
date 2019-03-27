@@ -24,7 +24,7 @@
 
 import UIKit
 public extension UIColor{
-    public var hexCode: String {
+    var hexCode: String {
         get{
             let colorComponents = self.cgColor.components!
             if colorComponents.count < 4 {
@@ -35,15 +35,15 @@ public extension UIColor{
     }
     
     //Amount should be between 0 and 1
-    public func lighterColor(_ amount: CGFloat) -> UIColor{
+    func lighterColor(_ amount: CGFloat) -> UIColor{
         return UIColor.blendColors(color: self, destinationColor: UIColor.white, amount: amount)
     }
     
-    public func darkerColor(_ amount: CGFloat) -> UIColor{
+    func darkerColor(_ amount: CGFloat) -> UIColor{
         return UIColor.blendColors(color: self, destinationColor: UIColor.black, amount: amount)
     }
     
-    public static func blendColors(color: UIColor, destinationColor: UIColor, amount : CGFloat) -> UIColor{
+    static func blendColors(color: UIColor, destinationColor: UIColor, amount : CGFloat) -> UIColor{
         var amountToBlend = amount;
         if amountToBlend > 1{
             amountToBlend = 1.0
