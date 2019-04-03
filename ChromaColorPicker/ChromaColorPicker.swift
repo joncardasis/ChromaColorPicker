@@ -146,6 +146,10 @@ open class ChromaColorPicker: UIControl {
         shadeSlider.primaryColor = currentColor
         self.updateHexLabel() //update for hex value
     }
+
+    open func customImageForAddButton(_ image: UIImage) {
+        self.addButton.setCustomImage(image)
+    }
     
     open func adjustToColor(_ color: UIColor){
         /* Apply saturation and brightness from previous color to current one */

@@ -37,11 +37,14 @@ open class ChromaAddButton: UIButton {
         didSet{
             self.layoutCircleLayer()
             self.layoutPlusIconLayer()
+            self.layoutCustomImageLayer()
         }
     }
     open var circleLayer: CAShapeLayer?
     open var plusIconLayer: CAShapeLayer?
-    
+    open var customImageLayer: CALayer?
+    open var userContentMode: UIView.ContentMode = .scaleAspectFit
+    open var userImage: UIImage?
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,5 +93,37 @@ open class ChromaAddButton: UIButton {
             layer.lineWidth = frame.width * 0.03
         }
     }
-    
+
+    open func setCustomImage(_ image: UIImage?) {
+        let imageView = UIImageView(frame: self.circleLayer!.frame)
+        if let image = image {
+            userImage = image
+        }
+        imageView.image = userImage
+        imageView.contentMode = self.userContentMode
+
+        customImageLayer?.removeFromSuperlayer()
+        customImageLayer = imageView.layer
+        guard let customImageLayer = customImageLayer else {
+            return
+        }
+        self.layoutCustomImageLayer()
+        plusIconLayer?.removeFromSuperlayer()
+        self.layer.addSublayer(customImageLayer)
+    }
+
+    open func layoutCustomImageLayer() {
+        if let layer = customImageLayer {
+            layer.frame = self.bounds
+            layer.frame.origin.x = 3
+            layer.frame.origin.y = 5
+            layer.frame.size.width -= 10
+            layer.frame.size.height -= 10
+        }
+    }
+
+    open func setContentMode(contentMode: UIView.ContentMode) {
+        self.userContentMode = contentMode
+        self.setCustomImage(nil)
+    }
 }
