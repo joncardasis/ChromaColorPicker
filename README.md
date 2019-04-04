@@ -34,6 +34,18 @@ Some changes you can look forward to are:
 github "joncardasis/ChromaColorPicker"
 ```
 
+### Accio
+
+```swift
+.package(url: "https://github.com/valerianb/ChromaColorPicker.git", .upToNextMajor(from: "1.7.0")),
+```
+
+Next, add `ChromaColorPicker` to your App targets dependencies like so:
+
+```swift
+.target(name: "App", dependencies: ["ChromaColorPicker"]),
+```
+
 ### Cocoapods
 ```
 pod 'ChromaColorPicker'
