@@ -17,6 +17,7 @@
 		35C376DB1D5CF5300069D7A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D91D5CF5300069D7A1 /* LaunchScreen.storyboard */; };
 		FC1BD8C02207D7B700817AF3 /* ChromaColorPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerTests.swift */; };
 		FC1BD8C22207D7B700817AF3 /* ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */; };
+		FC4387C422603AE900F739F1 /* ColorWheelViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42AB226038A400BE2FF9 /* ColorWheelViewTests.swift */; };
 		FCCA42A5226022A800BE2FF9 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */; };
 		FCCA42A7226023F000BE2FF9 /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */; };
 		FCCA42AA2260329900BE2FF9 /* UIKit+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */; };
@@ -77,6 +78,7 @@
 		FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelView.swift; sourceTree = "<group>"; };
 		FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorHandle.swift; sourceTree = "<group>"; };
 		FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+DropShadow.swift"; sourceTree = "<group>"; };
+		FCCA42AB226038A400BE2FF9 /* ColorWheelViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelViewTests.swift; sourceTree = "<group>"; };
 		FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,7 +159,9 @@
 		FC1BD8BE2207D7B700817AF3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				FCCA42AD226038BD00BE2FF9 /* Extensions */,
 				FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerTests.swift */,
+				FCCA42AB226038A400BE2FF9 /* ColorWheelViewTests.swift */,
 				FC1BD8C12207D7B700817AF3 /* Info.plist */,
 			);
 			path = Tests;
@@ -180,6 +184,13 @@
 			isa = PBXGroup;
 			children = (
 				FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCCA42AD226038BD00BE2FF9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -353,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC1BD8C02207D7B700817AF3 /* ChromaColorPickerTests.swift in Sources */,
+				FC4387C422603AE900F739F1 /* ColorWheelViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
