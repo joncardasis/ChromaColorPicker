@@ -12,7 +12,7 @@ import ChromaColorPicker
 class ViewController: UIViewController {
     @IBOutlet weak var colorDisplayView: UIView!
     
-    let colorPicker = ChromaColorPicker2()
+    let colorPicker = ChromaColorPicker()
 
 
     override func viewDidLoad() {
