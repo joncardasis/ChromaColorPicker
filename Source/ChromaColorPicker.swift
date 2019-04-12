@@ -19,7 +19,20 @@ public protocol ChromaColorPickerDelegate {
 @IBDesignable
 public class ChromaColorPicker: UIControl {
     
+    @IBInspectable public var borderWidth: CGFloat = 8.0 {
+        didSet { setNeedsLayout() }
+    }
+    
+    @IBInspectable public var borderColor: UIColor = .white {
+        didSet { setNeedsLayout() }
+    }
+    
+    @IBInspectable public var showsShadow: Bool = true {
+        didSet { setNeedsLayout() }
+    }
+    
     //MARK: - Initialization
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -30,14 +43,10 @@ public class ChromaColorPicker: UIControl {
         self.commonInit()
     }
     
-    public override func setNeedsDisplay() {
-        super.setNeedsDisplay()
-        print("called")
-
-    }
-    
     public override func layoutSubviews() {
         super.layoutSubviews()
+        updateShadowIfNeeded()
+        updateBorderIfNeeded()
     }
     
     public func addHandle(at color: UIColor? = nil) -> ChromaColorHandle {
@@ -51,9 +60,10 @@ public class ChromaColorPicker: UIControl {
         self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = false
         setupColorWheelView()
-        applySmoothingMaskToColorWheel()
         setupGestures()
     }
+    
+    // MARK: Setup & Layout
     
     internal func setupColorWheelView() {
         colorWheelView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,9 +76,18 @@ public class ChromaColorPicker: UIControl {
         ])
     }
     
-    /// Applys a smoothing mask to the color wheel to account for CIFilter's image dithering at the edges.
-    internal func applySmoothingMaskToColorWheel() {
-        
+    internal func updateShadowIfNeeded() {
+        if showsShadow {
+            let dropShadowHeight = bounds.height * 0.01
+            applyDropShadow(color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0, height: dropShadowHeight), radius: 2)
+        } else {
+            removeDropShadow()
+        }
+    }
+    
+    internal func updateBorderIfNeeded() {
+        colorWheelView.layer.borderColor = borderColor.cgColor
+        colorWheelView.layer.borderWidth = borderWidth
     }
     
     internal func setupGestures() {
@@ -77,12 +96,16 @@ public class ChromaColorPicker: UIControl {
         colorWheelView.addGestureRecognizer(tapGesture)
     }
     
+    // MARK: Actions
+    
     @objc
     internal func colorWheelTapped(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: colorWheelView)
         let pixelColor = colorWheelView.pixelColor(at: location)
         print(pixelColor)
     }
+    
+
 }
 
 internal let defaultHandleColorPosition: UIColor = .black

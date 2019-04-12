@@ -22,11 +22,17 @@ public class ColorWheelView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
+        layer.masksToBounds = false
+        layer.cornerRadius = radius
         
         let minDimensionSize = min(bounds.width, bounds.height)
         if let colorWheelImage = makeColorWheelImage(radius: minDimensionSize) {
             imageView.image = UIImage(ciImage: colorWheelImage)
         }
+    }
+    
+    public var radius: CGFloat {
+        return max(bounds.width, bounds.height) / 2.0
     }
     
     /**
@@ -86,10 +92,6 @@ public class ColorWheelView: UIView {
     
     // MARK: - Private
     internal let imageView = UIImageView()
-    
-    internal var radius: CGFloat {
-        return bounds.width / 2.0
-    }
     
     internal func commonInit() {
         backgroundColor = .clear

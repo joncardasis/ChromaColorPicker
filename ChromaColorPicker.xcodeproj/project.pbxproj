@@ -19,6 +19,7 @@
 		FC1BD8C22207D7B700817AF3 /* ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */; };
 		FCCA42A5226022A800BE2FF9 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */; };
 		FCCA42A7226023F000BE2FF9 /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */; };
+		FCCA42AA2260329900BE2FF9 /* UIKit+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */; };
 		FCEA4E272235AAA200C0A1B6 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		FC1BD8CD2207FCE100817AF3 /* ColorModeToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModeToggleButton.swift; sourceTree = "<group>"; };
 		FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelView.swift; sourceTree = "<group>"; };
 		FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorHandle.swift; sourceTree = "<group>"; };
+		FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+DropShadow.swift"; sourceTree = "<group>"; };
 		FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 		3503B8301F2689BC00750356 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FCCA42A82260325F00BE2FF9 /* Extensions */,
 				FCCA427822601F8800BE2FF9 /* Legacy */,
 				3503B8311F2689BC00750356 /* ChromaColorPicker.h */,
 				3503B8321F2689BC00750356 /* Info.plist */,
@@ -171,6 +174,14 @@
 				FC1BD8CB2207FCE100817AF3 /* UIColor+Utilities.swift */,
 			);
 			path = Legacy;
+			sourceTree = "<group>";
+		};
+		FCCA42A82260325F00BE2FF9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCEA4E272235AAA200C0A1B6 /* ChromaColorPicker.swift in Sources */,
+				FCCA42AA2260329900BE2FF9 /* UIKit+DropShadow.swift in Sources */,
 				FCCA42A7226023F000BE2FF9 /* ChromaColorHandle.swift in Sources */,
 				FCCA42A5226022A800BE2FF9 /* ColorWheelView.swift in Sources */,
 			);
