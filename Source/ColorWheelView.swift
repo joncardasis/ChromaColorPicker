@@ -56,7 +56,7 @@ public class ColorWheelView: UIView {
      the point does not exist within the bounds of the color wheel.
     */
     public func pixelColor(at point: CGPoint) -> UIColor? {
-        guard bounds.contains(point) else { return nil }
+        guard bounds.offsetBy(dx: 1, dy: 1).contains(point) else { return nil }
         
         let distanceFromCenter: CGFloat = hypot(center.x - point.x, center.y - point.y)
         let pointExistsInRadius: Bool = distanceFromCenter <= radius
