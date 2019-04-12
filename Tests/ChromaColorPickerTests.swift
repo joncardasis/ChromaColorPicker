@@ -1,20 +1,17 @@
 //
-//  ChromaColorPickerSpec.swift
+//  ChromaColorPickerTest.swift
 //  ChromaColorPickerTests
 //
 //  Created by Jon Cardasis on 2/3/19.
 //  Copyright © 2019 Jonathan Cardasis. All rights reserved.
 //
 
-import Quick
-import Nimble
+import XCTest
 @testable import ChromaColorPicker
 
-class ChromaColorPickerSpec: QuickSpec {
-    override func spec() {
+class ChromaColorPickerTests: XCTestCase {
+    
+    func testDefault() {
         
-        it("is an empty test") {
-            
-        }
     }
 }

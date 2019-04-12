@@ -10,6 +10,30 @@ import UIKit
 import ChromaColorPicker
 
 class ViewController: UIViewController {
+    @IBOutlet weak var colorDisplayView: UIView!
+    
+    let colorPicker = ChromaColorPicker2()
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        colorPicker.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(colorPicker)
+        
+        NSLayoutConstraint.activate([
+            colorPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            colorPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            colorPicker.widthAnchor.constraint(equalToConstant: 400),
+            colorPicker.heightAnchor.constraint(equalToConstant: 400)
+        ])
+    }
+}
+
+
+/*
+class ViewController: UIViewController {
     
     @IBOutlet weak var colorDisplayView: UIView!
     var colorPicker: ChromaColorPicker!
@@ -61,3 +85,4 @@ extension ViewController: ChromaColorPickerDelegate {
     }
 }
 
+*/
