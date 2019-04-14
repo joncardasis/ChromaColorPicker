@@ -15,6 +15,11 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         didSet { updateControl(to: currentValue) }
     }
     
+    /// The base color the slider on the track.
+    public var trackColor: UIColor = .white {
+        didSet { updateTrackColor(to: trackColor) }
+    }
+    
     /// The value of the color the handle is currently displaying.
     public var currentColor: UIColor {
         return sliderHandleView.handleColor
@@ -52,12 +57,6 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         
         moveHandle(to: currentValue)
         updateShadowIfNeeded()
-    }
-    
-    /// Sets the tracking color of the slider and updates the gradient view.
-    public func updateTrackingColor(to color: UIColor, value: CGFloat) {
-        updateTrackViewGradient(for: color)
-        currentValue = value
     }
     
     // MARK: - Control
@@ -99,7 +98,7 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         backgroundColor = .clear
         setupSliderTrackView()
         setupSliderHandleView()
-        updateControl(to: currentValue)
+        updateTrackColor(to: trackColor)
     }
     
     internal func setupSliderTrackView() {
@@ -130,15 +129,11 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         }
     }
     
-//    internal func updateControl(to color: UIColor) {
-//        updateTrackViewGradient(for: color)
-//    }
-    
     internal func updateControl(to value: CGFloat) {
         let brightness = 1 - max(0, min(1, value))
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
-        currentColor.getHue(&hue, saturation: &saturation, brightness: nil, alpha: nil)
+        trackColor.getHue(&hue, saturation: &saturation, brightness: nil, alpha: nil)
         
         let newColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
         
@@ -148,6 +143,18 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         CATransaction.commit()
         
         moveHandle(to: value)
+    }
+    
+    internal func updateTrackColor(to color: UIColor) {
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: nil)
+        
+        let colorWithMaxBrightness = UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
+        
+        updateTrackViewGradient(for: colorWithMaxBrightness)
+        currentValue = 1 - brightness
     }
     
     internal func updateTrackViewGradient(for color: UIColor) {
@@ -161,6 +168,4 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         
         sliderHandleView.frame = CGRect(origin: CGPoint(x: xPos - (size.width / 2), y: 0), size: size)
     }
-    
-    
 }

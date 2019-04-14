@@ -23,6 +23,8 @@ class ViewController: UIViewController {
         temp.frame = CGRect(x: 30, y: 70, width: 320, height: 32)
         view.addSubview(temp)
         
+        temp.trackColor = UIColor.red
+        
         
         colorPicker.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(colorPicker)
