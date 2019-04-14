@@ -56,11 +56,7 @@ public class ColorWheelView: UIView {
      the point does not exist within the bounds of the color wheel.
     */
     public func pixelColor(at point: CGPoint) -> UIColor? {
-        guard bounds.offsetBy(dx: 1, dy: 1).contains(point) else { return nil }
-        
-        let distanceFromCenter: CGFloat = hypot(center.x - point.x, center.y - point.y)
-        let pointExistsInRadius: Bool = distanceFromCenter <= radius
-        guard pointExistsInRadius else { return nil }
+        guard pointIsInColorWheel(point) else { return nil }
         
         let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -126,5 +122,13 @@ public class ColorWheelView: UIView {
             "inputValue": 1
         ])
         return filter?.outputImage
+    }
+    
+    internal func pointIsInColorWheel(_ point: CGPoint) -> Bool {
+        guard bounds.offsetBy(dx: 1, dy: 1).contains(point) else { return false }
+        
+        let distanceFromCenter: CGFloat = hypot(center.x - point.x, center.y - point.y)
+        let pointExistsInRadius: Bool = distanceFromCenter <= (radius - layer.borderWidth)
+        return pointExistsInRadius
     }
 }

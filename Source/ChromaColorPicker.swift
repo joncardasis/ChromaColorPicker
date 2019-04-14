@@ -17,7 +17,7 @@ public protocol ChromaColorPickerDelegate {
 
 
 @IBDesignable
-public class ChromaColorPicker: UIControl {
+public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     @IBInspectable public var borderWidth: CGFloat = 8.0 {
         didSet { setNeedsLayout() }
@@ -25,6 +25,10 @@ public class ChromaColorPicker: UIControl {
     
     @IBInspectable public var borderColor: UIColor = .white {
         didSet { setNeedsLayout() }
+    }
+    
+    @IBInspectable public var showsBrightnessSlider: Bool = false {
+        didSet { /* todo */ }
     }
     
     @IBInspectable public var showsShadow: Bool = true {
@@ -76,10 +80,9 @@ public class ChromaColorPicker: UIControl {
         ])
     }
     
-    internal func updateShadowIfNeeded() {
+    func updateShadowIfNeeded() {
         if showsShadow {
-            let dropShadowHeight = bounds.height * 0.01
-            applyDropShadow(color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0, height: dropShadowHeight), radius: 2)
+            applyDropShadow(shadowProperties(forHeight: bounds.height))
         } else {
             removeDropShadow()
         }

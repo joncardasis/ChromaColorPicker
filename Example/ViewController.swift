@@ -13,10 +13,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var colorDisplayView: UIView!
     
     let colorPicker = ChromaColorPicker()
+    
+    let temp = BrightnessSlider()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        temp.frame = CGRect(x: 30, y: 70, width: 320, height: 32)
+        view.addSubview(temp)
         
         
         colorPicker.translatesAutoresizingMaskIntoConstraints = false

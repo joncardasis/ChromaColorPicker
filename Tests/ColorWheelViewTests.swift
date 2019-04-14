@@ -84,6 +84,18 @@ class ColorWheelViewTests: XCTestCase {
         XCTAssertNil(subject.pixelColor(at: testPoint))
     }
     
+    func testPixelColorShouldReturnNilForPointOnBorder() {
+        // Given
+        subject.layer.borderWidth = 20
+        subject.layer.borderColor = UIColor.white.cgColor
+        
+        // When
+        let testPoint = CGPoint(x: subject.bounds.width - 10, y: subject.frame.midY)
+        
+        // Then
+        XCTAssertNil(subject.pixelColor(at: testPoint))
+    }
+    
     func testPixelColorShouldBeRedAtMaxXMidY() {
         // Given, When
         let size = subject.frame.size
