@@ -18,7 +18,7 @@
 		FC1BD8C02207D7B700817AF3 /* ChromaColorPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerTests.swift */; };
 		FC1BD8C22207D7B700817AF3 /* ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */; };
 		FC4387C422603AE900F739F1 /* ColorWheelViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42AB226038A400BE2FF9 /* ColorWheelViewTests.swift */; };
-		FC4387C62262556600F739F1 /* BrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387C52262556600F739F1 /* BrightnessSlider.swift */; };
+		FC4387C62262556600F739F1 /* ChromaBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387C52262556600F739F1 /* ChromaBrightnessSlider.swift */; };
 		FC4387C922625C7000F739F1 /* SliderTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387C822625C7000F739F1 /* SliderTrackView.swift */; };
 		FC4387CB22625DA800F739F1 /* SliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387CA22625DA800F739F1 /* SliderHandleView.swift */; };
 		FC4387CD2262B82600F739F1 /* ChromaControlStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387CC2262B82600F739F1 /* ChromaControlStylable.swift */; };
@@ -79,7 +79,7 @@
 		FC1BD8CB2207FCE100817AF3 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
 		FC1BD8CC2207FCE100817AF3 /* ChromaAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaAddButton.swift; sourceTree = "<group>"; };
 		FC1BD8CD2207FCE100817AF3 /* ColorModeToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModeToggleButton.swift; sourceTree = "<group>"; };
-		FC4387C52262556600F739F1 /* BrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessSlider.swift; sourceTree = "<group>"; };
+		FC4387C52262556600F739F1 /* ChromaBrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaBrightnessSlider.swift; sourceTree = "<group>"; };
 		FC4387C822625C7000F739F1 /* SliderTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackView.swift; sourceTree = "<group>"; };
 		FC4387CA22625DA800F739F1 /* SliderHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderHandleView.swift; sourceTree = "<group>"; };
 		FC4387CC2262B82600F739F1 /* ChromaControlStylable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaControlStylable.swift; sourceTree = "<group>"; };
@@ -126,9 +126,8 @@
 				3503B8311F2689BC00750356 /* ChromaColorPicker.h */,
 				3503B8321F2689BC00750356 /* Info.plist */,
 				FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */,
-				FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */,
+				FC4387C52262556600F739F1 /* ChromaBrightnessSlider.swift */,
 				FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */,
-				FC4387C52262556600F739F1 /* BrightnessSlider.swift */,
 				FC4387CC2262B82600F739F1 /* ChromaControlStylable.swift */,
 			);
 			path = Source;
@@ -181,8 +180,9 @@
 		FC4387C722625C5F00F739F1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				FC4387C822625C7000F739F1 /* SliderTrackView.swift */,
+				FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */,
 				FC4387CA22625DA800F739F1 /* SliderHandleView.swift */,
+				FC4387C822625C7000F739F1 /* SliderTrackView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -366,7 +366,7 @@
 				FCEA4E272235AAA200C0A1B6 /* ChromaColorPicker.swift in Sources */,
 				FC4387CD2262B82600F739F1 /* ChromaControlStylable.swift in Sources */,
 				FCCA42AA2260329900BE2FF9 /* UIKit+DropShadow.swift in Sources */,
-				FC4387C62262556600F739F1 /* BrightnessSlider.swift in Sources */,
+				FC4387C62262556600F739F1 /* ChromaBrightnessSlider.swift in Sources */,
 				FCCA42A7226023F000BE2FF9 /* ChromaColorHandle.swift in Sources */,
 				FCCA42A5226022A800BE2FF9 /* ColorWheelView.swift in Sources */,
 				FC4387C922625C7000F739F1 /* SliderTrackView.swift in Sources */,

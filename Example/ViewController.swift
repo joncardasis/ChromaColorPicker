@@ -13,83 +13,52 @@ class ViewController: UIViewController {
     @IBOutlet weak var colorDisplayView: UIView!
     
     let colorPicker = ChromaColorPicker()
-    
-    let temp = BrightnessSlider()
-
+    let brightnessSlider = ChromaBrightnessSlider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        temp.frame = CGRect(x: 30, y: 70, width: 320, height: 32)
-        view.addSubview(temp)
-        
-        temp.trackColor = UIColor.red
-        
-        
+        setupColorPicker()
+        setupBrightnessSlider()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print()
+    }
+    
+    private func setupColorPicker() {
         colorPicker.translatesAutoresizingMaskIntoConstraints = false
+        colorPicker.showsBrightnessSlider = true
         view.addSubview(colorPicker)
+        
+        let verticalOffset = -defaultColorPickerSize.height / 6
         
         NSLayoutConstraint.activate([
             colorPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            colorPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            colorPicker.widthAnchor.constraint(equalToConstant: 400),
-            colorPicker.heightAnchor.constraint(equalToConstant: 400)
+            colorPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: verticalOffset),
+            colorPicker.widthAnchor.constraint(equalToConstant: defaultColorPickerSize.width),
+            colorPicker.heightAnchor.constraint(equalToConstant: defaultColorPickerSize.height)
+        ])
+    }
+    
+    private func setupBrightnessSlider() {
+        brightnessSlider.connect(to: colorPicker)
+        
+        // Style
+        brightnessSlider.trackColor = UIColor.red
+        brightnessSlider.handle.borderWidth = 3.0 // Example of customizing the handle's properties.
+        
+        // Layout
+        brightnessSlider.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(brightnessSlider)
+        
+        NSLayoutConstraint.activate([
+            brightnessSlider.centerXAnchor.constraint(equalTo: colorPicker.centerXAnchor),
+            brightnessSlider.topAnchor.constraint(equalTo: colorPicker.bottomAnchor, constant: 28),
+            brightnessSlider.widthAnchor.constraint(equalTo: colorPicker.widthAnchor, multiplier: 0.9),
+            brightnessSlider.heightAnchor.constraint(equalTo: brightnessSlider.widthAnchor, multiplier: brightnessSliderWidthHeightRatio)
         ])
     }
 }
 
-
-/*
-class ViewController: UIViewController {
-    
-    @IBOutlet weak var colorDisplayView: UIView!
-    var colorPicker: ChromaColorPicker!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        /* Calculate relative size and origin in bounds */
-        let pickerSize = CGSize(width: view.bounds.width*0.8, height: view.bounds.width*0.8)
-        let pickerOrigin = CGPoint(x: view.bounds.midX - pickerSize.width/2, y: view.bounds.midY - pickerSize.height/2)
-        
-        /* Create Color Picker */
-        colorPicker = ChromaColorPicker(frame: CGRect(origin: pickerOrigin, size: pickerSize))
-        colorPicker.delegate = self
-        
-        /* Customize the view (optional) */
-        colorPicker.padding = 10
-        colorPicker.stroke = 3 //stroke of the rainbow circle
-        colorPicker.currentAngle = Float.pi
-        
-        /* Customize for grayscale (optional) */
-        colorPicker.supportsShadesOfGray = true // false by default
-        //colorPicker.colorToggleButton.grayColorGradientLayer.colors = [UIColor.lightGray.cgColor, UIColor.gray.cgColor] // You can also override gradient colors
-        
-        
-        colorPicker.hexLabel.textColor = UIColor.white
-        
-        /* Don't want an element like the shade slider? Just hide it: */
-        //colorPicker.shadeSlider.hidden = true
-        
-        self.view.addSubview(colorPicker)
-    }
-}
-
-extension ViewController: ChromaColorPickerDelegate {
-    func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
-        //Set color for the display view
-        colorDisplayView.backgroundColor = color
-        
-        //Perform zesty animation
-        UIView.animate(withDuration: 0.2,
-                animations: {
-                    self.colorDisplayView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-                }, completion: { (done) in
-                UIView.animate(withDuration: 0.2, animations: { 
-                    self.colorDisplayView.transform = CGAffineTransform.identity
-                })
-        }) 
-    }
-}
-
-*/
+private let defaultColorPickerSize = CGSize(width: 320, height: 320)
+private let brightnessSliderWidthHeightRatio: CGFloat = 0.1

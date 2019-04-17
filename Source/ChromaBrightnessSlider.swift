@@ -1,5 +1,5 @@
 //
-//  BrightnessSlider.swift
+//  ChromaBrightnessSlider.swift
 //  ChromaColorPicker
 //
 //  Created by Jon Cardasis on 4/13/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class BrightnessSlider: UIControl, ChromaControlStylable {
+public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
     
     /// The value of the slider between [0.0, 1.0].
     public var currentValue: CGFloat = 0.0 {
@@ -22,8 +22,11 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
     
     /// The value of the color the handle is currently displaying.
     public var currentColor: UIColor {
-        return sliderHandleView.handleColor
+        return handle.handleColor
     }
+    
+    /// The handle control of the slider.
+    public let handle = SliderHandleView()
     
     public var borderWidth: CGFloat = 4.0 {
         didSet { setNeedsLayout() }
@@ -59,6 +62,13 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         updateShadowIfNeeded()
     }
     
+    // MARK: - Public
+    
+    /// Attaches control to the provided color picker.
+    public func connect(to colorPicker: ChromaColorPicker) {
+        colorPicker.connect(self)
+    }
+    
     // MARK: - Control
     
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -89,7 +99,6 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
     
     // MARK: - Private
     internal let sliderTrackView = SliderTrackView()
-    internal let sliderHandleView = SliderHandleView()
     
     /// The amount of padding caused by visual stylings
     internal var horizontalPadding: CGFloat {
@@ -101,7 +110,7 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
     }
     
     internal var interactableBounds: CGRect {
-        let horizontalOffset = -(sliderHandleView.bounds.width / 2) + horizontalPadding
+        let horizontalOffset = -(handle.bounds.width / 2) + horizontalPadding
         return bounds.insetBy(dx: horizontalOffset, dy: 0)
     }
     
@@ -125,12 +134,12 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
     }
     
     internal func setupSliderHandleView() {
-        sliderHandleView.isUserInteractionEnabled = false
-        addSubview(sliderHandleView)
+        handle.isUserInteractionEnabled = false
+        addSubview(handle)
     }
     
     internal func updateShadowIfNeeded() {
-        let views = [sliderHandleView, sliderTrackView]
+        let views = [handle, sliderTrackView]
         
         if showsShadow {
             let shadowProps = shadowProperties(forHeight: bounds.height)
@@ -150,7 +159,7 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        sliderHandleView.handleColor = newColor
+        handle.handleColor = newColor
         CATransaction.commit()
         
         moveHandle(to: value)
@@ -177,6 +186,6 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         let xPos = (clampedValue * confiningTrackFrame.width) + horizontalPadding
         let size = CGSize(width: bounds.height * 1.15, height: bounds.height)
         
-        sliderHandleView.frame = CGRect(origin: CGPoint(x: xPos - (size.width / 2), y: 0), size: size)
+        handle.frame = CGRect(origin: CGPoint(x: xPos - (size.width / 2), y: 0), size: size)
     }
 }

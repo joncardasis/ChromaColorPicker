@@ -8,31 +8,31 @@
 
 import UIKit
 
-internal class SliderHandleView: UIView {
+public class SliderHandleView: UIView {
 
-    var handleColor: UIColor = .black {
+    public var handleColor: UIColor = .black {
         didSet { updateHandleColor(to: handleColor) }
     }
     
-    var borderWidth: CGFloat = 3.0 {
+    public var borderWidth: CGFloat = 3.0 {
         didSet { setNeedsLayout() }
     }
     
-    var borderColor: UIColor = .white {
+    public var borderColor: UIColor = .white {
         didSet { setNeedsLayout() }
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         let radius: CGFloat = bounds.height / 10
         handleLayer.path = makeRoundedTrianglePath(width: bounds.width, height: bounds.height, radius: radius)
         handleLayer.strokeColor = borderColor.cgColor
@@ -41,24 +41,24 @@ internal class SliderHandleView: UIView {
     }
     
     // MARK: - Private
-    let handleLayer = CAShapeLayer()
+    internal let handleLayer = CAShapeLayer()
     
-    private struct CornerPoint {
+    internal struct CornerPoint {
         let center: CGPoint
         let startAngle: CGFloat
         let endAngle: CGFloat
     }
     
-    private func commonInit() {
+    internal func commonInit() {
         layer.addSublayer(handleLayer)
         updateHandleColor(to: handleColor)
     }
     
-    private func updateHandleColor(to color: UIColor) {
+    internal func updateHandleColor(to color: UIColor) {
         handleLayer.fillColor = color.cgColor
     }
     
-    private func makeRoundedTrianglePath(width: CGFloat, height: CGFloat, radius: CGFloat) -> CGPath {
+    internal func makeRoundedTrianglePath(width: CGFloat, height: CGFloat, radius: CGFloat) -> CGPath {
         let point1 = CGPoint(x: -width / 2, y: height / 2)
         let point2 = CGPoint(x: 0, y: -height / 2)
         let point3 = CGPoint(x: width / 2, y: height / 2)

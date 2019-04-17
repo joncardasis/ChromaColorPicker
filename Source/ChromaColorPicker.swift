@@ -15,7 +15,6 @@ public protocol ChromaColorPickerDelegate {
 }
 
 
-
 @IBDesignable
 public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
@@ -27,12 +26,15 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         didSet { setNeedsLayout() }
     }
     
-    @IBInspectable public var showsBrightnessSlider: Bool = false {
-        didSet { /* todo */ }
-    }
-    
     @IBInspectable public var showsShadow: Bool = true {
         didSet { setNeedsLayout() }
+    }
+    
+    /// A brightness slider attached via the `connect(_:)` method.
+    private(set) public weak var brightnessSlider: ChromaBrightnessSlider? {
+        didSet {
+            oldValue?.removeTarget(self, action: nil, for: .valueChanged)
+        }
     }
     
     //MARK: - Initialization
@@ -53,8 +55,15 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         updateBorderIfNeeded()
     }
     
+    // MARK: - Public
+    
     public func addHandle(at color: UIColor? = nil) -> ChromaColorHandle {
         return ChromaColorHandle(color: color ?? defaultHandleColorPosition)
+    }
+    
+    public func connect(_ slider: ChromaBrightnessSlider) {
+        slider.addTarget(self, action: #selector(brightnessSliderDidValueChange(_:)), for: .valueChanged)
+        brightnessSlider = slider
     }
     
     // MARK: - Private
@@ -108,7 +117,10 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         print(pixelColor)
     }
     
-
+    @objc
+    internal func brightnessSliderDidValueChange(_ slider: ChromaBrightnessSlider) {
+        
+    }
 }
 
 internal let defaultHandleColorPosition: UIColor = .black
