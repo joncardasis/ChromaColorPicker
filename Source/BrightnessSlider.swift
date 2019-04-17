@@ -63,7 +63,7 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
     
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
-        return confiningTrackFrame.contains(location) || sliderHandleView.frame.contains(location)
+        return interactableBounds.contains(location)
     }
     
     public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -73,12 +73,18 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
         
         updateControl(to: value)
         sendActions(for: .valueChanged)
-        
         return true
     }
     
     public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         sendActions(for: .editingDidEnd)
+    }
+    
+    public override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        if interactableBounds.contains(point) {
+            return true
+        }
+        return super.point(inside: point, with: event)
     }
     
     // MARK: - Private
@@ -92,6 +98,11 @@ public class BrightnessSlider: UIControl, ChromaControlStylable {
     
     internal var confiningTrackFrame: CGRect {
         return sliderTrackView.frame.insetBy(dx: horizontalPadding, dy: 0)
+    }
+    
+    internal var interactableBounds: CGRect {
+        let horizontalOffset = -(sliderHandleView.bounds.width / 2) + horizontalPadding
+        return bounds.insetBy(dx: horizontalOffset, dy: 0)
     }
     
     internal func commonInit() {
