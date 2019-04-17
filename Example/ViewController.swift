@@ -27,7 +27,6 @@ class ViewController: UIViewController {
     
     private func setupColorPicker() {
         colorPicker.translatesAutoresizingMaskIntoConstraints = false
-        colorPicker.showsBrightnessSlider = true
         view.addSubview(colorPicker)
         
         let verticalOffset = -defaultColorPickerSize.height / 6

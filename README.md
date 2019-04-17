@@ -15,6 +15,21 @@ An intuitive HSB color picker built in Swift. Supports multiple selection handle
 
 > TODO: Image / GIF
 
+## Examples
+```Swift
+let colorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+addSubview(colorPicker)
+
+// Optional: Add multiple handles to the color picker
+
+// Optional: Attach a ChromaBrightnessSlider to a ChromaColorPicker
+let brightnessSlider = ChromaBrightnessSlider(frame: CGRect(x: 0, y: 0, width: 280, height: 32))
+addSubview(brightnessSlider)
+
+colorPicker.connect(brightnessSlider) // or `brightnessSlider.connect(to: colorPicker)`
+
+```
+
 ## Installation
 ### Carthage
 ```
@@ -28,10 +43,11 @@ pod 'ChromaColorPicker'
 ### Manually
 Add all files from the `Source` folder to your project.
 
-## Examples
-```Swift
-```
+## Components
 
+### ChromaColorPicker
+
+### ChromaBrightnessSlider
 
 ### Supported UIControlEvents
 | Event              | Description  |
