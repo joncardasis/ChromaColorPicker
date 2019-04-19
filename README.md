@@ -30,24 +30,39 @@ colorPicker.connect(brightnessSlider) // or `brightnessSlider.connect(to: colorP
 
 ```
 
+
 ## Installation
 ### Carthage
-```
+```bash
 github "joncardasis/ChromaColorPicker"
 ```
 
 ### Cocoapods
-```
+```bash
 pod 'ChromaColorPicker'
 ```
 ### Manually
 Add all files from the `Source` folder to your project.
 
-## Components
+## Usage
+### Multiple Handles
+```Swift
+// Add handles
+{TODO}
 
+// Add a custom handle
+{TODO}
+
+// Remove handles
+{TODO}
+```
+
+## Components
 ### ChromaColorPicker
+An HSB color picker with support for adding multiple color selection handles.
 
 ### ChromaBrightnessSlider
+[ChromaBrightnessSlider]() is a slider UIControl which can be attached to any `ChromaColorPicker` via the `connect(to:)` method. ChromaBrightnessSlider can also function as a stand-alone UIControl.
 
 ### Supported UIControlEvents
 | Event              | Description  |

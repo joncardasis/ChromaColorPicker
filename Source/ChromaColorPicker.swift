@@ -221,8 +221,13 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     internal func animateHandleScale(_ handle: ChromaColorHandle, shouldGrow: Bool) {
         if shouldGrow && handle.transform.d > 1 { return } // Already grown
+        let scalar: CGFloat = 1.25
         
-        let transform = shouldGrow ? CGAffineTransform(scaleX: 1.25, y: 1.25) : CGAffineTransform(scaleX: 1, y: 1)
+        var transform: CGAffineTransform = .identity
+        if shouldGrow {
+            let translateY = -handle.bounds.height * (scalar - 1) / 2
+            transform = CGAffineTransform(scaleX: scalar, y: scalar).translatedBy(x: 0, y: translateY)
+        }
         
         UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
             handle.transform = transform
