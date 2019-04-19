@@ -62,7 +62,6 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
     internal let handleShape = CAShapeLayer()
     
     internal func commonInit() {
-        backgroundColor = UIColor.red.withAlphaComponent(0.25) //DEBUG
         layer.addSublayer(handleShape)
     }
     
@@ -87,14 +86,12 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
     }
     
     internal func layoutHandleShape() {
-        let size = CGSize(width: bounds.height * handleWidthHeightRatio, height: bounds.height)
+        let size = CGSize(width: bounds.width - borderWidth, height: bounds.height - borderWidth)
         handleShape.path = makeHandlePath(frame: CGRect(origin: .zero, size: size))
-        handleShape.frame = CGRect(origin: CGPoint(x: bounds.midX - (size.width / 2), y: bounds.midY - size.height), size: size)
+        handleShape.frame = CGRect(origin: CGPoint(x: bounds.midX - (size.width / 2), y: bounds.midY - (size.height / 2)), size: size)
         
         handleShape.fillColor = color.cgColor
         handleShape.strokeColor = borderColor.cgColor
         handleShape.lineWidth = borderWidth
     }
 }
-
-internal let handleWidthHeightRatio: CGFloat = 52.0 / 65

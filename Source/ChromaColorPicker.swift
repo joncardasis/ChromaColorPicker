@@ -39,7 +39,14 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         }
     }
     
-    //public var handleSize: CGSize { /* TODO */ }
+    /// The size handles should be displayed at.
+    public var handleSize: CGSize = defaultHandleSize {
+        didSet { setNeedsLayout() }
+    }
+    
+    /// An extension to handles' hitboxes in the +Y direction.
+    /// Allows for handles to be grabbed more easily.
+    public var handleHitboxExtensionY: CGFloat = 10.0
     
     /// Handles added to the color picker.
     private(set) public var handles: [ChromaColorHandle] = []
@@ -65,9 +72,9 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         updateBorderIfNeeded()
         
         handles.forEach { handle in
-            //let location = colorWheelView.location(of: handle.color)
+            let location = colorWheelView.location(of: handle.color)
             handle.frame.size = defaultHandleSize
-            //handle.center = location
+            positionHandle(handle, forColorLocation: location)
         }
     }
     
@@ -75,16 +82,13 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     @discardableResult
     public func addHandle(at color: UIColor? = nil) -> ChromaColorHandle {
-        let handleColor = color ?? defaultHandleColorPosition
         let handle = ChromaColorHandle()
-        handle.color = handleColor
-        
+        handle.color = color ?? defaultHandleColorPosition
         addHandle(handle)
         return handle
     }
     
     public func addHandle(_ handle: ChromaColorHandle) {
-        addPanGesture(to: handle)
         handles.append(handle)
         colorWheelView.addSubview(handle)
     }
@@ -101,49 +105,66 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         self.backgroundColor = UIColor.clear
         self.layer.masksToBounds = false
         setupColorWheelView()
-        //setupGestures()
     }
     
     // MARK: - Control
     
-//    public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-//        let location = touch.location(in: self)
-//
-//        for handle in handles {
-//            if handle.frame.contains(location) {
-//                print("tapped on handle")
-//                currentHandle = handle
-//                return true
-//            }
-//        }
-//        return false
-//    }
-//
-//    public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-//        let location = touch.location(in: colorWheelView)
-//        guard let handle = currentHandle else { return false }
-//
-//        handle.center = location
-//        if let selectedColor = colorWheelView.pixelColor(at: location) {
-//            print(location)
-//            handle.color = selectedColor
-//
-//            delegate?.colorPickerDidChooseColor(self, color: selectedColor)
-//        }
-//
-//        sendActions(for: .valueChanged)
-//        return true
-//    }
-//
-//    public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-//        sendActions(for: .editingDidEnd)
-//    }
+    public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let location = touch.location(in: self)
+
+        for handle in handles {
+            if extendedHitFrame(for: handle).contains(location) {
+                currentHandle = handle
+                colorWheelView.bringSubviewToFront(handle)
+                animateHandleScale(handle, shouldGrow: true)
+                return true
+            }
+        }
+        return false
+    }
+
+    public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        var location = touch.location(in: colorWheelView)
+        guard let handle = currentHandle else { return false }
+        
+        if !colorWheelView.pointIsInColorWheel(location) {
+            // Touch is outside color wheel and should map to outermost edge.
+            let center = colorWheelView.center
+            let radius = colorWheelView.radius
+            let angleToCenter = atan2(location.x - center.x, location.y - center.y)
+            let positionOnColorWheelEdge = CGPoint(x: center.x + radius * sin(angleToCenter),
+                                                   y: center.y + radius * cos(angleToCenter))
+            print("pos: \(positionOnColorWheelEdge)")
+            location = positionOnColorWheelEdge
+        }
+        
+        if let pixelColor = colorWheelView.pixelColor(at: location) {
+            let previousBrightness = handle.color.brightness
+            handle.color = pixelColor.withBrightness(previousBrightness)
+            positionHandle(handle, forColorLocation: location)
+            
+            if let slider = brightnessSlider {
+                slider.trackColor = pixelColor
+                slider.currentValue = slider.value(brightness: previousBrightness)
+            }
+            
+            informDelegateOfColorChange(on: handle)
+            sendActions(for: .valueChanged)
+        }
+        
+        return true
+    }
+
+    public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        if let handle = currentHandle {
+            animateHandleScale(handle, shouldGrow: false)
+        }
+        sendActions(for: .editingDidEnd)
+    }
     
-    internal func addPanGesture(to handle: ChromaColorHandle) {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleWasMoved(_:)))
-        panGesture.maximumNumberOfTouches = 1
-        panGesture.minimumNumberOfTouches = 1
-        handle.addGestureRecognizer(panGesture)
+    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        // Self should handle all touch events, forwarding if needed.
+        return self
     }
 
     // MARK: Setup & Layout
@@ -172,62 +193,8 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         colorWheelView.layer.borderWidth = borderWidth
     }
     
-    internal func setupGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(colorWheelTapped(_:)))
-        colorWheelView.isUserInteractionEnabled = true
-        colorWheelView.addGestureRecognizer(tapGesture)
-    }
-    
     // MARK: Actions
-    
-    @objc
-    internal func handleWasMoved(_ gesture: UIPanGestureRecognizer) {
-        if let touchedView = gesture.view {
-            colorWheelView.bringSubviewToFront(touchedView)
-        }
-        
-        switch (gesture.state) {
-        case .began:
-            currentHandle = gesture.view as? ChromaColorHandle
-        case .changed:
-            let location = gesture.location(in: colorWheelView)
 
-            if let handle = currentHandle, let pixelColor = colorWheelView.pixelColor(at: location) {
-                let previousBrightness = handle.color.brightness
-                
-                print(pixelColor)
-                
-                handle.color = pixelColor.withBrightness(previousBrightness)
-                handle.center = location
-                
-                if let slider = brightnessSlider {
-                    slider.trackColor = pixelColor
-                    slider.currentValue = slider.value(brightness: previousBrightness)
-                }
-                
-                informDelegateOfColorChange(on: handle)
-            }
-            
-            self.sendActions(for: .touchDragInside)
-        case .ended:
-            /* Shrink Animation */
-            //self.executeHandleShrinkAnimation()
-            break
-        default:
-            break
-        }
-    }
-    
-    @objc
-    internal func colorWheelTapped(_ gesture: UITapGestureRecognizer) {
-        let location = gesture.location(in: colorWheelView)
-        let pixelColor = colorWheelView.pixelColor(at: location)
-        print(pixelColor)
-        
-        print(location)
-        delegate?.colorPickerDidChooseColor(self, color: pixelColor!)
-    }
-    
     @objc
     internal func brightnessSliderDidValueChange(_ slider: ChromaBrightnessSlider) {
         guard let currentHandle = currentHandle else { return }
@@ -239,7 +206,29 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     internal func informDelegateOfColorChange(on handle: ChromaColorHandle) {
         delegate?.colorPickerDidChooseColor(self, color: handle.color)
     }
+    
+    // MARK: - Helpers
+    
+    internal func extendedHitFrame(for handle: ChromaColorHandle) -> CGRect {
+        var frame = handle.frame
+        frame.size.height += handleHitboxExtensionY
+        return frame
+    }
+    
+    internal func positionHandle(_ handle: ChromaColorHandle, forColorLocation location: CGPoint) {
+        handle.center = location.applying(CGAffineTransform.identity.translatedBy(x: 0, y: -handle.bounds.height / 2))
+    }
+    
+    internal func animateHandleScale(_ handle: ChromaColorHandle, shouldGrow: Bool) {
+        if shouldGrow && handle.transform.d > 1 { return } // Already grown
+        
+        let transform = shouldGrow ? CGAffineTransform(scaleX: 1.25, y: 1.25) : CGAffineTransform(scaleX: 1, y: 1)
+        
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
+            handle.transform = transform
+        }, completion: nil)
+    }
 }
 
 internal let defaultHandleColorPosition: UIColor = .white
-internal let defaultHandleSize: CGSize = CGSize(width: 42, height: 42)
+internal let defaultHandleSize: CGSize = CGSize(width: 34, height: 42)

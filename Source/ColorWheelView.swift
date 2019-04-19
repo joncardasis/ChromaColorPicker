@@ -37,6 +37,7 @@ public class ColorWheelView: UIView {
     
     /**
      Returns the (x,y) location of the color provided within the ColorWheelView.
+     Disregards color's brightness component.
     */
     public func location(of color: UIColor) -> CGPoint {
         var hue: CGFloat = 0
@@ -86,6 +87,17 @@ public class ColorWheelView: UIView {
         return color
     }
     
+    /**
+     Returns whether or not the point is in the circular area of the color wheel.
+    */
+    public func pointIsInColorWheel(_ point: CGPoint) -> Bool {
+        guard bounds.offsetBy(dx: 1, dy: 1).contains(point) else { return false }
+        
+        let distanceFromCenter: CGFloat = hypot(center.x - point.x, center.y - point.y)
+        let pointExistsInRadius: Bool = distanceFromCenter <= (radius - layer.borderWidth)
+        return pointExistsInRadius
+    }
+    
     // MARK: - Private
     internal let imageView = UIImageView()
     
@@ -122,13 +134,5 @@ public class ColorWheelView: UIView {
             "inputValue": 1
         ])
         return filter?.outputImage
-    }
-    
-    internal func pointIsInColorWheel(_ point: CGPoint) -> Bool {
-        guard bounds.offsetBy(dx: 1, dy: 1).contains(point) else { return false }
-        
-        let distanceFromCenter: CGFloat = hypot(center.x - point.x, center.y - point.y)
-        let pointExistsInRadius: Bool = distanceFromCenter <= (radius - layer.borderWidth)
-        return pointExistsInRadius
     }
 }
