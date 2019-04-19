@@ -74,12 +74,12 @@ public class ColorWheelView: UIView {
         }
         
         context.translateBy(x: -point.x, y: -point.y)
-        layer.render(in: context)
+        imageView.layer.render(in: context)
         let color = UIColor(
             red: CGFloat(pixel[0]) / 255.0,
             green: CGFloat(pixel[1]) / 255.0,
             blue: CGFloat(pixel[2]) / 255.0,
-            alpha: CGFloat(pixel[3]) / 255.0
+            alpha: 1.0
         )
         
         pixel.deallocate()

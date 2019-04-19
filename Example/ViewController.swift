@@ -19,13 +19,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupColorPicker()
         setupBrightnessSlider()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print()
+        setupColorPickerHandles()
     }
     
     private func setupColorPicker() {
+        colorPicker.delegate = self
         colorPicker.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(colorPicker)
         
@@ -57,7 +55,20 @@ class ViewController: UIViewController {
             brightnessSlider.heightAnchor.constraint(equalTo: brightnessSlider.widthAnchor, multiplier: brightnessSliderWidthHeightRatio)
         ])
     }
+    
+    private func setupColorPickerHandles() {
+        colorPicker.addHandle(at: .blue)
+        colorPicker.borderWidth = 0
+    }
 }
+
+extension ViewController: ChromaColorPickerDelegate {
+    
+    func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
+        colorDisplayView.backgroundColor = color
+    }
+}
+
 
 private let defaultColorPickerSize = CGSize(width: 320, height: 320)
 private let brightnessSliderWidthHeightRatio: CGFloat = 0.1

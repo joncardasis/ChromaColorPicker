@@ -22,6 +22,7 @@
 		FC4387C922625C7000F739F1 /* SliderTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387C822625C7000F739F1 /* SliderTrackView.swift */; };
 		FC4387CB22625DA800F739F1 /* SliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387CA22625DA800F739F1 /* SliderHandleView.swift */; };
 		FC4387CD2262B82600F739F1 /* ChromaControlStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387CC2262B82600F739F1 /* ChromaControlStylable.swift */; };
+		FC4387DE226974FD00F739F1 /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387DC226972EB00F739F1 /* UIColor+Brightness.swift */; };
 		FCCA42A5226022A800BE2FF9 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */; };
 		FCCA42A7226023F000BE2FF9 /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */; };
 		FCCA42AA2260329900BE2FF9 /* UIKit+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */; };
@@ -83,6 +84,7 @@
 		FC4387C822625C7000F739F1 /* SliderTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackView.swift; sourceTree = "<group>"; };
 		FC4387CA22625DA800F739F1 /* SliderHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderHandleView.swift; sourceTree = "<group>"; };
 		FC4387CC2262B82600F739F1 /* ChromaControlStylable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaControlStylable.swift; sourceTree = "<group>"; };
+		FC4387DC226972EB00F739F1 /* UIColor+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Brightness.swift"; sourceTree = "<group>"; };
 		FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelView.swift; sourceTree = "<group>"; };
 		FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorHandle.swift; sourceTree = "<group>"; };
 		FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+DropShadow.swift"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				FCCA42A92260329900BE2FF9 /* UIKit+DropShadow.swift */,
+				FC4387DC226972EB00F739F1 /* UIColor+Brightness.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				FCEA4E272235AAA200C0A1B6 /* ChromaColorPicker.swift in Sources */,
 				FC4387CD2262B82600F739F1 /* ChromaControlStylable.swift in Sources */,
 				FCCA42AA2260329900BE2FF9 /* UIKit+DropShadow.swift in Sources */,
+				FC4387DE226974FD00F739F1 /* UIColor+Brightness.swift in Sources */,
 				FC4387C62262556600F739F1 /* ChromaBrightnessSlider.swift in Sources */,
 				FCCA42A7226023F000BE2FF9 /* ChromaColorHandle.swift in Sources */,
 				FCCA42A5226022A800BE2FF9 /* ColorWheelView.swift in Sources */,

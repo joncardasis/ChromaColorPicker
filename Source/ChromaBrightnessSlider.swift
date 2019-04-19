@@ -69,6 +69,12 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
         colorPicker.connect(self)
     }
     
+    /// Returns the relative value on the slider [0.0, 1.0] for the given color brightness ([0.0, 1.0]).
+    public func value(brightness: CGFloat) -> CGFloat {
+        let clamedBrightness = max(0, min(brightness, 1.0))
+        return 1.0 - clamedBrightness
+    }
+    
     // MARK: - Control
     
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -178,7 +184,10 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
     }
     
     internal func updateTrackViewGradient(for color: UIColor) {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
         sliderTrackView.gradientValues = (color, .black)
+        CATransaction.commit()
     }
     
     internal func moveHandle(to value: CGFloat) {
