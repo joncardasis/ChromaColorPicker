@@ -91,7 +91,7 @@ public class ColorWheelView: UIView {
      Returns whether or not the point is in the circular area of the color wheel.
     */
     public func pointIsInColorWheel(_ point: CGPoint) -> Bool {
-        guard bounds.offsetBy(dx: 1, dy: 1).contains(point) else { return false }
+        guard bounds.insetBy(dx: -1, dy: -1).contains(point) else { return false }
         
         let distanceFromCenter: CGFloat = hypot(center.x - point.x, center.y - point.y)
         let pointExistsInRadius: Bool = distanceFromCenter <= (radius - layer.borderWidth)
