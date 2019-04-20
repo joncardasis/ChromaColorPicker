@@ -20,7 +20,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     public weak var delegate: ChromaColorPickerDelegate?
     
-    @IBInspectable public var borderWidth: CGFloat = 8.0 {
+    @IBInspectable public var borderWidth: CGFloat = 6.0 {
         didSet { setNeedsLayout() }
     }
     
@@ -73,7 +73,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         
         handles.forEach { handle in
             let location = colorWheelView.location(of: handle.color)
-            handle.frame.size = defaultHandleSize
+            handle.frame.size = handleSize
             positionHandle(handle, forColorLocation: location)
         }
     }
@@ -101,7 +101,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     // MARK: - Control
     
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        let location = touch.location(in: self)
+        let location = touch.location(in: colorWheelView)
         
         for handle in handles {
             if extendedHitFrame(for: handle).contains(location) {
@@ -120,7 +120,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         
         if !colorWheelView.pointIsInColorWheel(location) {
             // Touch is outside color wheel and should map to outermost edge.
-            let center = colorWheelView.center
+            let center = colorWheelView.middlePoint
             let radius = colorWheelView.radius
             let angleToCenter = atan2(location.x - center.x, location.y - center.y)
             let positionOnColorWheelEdge = CGPoint(x: center.x + radius * sin(angleToCenter),
@@ -161,20 +161,22 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     // MARK: - Private
     
     internal let colorWheelView = ColorWheelView()
+    internal var colorWheelViewWidthConstraint: NSLayoutConstraint!
     
     internal func commonInit() {
         self.backgroundColor = UIColor.clear
-        self.layer.masksToBounds = false
         setupColorWheelView()
     }
     
     internal func setupColorWheelView() {
         colorWheelView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(colorWheelView)
+        colorWheelViewWidthConstraint = colorWheelView.widthAnchor.constraint(equalTo: self.widthAnchor)
+        
         NSLayoutConstraint.activate([
             colorWheelView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             colorWheelView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            colorWheelView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            colorWheelViewWidthConstraint,
             colorWheelView.heightAnchor.constraint(equalTo: colorWheelView.widthAnchor),
         ])
     }
@@ -188,8 +190,12 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     }
     
     internal func updateBorderIfNeeded() {
-        colorWheelView.layer.borderWidth = borderWidth
-        colorWheelView.layer.borderColor = borderColor.cgColor
+        // Use view's background as a border so colorWheel subviews (handles)
+        // may appear above the border.
+        backgroundColor = borderWidth > 0 ? borderColor : .clear
+        layer.cornerRadius = bounds.height / 2.0
+        layer.masksToBounds = false
+        colorWheelViewWidthConstraint.constant = -borderWidth * 2.0
     }
     
     // MARK: Actions

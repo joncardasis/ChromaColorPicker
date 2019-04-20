@@ -35,6 +35,10 @@ public class ColorWheelView: UIView {
         return max(bounds.width, bounds.height) / 2.0
     }
     
+    public var middlePoint: CGPoint {
+        return CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
     /**
      Returns the (x,y) location of the color provided within the ColorWheelView.
      Disregards color's brightness component.
@@ -47,7 +51,7 @@ public class ColorWheelView: UIView {
         let radianAngle = hue * (2 * .pi)
         let distance = saturation * radius
         let colorTranslation = CGPoint(x: distance * cos(radianAngle), y: -distance * sin(radianAngle))
-        let colorPoint = CGPoint(x: center.x + colorTranslation.x, y: center.y + colorTranslation.y)
+        let colorPoint = CGPoint(x: bounds.midX + colorTranslation.x, y: bounds.midY + colorTranslation.y)
         
         return colorPoint
     }
@@ -63,7 +67,7 @@ public class ColorWheelView: UIView {
         // from the rendered view layer. This ensures we obtain correct values where
         // image smoothing may have taken place.
         guard !pointIsOnColorWheelEdge(point) else {
-            let angleToCenter = atan2(point.x - center.x, point.y - center.y)
+            let angleToCenter = atan2(point.x - middlePoint.x, point.y - middlePoint.y)
             return edgeColor(for: angleToCenter)
         }
         
@@ -101,13 +105,13 @@ public class ColorWheelView: UIView {
     public func pointIsInColorWheel(_ point: CGPoint) -> Bool {
         guard bounds.insetBy(dx: -1, dy: -1).contains(point) else { return false }
         
-        let distanceFromCenter: CGFloat = hypot(center.x - point.x, center.y - point.y)
+        let distanceFromCenter: CGFloat = hypot(middlePoint.x - point.x, middlePoint.y - point.y)
         let pointExistsInRadius: Bool = distanceFromCenter <= (radius - layer.borderWidth)
         return pointExistsInRadius
     }
     
     public func pointIsOnColorWheelEdge(_ point: CGPoint) -> Bool {
-        let distanceToCenter = hypot(center.x - point.x, center.y - point.y)
+        let distanceToCenter = hypot(middlePoint.x - point.x, middlePoint.y - point.y)
         let isPointOnEdge = distanceToCenter >= radius - 1.0
         return isPointOnEdge
     }
