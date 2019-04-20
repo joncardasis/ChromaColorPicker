@@ -54,6 +54,7 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
     public override func layoutSubviews() {
         super.layoutSubviews()
         layoutHandleShape()
+        updateShadowIfNeeded()
         
         layer.masksToBounds = false
     }
@@ -67,7 +68,10 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
     
     internal func updateShadowIfNeeded() {
         if showsShadow {
-            let shadowProps = shadowProperties(forHeight: bounds.height)
+            let shadowProps = ShadowProperties(color: UIColor.black.cgColor,
+                                               opacity: 0.3,
+                                               offset: CGSize(width: 0, height: bounds.height / 8.0),
+                                               radius: 4.0)
             applyDropShadow(shadowProps)
         } else {
             removeDropShadow()

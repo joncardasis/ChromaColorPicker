@@ -125,7 +125,6 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
             let angleToCenter = atan2(location.x - center.x, location.y - center.y)
             let positionOnColorWheelEdge = CGPoint(x: center.x + radius * sin(angleToCenter),
                                                    y: center.y + radius * cos(angleToCenter))
-            //print("pos: \(positionOnColorWheelEdge)")
             location = positionOnColorWheelEdge
         }
         
