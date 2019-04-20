@@ -105,9 +105,15 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         
         for handle in handles {
             if extendedHitFrame(for: handle).contains(location) {
-                currentHandle = handle
                 colorWheelView.bringSubviewToFront(handle)
                 animateHandleScale(handle, shouldGrow: true)
+                
+                if let slider = brightnessSlider {
+                    slider.trackColor = handle.color.withBrightness(1)
+                    slider.currentValue = slider.value(brightness: handle.color.brightness)
+                }
+                
+                currentHandle = handle
                 return true
             }
         }

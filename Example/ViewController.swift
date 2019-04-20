@@ -57,7 +57,15 @@ class ViewController: UIViewController {
     }
     
     private func setupColorPickerHandles() {
-        colorPicker.addHandle(at: .blue)
+        let homeHandle = colorPicker.addHandle(at: .black)
+        
+        // Setup custom handle view with insets
+        let customImageView = UIImageView(image: #imageLiteral(resourceName: "home").withRenderingMode(.alwaysTemplate))
+        customImageView.contentMode = .scaleAspectFit
+        customImageView.tintColor = .white
+        homeHandle.accessoryView = customImageView
+        homeHandle.accessoryViewEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 2, right: 2)
+        
         colorPicker.addHandle(at: .red)
     }
 }

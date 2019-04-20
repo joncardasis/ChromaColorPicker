@@ -15,11 +15,29 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
         didSet { setNeedsLayout() }
     }
     
-    /// An image to display above the handle.
-    public var popoverImage: UIImage?
+    /// An image to display in the handle. Updates `accessoryView` to be a UIImageView.
+    public var accessoryImage: UIImage? {
+        didSet {
+            let imageView = UIImageView(image: accessoryImage)
+            imageView.contentMode = .scaleAspectFit
+            accessoryView = imageView
+        }
+    }
     
-    /// A view to display above the handle. Overrides any provided `popoverImage`.
-    public var popoverView: UIView?
+    /// A view to display in the handle. Overrides any previously set `accessoryImage`.
+    public var accessoryView: UIView? {
+        didSet {
+            oldValue?.removeFromSuperview()
+            if let accessoryView = accessoryView {
+                addAccessoryView(accessoryView)
+            }
+        }
+    }
+    
+    /// The amount an accessory view's frame should be inset by.
+    public var accessoryViewEdgeInsets: UIEdgeInsets = .zero {
+        didSet { setNeedsLayout() }
+    }
     
     public var borderWidth: CGFloat = 3.0 {
         didSet { setNeedsLayout() }
@@ -54,6 +72,7 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
     public override func layoutSubviews() {
         super.layoutSubviews()
         layoutHandleShape()
+        layoutAccessoryViewIfNeeded()
         updateShadowIfNeeded()
         
         layer.masksToBounds = false
@@ -97,5 +116,22 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
         handleShape.fillColor = color.cgColor
         handleShape.strokeColor = borderColor.cgColor
         handleShape.lineWidth = borderWidth
+    }
+    
+    internal func layoutAccessoryViewIfNeeded() {
+        if let accessoryLayer = accessoryView?.layer {
+            let width = bounds.width - borderWidth * 2
+            let size = CGSize(width: width - (accessoryViewEdgeInsets.left + accessoryViewEdgeInsets.right),
+                              height: width - (accessoryViewEdgeInsets.top + accessoryViewEdgeInsets.bottom))
+            accessoryLayer.frame = CGRect(origin: CGPoint(x: (borderWidth / 2) + accessoryViewEdgeInsets.left, y: (borderWidth / 2) + accessoryViewEdgeInsets.top), size: size)
+            
+            accessoryLayer.cornerRadius = size.height / 2
+            accessoryLayer.masksToBounds = true
+        }
+    }
+    
+    internal func addAccessoryView(_ view: UIView) {
+        let accessoryLayer = view.layer
+        handleShape.addSublayer(accessoryLayer)
     }
 }
