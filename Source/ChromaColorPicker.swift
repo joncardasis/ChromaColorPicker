@@ -98,20 +98,11 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         brightnessSlider = slider
     }
     
-    // MARK: - Private
-    internal let colorWheelView = ColorWheelView()
-    
-    internal func commonInit() {
-        self.backgroundColor = UIColor.clear
-        self.layer.masksToBounds = false
-        setupColorWheelView()
-    }
-    
     // MARK: - Control
     
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
-
+        
         for handle in handles {
             if extendedHitFrame(for: handle).contains(location) {
                 currentHandle = handle
@@ -122,7 +113,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         }
         return false
     }
-
+    
     public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         var location = touch.location(in: colorWheelView)
         guard let handle = currentHandle else { return false }
@@ -134,7 +125,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
             let angleToCenter = atan2(location.x - center.x, location.y - center.y)
             let positionOnColorWheelEdge = CGPoint(x: center.x + radius * sin(angleToCenter),
                                                    y: center.y + radius * cos(angleToCenter))
-            print("pos: \(positionOnColorWheelEdge)")
+            //print("pos: \(positionOnColorWheelEdge)")
             location = positionOnColorWheelEdge
         }
         
@@ -154,7 +145,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         
         return true
     }
-
+    
     public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         if let handle = currentHandle {
             animateHandleScale(handle, shouldGrow: false)
@@ -164,10 +155,19 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         // Self should handle all touch events, forwarding if needed.
-        return self
+        let touchableBounds = bounds.insetBy(dx: -handleSize.width, dy: -handleSize.height)
+        return touchableBounds.contains(point) ? self : super.hitTest(point, with: event)
     }
 
-    // MARK: Setup & Layout
+    // MARK: - Private
+    
+    internal let colorWheelView = ColorWheelView()
+    
+    internal func commonInit() {
+        self.backgroundColor = UIColor.clear
+        self.layer.masksToBounds = false
+        setupColorWheelView()
+    }
     
     internal func setupColorWheelView() {
         colorWheelView.translatesAutoresizingMaskIntoConstraints = false
@@ -189,8 +189,8 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     }
     
     internal func updateBorderIfNeeded() {
-        colorWheelView.layer.borderColor = borderColor.cgColor
         colorWheelView.layer.borderWidth = borderWidth
+        colorWheelView.layer.borderColor = borderColor.cgColor
     }
     
     // MARK: Actions

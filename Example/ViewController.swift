@@ -59,6 +59,8 @@ class ViewController: UIViewController {
     private func setupColorPickerHandles() {
         colorPicker.addHandle(at: .blue)
         colorPicker.borderWidth = 0
+        
+        colorPicker.addHandle(at: .red)
     }
 }
 
