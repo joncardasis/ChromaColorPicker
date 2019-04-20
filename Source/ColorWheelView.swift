@@ -27,7 +27,7 @@ public class ColorWheelView: UIView {
         
         let minDimensionSize = min(bounds.width, bounds.height)
         if let colorWheelImage = makeColorWheelImage(radius: minDimensionSize) {
-            imageView.image = UIImage(ciImage: colorWheelImage)
+            imageView.image = UIImage(ciImage: colorWheelImage, scale: UIScreen.main.scale, orientation: .up)
         }
     }
     
@@ -58,6 +58,14 @@ public class ColorWheelView: UIView {
     */
     public func pixelColor(at point: CGPoint) -> UIColor? {
         guard pointIsInColorWheel(point) else { return nil }
+        
+        // Values on the edge of the circle should be calculated instead of obtained
+        // from the rendered view layer. This ensures we obtain correct values where
+        // image smoothing may have taken place.
+        guard !pointIsOnColorWheelEdge(point) else {
+            let angleToCenter = atan2(point.x - center.x, point.y - center.y)
+            return edgeColor(for: angleToCenter)
+        }
         
         let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -98,6 +106,12 @@ public class ColorWheelView: UIView {
         return pointExistsInRadius
     }
     
+    public func pointIsOnColorWheelEdge(_ point: CGPoint) -> Bool {
+        let distanceToCenter = hypot(center.x - point.x, center.y - point.y)
+        let isPointOnEdge = distanceToCenter >= radius - 1.0
+        return isPointOnEdge
+    }
+    
     // MARK: - Private
     internal let imageView = UIImageView()
     
@@ -134,5 +148,18 @@ public class ColorWheelView: UIView {
             "inputValue": 1
         ])
         return filter?.outputImage
+    }
+    
+    /**
+     Returns a color for a provided radian angle on the color wheel.
+     - Note: Adjusts angle for the local color space and returns a color of
+             max saturation and brightness with variable hue.
+    */
+    internal func edgeColor(for angle: CGFloat) -> UIColor {
+        var normalizedAngle = angle + .pi // normalize to [0, 2pi]
+        normalizedAngle += (.pi / 2) // rotate pi/2 for color wheel
+        var hue = normalizedAngle / (2 * .pi)
+        if hue > 1 { hue -= 1 }
+        return UIColor(hue: hue, saturation: 1, brightness: 1.0, alpha: 1.0)
     }
 }
