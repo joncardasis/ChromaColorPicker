@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.author    = "Jonathan Cardasis"
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/joncardasis/ChromaColorPicker.git", :tag => "#{s.version}" }
-  s.source_files  = "Source/*.swift"
+  s.source_files  = "Source/**/*.swift"
 
 end

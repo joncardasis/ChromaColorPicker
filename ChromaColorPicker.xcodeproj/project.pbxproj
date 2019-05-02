@@ -78,12 +78,6 @@
 		FC1BD8BD2207D7B700817AF3 /* ChromaColorPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChromaColorPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPickerTests.swift; sourceTree = "<group>"; };
 		FC1BD8C12207D7B700817AF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC1BD8C82207FCE100817AF3 /* ChromaHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaHandle.swift; sourceTree = "<group>"; };
-		FC1BD8C92207FCE100817AF3 /* ChromaShadeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaShadeSlider.swift; sourceTree = "<group>"; };
-		FC1BD8CA2207FCE100817AF3 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaColorPicker.swift; sourceTree = "<group>"; };
-		FC1BD8CB2207FCE100817AF3 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
-		FC1BD8CC2207FCE100817AF3 /* ChromaAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaAddButton.swift; sourceTree = "<group>"; };
-		FC1BD8CD2207FCE100817AF3 /* ColorModeToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModeToggleButton.swift; sourceTree = "<group>"; };
 		FC4387C52262556600F739F1 /* ChromaBrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaBrightnessSlider.swift; sourceTree = "<group>"; };
 		FC4387C822625C7000F739F1 /* SliderTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackView.swift; sourceTree = "<group>"; };
 		FC4387CA22625DA800F739F1 /* SliderHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderHandleView.swift; sourceTree = "<group>"; };
@@ -132,7 +126,6 @@
 			children = (
 				FC4387C722625C5F00F739F1 /* Helpers */,
 				FCCA42A82260325F00BE2FF9 /* Extensions */,
-				FCCA427822601F8800BE2FF9 /* Legacy */,
 				3503B8311F2689BC00750356 /* ChromaColorPicker.h */,
 				3503B8321F2689BC00750356 /* Info.plist */,
 				FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */,
@@ -198,19 +191,6 @@
 				FC4387C822625C7000F739F1 /* SliderTrackView.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		FCCA427822601F8800BE2FF9 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				FC1BD8CC2207FCE100817AF3 /* ChromaAddButton.swift */,
-				FC1BD8CA2207FCE100817AF3 /* ChromaColorPicker.swift */,
-				FC1BD8C82207FCE100817AF3 /* ChromaHandle.swift */,
-				FC1BD8C92207FCE100817AF3 /* ChromaShadeSlider.swift */,
-				FC1BD8CD2207FCE100817AF3 /* ColorModeToggleButton.swift */,
-				FC1BD8CB2207FCE100817AF3 /* UIColor+Utilities.swift */,
-			);
-			path = Legacy;
 			sourceTree = "<group>";
 		};
 		FCCA42A82260325F00BE2FF9 /* Extensions */ = {

@@ -4,29 +4,28 @@ default_platform(:ios)
 
 platform :ios do
 
+  desc "Runs unit tests, publishing a new pod version if tests succeed."
+  lane :test_and_publish do
+    test
+    publish_pod
+  end
+
   desc "Publish podspec, incrementing the patch version."
   lane :publish_pod do
     publish_podspec
   end
 
-  desc "Runs unit tests. Installs pods if needed."
+  desc "Runs unit tests."
   lane :test do
     run_tests(scheme: "ChromaColorPickerTests")
-    publish_pod
   end
-
 end
-
-def app_unit_tests(options)
-  unit_tests(options)
-  generate_tests_coverage(options) if options[:code_coverage]
-end
-
 
 
 def publish_podspec
   podspec = ENV['PODSPEC']
-  version = bump_podspec_version(podspec)
+  version = version_bump_podspec(path: podspec, bump_type: "patch")
+  puts "HERE: #{version}"
   commit(podspec, 'Updated Podspec version.')
   push_to_git_remote(local_branch: git_branch)
   tag_build(version)
@@ -47,4 +46,16 @@ def tag_build(tag)
       prefix: 'dev' # TEMP: This is temporary only intended for use in the `develop` branch.
   )
   push_git_tags
+end
+
+def commit(path, message)
+  # Ensure we are on the correct branch before committing.
+  sh "git checkout #{git_branch}"
+  ensure_git_branch(branch: git_branch)
+
+  message = "Fastfile: #{message}"
+  #git_commit(
+  #    path: path,
+  #    message: message
+  #)
 end

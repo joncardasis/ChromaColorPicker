@@ -16,16 +16,21 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios pod_publish
+### ios test_and_publish
 ```
-fastlane ios pod_publish
+fastlane ios test_and_publish
+```
+Runs unit tests, publishing a new pod version if tests succeed.
+### ios publish_pod
+```
+fastlane ios publish_pod
 ```
 Publish podspec, incrementing the patch version.
 ### ios test
 ```
 fastlane ios test
 ```
-Runs unit tests. Installs pods if needed.
+Runs unit tests.
 
 ----
 
