@@ -25,9 +25,9 @@ public class ColorWheelView: UIView {
         layer.masksToBounds = false
         layer.cornerRadius = radius
         
-        let minDimensionSize = min(bounds.width, bounds.height)
-        if let colorWheelImage = makeColorWheelImage(radius: minDimensionSize) {
-            imageView.image = UIImage(ciImage: colorWheelImage, scale: UIScreen.main.scale, orientation: .up)
+        let screenScale: CGFloat = UIScreen.main.scale
+        if let colorWheelImage = makeColorWheelImage(radius: radius * screenScale) {
+            imageView.image = UIImage(ciImage: colorWheelImage, scale: screenScale, orientation: .up)
         }
     }
     
@@ -141,7 +141,7 @@ public class ColorWheelView: UIView {
      Generates a color wheel image from a given radius.
      - Parameters:
         - radius: The radius of the wheel in points. A radius of 100 would generate an
-                  image of 200x200 (400x400 pixels on a device with 2x scaling.)
+                  image of 200x200 points (400x400 pixels on a device with 2x scaling.)
     */
     internal func makeColorWheelImage(radius: CGFloat) -> CIImage? {
         let filter = CIFilter(name: "CIHueSaturationValueGradient", parameters: [

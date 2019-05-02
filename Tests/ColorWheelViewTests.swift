@@ -96,17 +96,16 @@ class ColorWheelViewTests: XCTestCase {
     }
     
     func testPixelColorShouldBeRedAtMaxXMidY() {
-        // Given, When
+        // Given
         let size = subject.frame.size
-        // Note: Due to the wheel being HUE, any angle will share the same value, therefore
-        // we can safely inset the width to compensate for any color smoothing at the edges.
-        let testPoint = CGPoint(x: size.width - 25, y: size.height / 2.0)
+        let testPoint = CGPoint(x: size.width, y: size.height / 2.0)
         let (expectedRedValue, _, _) = UIColor.red.rgbValues
         
         let vc = UIViewController()
         vc.view.addSubview(subject)
         vc.beginAppearanceTransition(true, animated: false)
         vc.endAppearanceTransition()
+        subject.layoutSubviews()
         
         // When
         let (actualRedValue, _, _) = subject.pixelColor(at: testPoint)!.rgbValues
@@ -115,8 +114,29 @@ class ColorWheelViewTests: XCTestCase {
         XCTAssertEqual(actualRedValue, expectedRedValue, accuracy: 0.001)
     }
     
+    func testPixelColorShouldBeCyanAtMinXMidY() {
+        // Given
+        let size = subject.frame.size
+        let testPoint = CGPoint(x: 0, y: size.height / 2.0)
+        let expectedColorValues = UIColor.cyan.rgbValues
+        
+        let vc = UIViewController()
+        vc.view.addSubview(subject)
+        vc.beginAppearanceTransition(true, animated: false)
+        vc.endAppearanceTransition()
+        subject.layoutSubviews()
+        
+        // When
+        let actualColorValues = subject.pixelColor(at: testPoint)!.rgbValues
+        
+        // Then
+        XCTAssertEqual(actualColorValues.red, expectedColorValues.red, accuracy: 0.005)
+        XCTAssertEqual(actualColorValues.green, expectedColorValues.green, accuracy: 0.005)
+        XCTAssertEqual(actualColorValues.blue, expectedColorValues.blue, accuracy: 0.005)
+    }
+    
     func testPixelColorShouldBeWhiteAtTheCenter() {
-        // Given, When
+        // Given
         let size = subject.frame.size
         let testPoint = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
         let expectedColorValues = UIColor.white.rgbValues
@@ -125,6 +145,7 @@ class ColorWheelViewTests: XCTestCase {
         vc.view.addSubview(subject)
         vc.beginAppearanceTransition(true, animated: false)
         vc.endAppearanceTransition()
+        subject.layoutSubviews()
         
         // When
         let actualColorValues = subject.pixelColor(at: testPoint)!.rgbValues
