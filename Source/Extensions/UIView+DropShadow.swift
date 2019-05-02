@@ -1,5 +1,5 @@
 //
-//  UIKit+DropShadow.swift
+//  UIView+DropShadow.swift
 //  ChromaColorPicker
 //
 //  Created by Jon Cardasis on 4/11/19.

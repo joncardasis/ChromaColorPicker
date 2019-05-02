@@ -55,13 +55,12 @@ class ColorWheelViewTests: XCTestCase {
     func testColorWheelImageIsGeneratedEveryLayoutCycle() {
         // Given
         let width: CGFloat = 200.0
-        let screenScalar: CGFloat = UIScreen.main.scale
-        let expectedFinalSize = CGSize(width: width * screenScalar, height: width * screenScalar)
+        let expectedFinalSize = CGSize(width: width, height: width)
         
         // When
         subject.layoutSubviews()
         let firstImage = subject.imageView.image!
-        subject.frame = CGRect(x: 0, y: 0, width: width, height: width * 2.0)
+        subject.frame = CGRect(x: 0, y: 0, width: width, height: width)
         subject.layoutSubviews()
         let secondImage = subject.imageView.image!
         

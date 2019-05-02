@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         brightnessSlider.connect(to: colorPicker)
         
         // Style
-        brightnessSlider.trackColor = UIColor.red
+        brightnessSlider.trackColor = UIColor.blue
         brightnessSlider.handle.borderWidth = 3.0 // Example of customizing the handle's properties.
         
         // Layout
@@ -57,24 +57,29 @@ class ViewController: UIViewController {
     }
     
     private func setupColorPickerHandles() {
-        let homeHandle = colorPicker.addHandle(at: .black)
+        addHomeHandle()
+        
+        let peachColor = UIColor(red: 1, green: 203 / 255, blue: 164 / 255, alpha: 1)
+        colorPicker.addHandle(at: peachColor)
+    }
+    
+    private func addHomeHandle() {
+        let homeHandle = colorPicker.addHandle(at: .blue)
         
         // Setup custom handle view with insets
         let customImageView = UIImageView(image: #imageLiteral(resourceName: "home").withRenderingMode(.alwaysTemplate))
         customImageView.contentMode = .scaleAspectFit
         customImageView.tintColor = .white
         homeHandle.accessoryView = customImageView
-        homeHandle.accessoryViewEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 2, right: 2)
-        
-        colorPicker.addHandle(at: .red)
+        homeHandle.accessoryViewEdgeInsets = UIEdgeInsets(top: 2, left: 4, bottom: 4, right: 4)
     }
 }
 
 extension ViewController: ChromaColorPickerDelegate {
-    
-    func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
+    func colorPickerHandleDidChange(_ colorPicker: ChromaColorPicker, handle: ChromaColorHandle, to color: UIColor) {
         colorDisplayView.backgroundColor = color
     }
+    
 }
 
 

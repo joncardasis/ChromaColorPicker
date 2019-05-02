@@ -16,10 +16,6 @@ class ChromaColorPickerTests: XCTestCase {
         subject = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
     }
     
-    func testTapGestureRecognizerIsAddedToColorWheelOnInitialization() {
-        XCTAssertEqual(subject.colorWheelView.gestureRecognizers?.count, 1)
-    }
-    
     func testConnectingSliderAddsEventTarget() {
         // Given
         let slider = ChromaBrightnessSlider(frame: .zero)

@@ -10,8 +10,8 @@ import UIKit
 import Accelerate
 
 public protocol ChromaColorPickerDelegate: class {
-    /// When the control has changed
-    func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor)
+    /// When a handle's value has changed.
+    func colorPickerHandleDidChange(_ colorPicker: ChromaColorPicker, handle: ChromaColorHandle, to color: UIColor)
 }
 
 
@@ -91,6 +91,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     public func addHandle(_ handle: ChromaColorHandle) {
         handles.append(handle)
         colorWheelView.addSubview(handle)
+        brightnessSlider?.trackColor = handle.color
     }
     
     public func connect(_ slider: ChromaBrightnessSlider) {
@@ -214,8 +215,8 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         informDelegateOfColorChange(on: currentHandle)
     }
     
-    internal func informDelegateOfColorChange(on handle: ChromaColorHandle) {
-        delegate?.colorPickerDidChooseColor(self, color: handle.color)
+    internal func informDelegateOfColorChange(on handle: ChromaColorHandle) { // TEMP:
+        delegate?.colorPickerHandleDidChange(self, handle: handle, to: handle.color)
     }
     
     // MARK: - Helpers
@@ -247,4 +248,4 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
 }
 
 internal let defaultHandleColorPosition: UIColor = .white
-internal let defaultHandleSize: CGSize = CGSize(width: 34, height: 42)
+internal let defaultHandleSize: CGSize = CGSize(width: 42, height: 52)
