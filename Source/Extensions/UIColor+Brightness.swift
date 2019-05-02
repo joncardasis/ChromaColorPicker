@@ -11,7 +11,7 @@ import UIKit
 internal extension UIColor {
     
     /// Returns a color with the specified brightness component.
-    internal func withBrightness(_ value: CGFloat) -> UIColor {
+    func withBrightness(_ value: CGFloat) -> UIColor {
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var alpha: CGFloat = 0
@@ -22,7 +22,7 @@ internal extension UIColor {
     }
     
     /// The value of the brightness component.
-    internal var brightness: CGFloat {
+    var brightness: CGFloat {
         var brightness: CGFloat = 0
         getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
         return brightness

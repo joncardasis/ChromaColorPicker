@@ -155,15 +155,4 @@ class ColorWheelViewTests: XCTestCase {
         XCTAssertEqual(actualColorValues.green, expectedColorValues.green, accuracy: 0.005)
         XCTAssertEqual(actualColorValues.blue, expectedColorValues.blue, accuracy: 0.005)
     }
-    
-}
-
-private extension UIColor {
-    var rgbValues: (red: CGFloat, green: CGFloat, blue: CGFloat) {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        getRed(&red, green: &green, blue: &blue, alpha: nil)
-        return (red, green, blue)
-    }
 }

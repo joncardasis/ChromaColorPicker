@@ -17,13 +17,13 @@ internal struct ShadowProperties {
 
 internal extension UIView {
     
-    internal var dropShadowProperties: ShadowProperties? {
+    var dropShadowProperties: ShadowProperties? {
         guard let shadowColor = layer.shadowColor else { return nil }
         return ShadowProperties(color: shadowColor, opacity: layer.shadowOpacity, offset: layer.shadowOffset, radius: layer.shadowRadius)
     }
     
-    internal func applyDropShadow(color: UIColor, opacity: Float, offset: CGSize, radius: CGFloat) {
-        self.clipsToBounds = false
+    func applyDropShadow(color: UIColor, opacity: Float, offset: CGSize, radius: CGFloat) {
+        clipsToBounds = false
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
@@ -34,11 +34,11 @@ internal extension UIView {
         layer.rasterizationScale = UIScreen.main.scale
     }
     
-    internal func applyDropShadow(_ properties: ShadowProperties) {
+    func applyDropShadow(_ properties: ShadowProperties) {
         applyDropShadow(color: UIColor(cgColor: properties.color), opacity: properties.opacity, offset: properties.offset, radius: properties.radius)
     }
     
-    internal func removeDropShadow() {
+    func removeDropShadow() {
         layer.shadowColor = nil
         layer.shadowOpacity = 0
     }
