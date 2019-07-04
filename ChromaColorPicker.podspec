@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ChromaColorPicker"
-  s.version      = "1.7.2"
+  s.version      = "1.8.0"
   s.summary      = "An intuitive iOS color picker built in Swift."
 
   s.description  = <<-DESC
@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/joncardasis/ChromaColorPicker"
   s.license      = { :type => "MIT", :file => "LICENSE" }
+  s.swift_version = "5.0"
   s.author    = "Jonathan Cardasis"
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/joncardasis/ChromaColorPicker.git", :tag => "#{s.version}" }
