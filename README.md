@@ -1,5 +1,5 @@
 # ChromaColorPicker :art:
-![Supported Version](https://img.shields.io/badge/Swift-4.2-yellow.svg)
+![Supported Version](https://img.shields.io/badge/Swift-5.0-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgray.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Carthage](https://img.shields.io/badge/Carthage-✔-green.svg)
