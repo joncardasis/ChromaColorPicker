@@ -153,52 +153,42 @@ class ChromaColorPickerTests: XCTestCase {
         setCurrentHandle(to: makeFakeHandle())
         let fakeTouch = FakeUITouch(locationInParent: CGPoint(x: subject.colorWheelView.bounds.midX,
                                                               y: subject.colorWheelView.bounds.midY))
-        let eventReceiver = FakeEventReceiver()
+        let eventReceiver = FakeEventReceiver(listensFor: .valueChanged)
         subject.addTarget(eventReceiver, action: #selector(FakeEventReceiver.catchEvent), for: .valueChanged)
         
-        let expectation = XCTestExpectation(description: "event fired")
-        
-        eventReceiver.eventCaught = { event in
-            if event == .valueChanged {
-                expectation.fulfill()
-            } else {
-               XCTFail()
-            }
+        var eventDidTrigger = false
+        eventReceiver.eventCaught = {
+            eventDidTrigger = true
         }
         
         // When
         let _ = subject.continueTracking(fakeTouch, with: nil)
 
         // Then
-        wait(for: [expectation], timeout: 0.05)
+        XCTAssertTrue(eventDidTrigger)
     }
     
     
-    func testEndTrackingSendsEditingDidEndAction() {
+    func testEndTrackingSendsTouchUpInsideAction() {
         subject.colorWheelView.layoutIfNeeded()
         
         // Given
         setCurrentHandle(to: makeFakeHandle())
         let fakeTouch = FakeUITouch(locationInParent: CGPoint(x: subject.colorWheelView.bounds.midX,
                                                               y: subject.colorWheelView.bounds.midY))
-        let eventReceiver = FakeEventReceiver()
-        subject.addTarget(eventReceiver, action: #selector(FakeEventReceiver.catchEvent), for: .editingDidEnd)
+        let eventReceiver = FakeEventReceiver(listensFor: .touchUpInside)
+        subject.addTarget(eventReceiver, action: #selector(FakeEventReceiver.catchEvent), for: .touchUpInside)
         
-        let expectation = XCTestExpectation(description: "event fired")
-        
-        eventReceiver.eventCaught = { event in
-            if event == .valueChanged {
-                expectation.fulfill()
-            } else {
-                XCTFail()
-            }
+        var eventDidTrigger = false
+        eventReceiver.eventCaught = {
+            eventDidTrigger = true
         }
         
         // When
         let _ = subject.endTracking(fakeTouch, with: nil)
         
         // Then
-        wait(for: [expectation], timeout: 0.05)
+       XCTAssertTrue(eventDidTrigger)
     }
 }
 
@@ -214,27 +204,5 @@ extension ChromaColorPickerTests {
         subject.addHandle(handle)
         let fakeTouch = FakeUITouch(locationInParent: handle.frame.origin)
         let _ = subject.beginTracking(fakeTouch, with: nil)
-    }
-}
-
-
-private class FakeUITouch: UITouch {
-    
-    let locationInParent: CGPoint
-    
-    init(locationInParent: CGPoint) {
-        self.locationInParent = locationInParent
-    }
-    
-    override func location(in view: UIView?) -> CGPoint {
-        return locationInParent
-    }
-}
-
-private class FakeEventReceiver: NSObject {
-    var eventCaught: ((UIControl.Event) -> ())?
-    
-    @objc func catchEvent() {
-        eventCaught?(.valueChanged)
     }
 }

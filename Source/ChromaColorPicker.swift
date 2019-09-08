@@ -21,15 +21,15 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     public weak var delegate: ChromaColorPickerDelegate?
     
     @IBInspectable public var borderWidth: CGFloat = 6.0 {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     @IBInspectable public var borderColor: UIColor = .white {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     @IBInspectable public var showsShadow: Bool = true {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     /// A brightness slider attached via the `connect(_:)` method.
@@ -41,7 +41,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     /// The size handles should be displayed at.
     public var handleSize: CGSize = defaultHandleSize {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     /// An extension to handles' hitboxes in the +Y direction.
@@ -156,7 +156,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         if let handle = currentHandle {
             animateHandleScale(handle, shouldGrow: false)
         }
-        sendActions(for: .editingDidEnd)
+        sendActions(for: .touchUpInside)
     }
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

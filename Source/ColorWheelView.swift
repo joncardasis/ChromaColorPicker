@@ -60,6 +60,7 @@ public class ColorWheelView: UIView {
      Returns the color on the wheel on a given point relative to the view. nil is returned if
      the point does not exist within the bounds of the color wheel.
     */
+    // TODO: replace this function with a mathmatically based one in ChromaColorPicker
     public func pixelColor(at point: CGPoint) -> UIColor? {
         guard pointIsInColorWheel(point) else { return nil }
         

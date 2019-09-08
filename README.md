@@ -78,17 +78,18 @@ addTarget(self, action: #selector(sliderDidValueChange(_:)), for: .valueChanged)
 _ChromaColorPicker_
 | Event              | Description  |
 | :-----------------:|:-------------|
-| `.touchDown`       | Called when a handle is first grabbed. |
-| `.touchUpInside`   | Called when a handle is let go. |
+| `.touchDown`(no)       | Called when a handle is first grabbed. |
+| `.touchUpInside`(no)   | Called when a handle is let go. |
 | `.valueChanged`    | Called whenever the color has changed. |
-| `.touchDragInside` | Called when a handle has moved via a drag action. |
-| `.editingDidEnd`   | Called when either a handle is let go or slider is let go. |
+| `.touchDragInside`(no) | Called when a handle has moved via a drag action. |
+| `.touchUpInside`   | Called when a handle is released. |
 
 _ChromaBrightnessSlider_
 | Event              | Description  |
 | :-----------------:|:-------------|
+| `.touchDown`       | Called when a the slider is grabbed. |
 | `.valueChanged`    | Called whenever the slider is moved and the value has changed. |
-| `.editingDidEnd`   | Called when the slider handle is released. |
+| `.touchUpInside`   | Called when the slider handle is released. |
 
 ##### Example
 ```Swift

@@ -12,7 +12,7 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
     
     /// Current selected color of the handle.
     public var color: UIColor = .black {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     /// An image to display in the handle. Updates `accessoryView` to be a UIImageView.
@@ -36,19 +36,19 @@ public class ChromaColorHandle: UIView, ChromaControlStylable {
     
     /// The amount an accessory view's frame should be inset by.
     public var accessoryViewEdgeInsets: UIEdgeInsets = .zero {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     public var borderWidth: CGFloat = 3.0 {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     public var borderColor: UIColor = .white {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     public var showsShadow: Bool = true {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     // MARK: - Initialization

@@ -15,11 +15,11 @@ public class SliderHandleView: UIView {
     }
     
     public var borderWidth: CGFloat = 3.0 {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     public var borderColor: UIColor = .white {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     override public init(frame: CGRect) {
@@ -41,24 +41,18 @@ public class SliderHandleView: UIView {
     }
     
     // MARK: - Private
-    internal let handleLayer = CAShapeLayer()
+    private let handleLayer = CAShapeLayer()
     
-    internal struct CornerPoint {
-        let center: CGPoint
-        let startAngle: CGFloat
-        let endAngle: CGFloat
-    }
-    
-    internal func commonInit() {
+    private func commonInit() {
         layer.addSublayer(handleLayer)
         updateHandleColor(to: handleColor)
     }
     
-    internal func updateHandleColor(to color: UIColor) {
+    private func updateHandleColor(to color: UIColor) {
         handleLayer.fillColor = color.cgColor
     }
     
-    internal func makeRoundedTrianglePath(width: CGFloat, height: CGFloat, radius: CGFloat) -> CGPath {
+    private func makeRoundedTrianglePath(width: CGFloat, height: CGFloat, radius: CGFloat) -> CGPath {
         let point1 = CGPoint(x: -width / 2, y: height / 2)
         let point2 = CGPoint(x: 0, y: -height / 2)
         let point3 = CGPoint(x: width / 2, y: height / 2)

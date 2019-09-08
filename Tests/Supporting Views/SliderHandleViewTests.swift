@@ -30,7 +30,6 @@ class SliderHandleViewTests: XCTestCase {
         let layer = handleLayer(for: subject)
         let expectedColor: UIColor = .purple
         
-        
         // When
         subject.borderColor = expectedColor
         

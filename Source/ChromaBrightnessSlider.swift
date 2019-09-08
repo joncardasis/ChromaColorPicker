@@ -29,15 +29,15 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
     public let handle = SliderHandleView()
     
     public var borderWidth: CGFloat = 4.0 {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     public var borderColor: UIColor = .white {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     public var showsShadow: Bool = true {
-        didSet { layoutIfNeeded() }
+        didSet { layoutNow() }
     }
     
     //MARK: - Initialization
@@ -79,7 +79,11 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
     
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
-        return interactableBounds.contains(location)
+        let shouldBeginTracking = interactableBounds.contains(location)
+        if shouldBeginTracking {
+            sendActions(for: .touchDown)
+        }
+        return shouldBeginTracking
     }
     
     public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -87,13 +91,13 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
         let clampedPositionX: CGFloat = max(0, min(location.x, confiningTrackFrame.width))
         let value = clampedPositionX / confiningTrackFrame.width
         
-        updateControl(to: value)
+        currentValue = value
         sendActions(for: .valueChanged)
         return true
     }
     
     public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-        sendActions(for: .editingDidEnd)
+        sendActions(for: .touchUpInside)
     }
     
     public override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
@@ -101,47 +105,6 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
             return true
         }
         return super.point(inside: point, with: event)
-    }
-    
-    // MARK: - Private
-    internal let sliderTrackView = SliderTrackView()
-    
-    /// The amount of padding caused by visual stylings
-    internal var horizontalPadding: CGFloat {
-        return sliderTrackView.layer.cornerRadius / 2.0
-    }
-    
-    internal var confiningTrackFrame: CGRect {
-        return sliderTrackView.frame.insetBy(dx: horizontalPadding, dy: 0)
-    }
-    
-    internal var interactableBounds: CGRect {
-        let horizontalOffset = -(handle.bounds.width / 2) + horizontalPadding
-        return bounds.insetBy(dx: horizontalOffset, dy: 0)
-    }
-    
-    internal func commonInit() {
-        backgroundColor = .clear
-        setupSliderTrackView()
-        setupSliderHandleView()
-        updateTrackColor(to: trackColor)
-    }
-    
-    internal func setupSliderTrackView() {
-        sliderTrackView.isUserInteractionEnabled = false
-        sliderTrackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(sliderTrackView)
-        NSLayoutConstraint.activate([
-            sliderTrackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            sliderTrackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            sliderTrackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75),
-            sliderTrackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-        ])
-    }
-    
-    internal func setupSliderHandleView() {
-        handle.isUserInteractionEnabled = false
-        addSubview(handle)
     }
     
     internal func updateShadowIfNeeded() {
@@ -155,7 +118,48 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
         }
     }
     
-    internal func updateControl(to value: CGFloat) {
+    // MARK: - Private
+    private let sliderTrackView = SliderTrackView()
+    
+    /// The amount of padding caused by visual stylings
+    private var horizontalPadding: CGFloat {
+        return sliderTrackView.layer.cornerRadius / 2.0
+    }
+    
+    private var confiningTrackFrame: CGRect {
+        return sliderTrackView.frame.insetBy(dx: horizontalPadding, dy: 0)
+    }
+    
+    private var interactableBounds: CGRect {
+        let horizontalOffset = -(handle.bounds.width / 2) + horizontalPadding
+        return bounds.insetBy(dx: horizontalOffset, dy: 0)
+    }
+    
+    private func commonInit() {
+        backgroundColor = .clear
+        setupSliderTrackView()
+        setupSliderHandleView()
+        updateTrackColor(to: trackColor)
+    }
+    
+    private func setupSliderTrackView() {
+        sliderTrackView.isUserInteractionEnabled = false
+        sliderTrackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(sliderTrackView)
+        NSLayoutConstraint.activate([
+            sliderTrackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            sliderTrackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            sliderTrackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75),
+            sliderTrackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
+    }
+    
+    private func setupSliderHandleView() {
+        handle.isUserInteractionEnabled = false
+        addSubview(handle)
+    }
+    
+    private func updateControl(to value: CGFloat) {
         let brightness = 1 - max(0, min(1, value))
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
@@ -171,7 +175,7 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
         moveHandle(to: value)
     }
     
-    internal func updateTrackColor(to color: UIColor) {
+    private func updateTrackColor(to color: UIColor) {
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
@@ -183,14 +187,14 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
         currentValue = 1 - brightness
     }
     
-    internal func updateTrackViewGradient(for color: UIColor) {
+    private func updateTrackViewGradient(for color: UIColor) {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         sliderTrackView.gradientValues = (color, .black)
         CATransaction.commit()
     }
     
-    internal func moveHandle(to value: CGFloat) {
+    private func moveHandle(to value: CGFloat) {
         let clampedValue = max(0, min(1, value))
         let xPos = (clampedValue * confiningTrackFrame.width) + horizontalPadding
         let size = CGSize(width: bounds.height * 1.15, height: bounds.height)

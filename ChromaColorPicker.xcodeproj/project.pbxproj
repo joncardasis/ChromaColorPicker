@@ -23,6 +23,9 @@
 		FC4387CB22625DA800F739F1 /* SliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387CA22625DA800F739F1 /* SliderHandleView.swift */; };
 		FC4387CD2262B82600F739F1 /* ChromaControlStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387CC2262B82600F739F1 /* ChromaControlStylable.swift */; };
 		FC4387DE226974FD00F739F1 /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4387DC226972EB00F739F1 /* UIColor+Brightness.swift */; };
+		FC89B7E02325B07F00D007AB /* ChromaBrightnessSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89B7DF2325B07F00D007AB /* ChromaBrightnessSliderTests.swift */; };
+		FC89B7E22325B8B900D007AB /* FakeTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89B7E12325B8B900D007AB /* FakeTouch.swift */; };
+		FC89B7E42325C24F00D007AB /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89B7E32325C24F00D007AB /* UIView+Utils.swift */; };
 		FCCA42A5226022A800BE2FF9 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */; };
 		FCCA42A7226023F000BE2FF9 /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */; };
 		FCCA42AA2260329900BE2FF9 /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42A92260329900BE2FF9 /* UIView+DropShadow.swift */; };
@@ -30,7 +33,6 @@
 		FCE07C01227B4C8B00920217 /* UIColor+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C00227B4C8B00920217 /* UIColor+TestHelpers.swift */; };
 		FCE07C04227B4DB900920217 /* UIView+DropShadowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C03227B4DB900920217 /* UIView+DropShadowTests.swift */; };
 		FCE07C06227B525000920217 /* ChromaControlStylableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C05227B525000920217 /* ChromaControlStylableTests.swift */; };
-		FCE07C08228A0F5C00920217 /* SliderTrackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C07228A0F5C00920217 /* SliderTrackViewTests.swift */; };
 		FCE07C0A228A0F6800920217 /* SliderHandleViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C09228A0F6800920217 /* SliderHandleViewTests.swift */; };
 		FCE07C0C228A0F7500920217 /* ChromaColorHandleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C0B228A0F7500920217 /* ChromaColorHandleTests.swift */; };
 		FCEA4E272235AAA200C0A1B6 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */; };
@@ -93,6 +95,9 @@
 		FC4387CA22625DA800F739F1 /* SliderHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderHandleView.swift; sourceTree = "<group>"; };
 		FC4387CC2262B82600F739F1 /* ChromaControlStylable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaControlStylable.swift; sourceTree = "<group>"; };
 		FC4387DC226972EB00F739F1 /* UIColor+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Brightness.swift"; sourceTree = "<group>"; };
+		FC89B7DF2325B07F00D007AB /* ChromaBrightnessSliderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaBrightnessSliderTests.swift; sourceTree = "<group>"; };
+		FC89B7E12325B8B900D007AB /* FakeTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTouch.swift; sourceTree = "<group>"; };
+		FC89B7E32325C24F00D007AB /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		FCCA42A4226022A800BE2FF9 /* ColorWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelView.swift; sourceTree = "<group>"; };
 		FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorHandle.swift; sourceTree = "<group>"; };
 		FCCA42A92260329900BE2FF9 /* UIView+DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DropShadow.swift"; sourceTree = "<group>"; };
@@ -101,7 +106,6 @@
 		FCE07C00227B4C8B00920217 /* UIColor+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+TestHelpers.swift"; sourceTree = "<group>"; };
 		FCE07C03227B4DB900920217 /* UIView+DropShadowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DropShadowTests.swift"; sourceTree = "<group>"; };
 		FCE07C05227B525000920217 /* ChromaControlStylableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaControlStylableTests.swift; sourceTree = "<group>"; };
-		FCE07C07228A0F5C00920217 /* SliderTrackViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackViewTests.swift; sourceTree = "<group>"; };
 		FCE07C09228A0F6800920217 /* SliderHandleViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderHandleViewTests.swift; sourceTree = "<group>"; };
 		FCE07C0B228A0F7500920217 /* ChromaColorHandleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorHandleTests.swift; sourceTree = "<group>"; };
 		FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPicker.swift; sourceTree = "<group>"; };
@@ -137,7 +141,7 @@
 		3503B8301F2689BC00750356 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				FC4387C722625C5F00F739F1 /* Helpers */,
+				FC4387C722625C5F00F739F1 /* Supporting Views */,
 				FCCA42A82260325F00BE2FF9 /* Extensions */,
 				3503B8311F2689BC00750356 /* ChromaColorPicker.h */,
 				3503B8321F2689BC00750356 /* Info.plist */,
@@ -186,9 +190,10 @@
 			isa = PBXGroup;
 			children = (
 				FCE07BFF227B4C7A00920217 /* TestHelpers */,
-				FCE07C02227B4D9500920217 /* Helpers */,
+				FCE07C02227B4D9500920217 /* Supporting Views */,
 				FCCA42AD226038BD00BE2FF9 /* Extensions */,
 				FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerTests.swift */,
+				FC89B7DF2325B07F00D007AB /* ChromaBrightnessSliderTests.swift */,
 				FCCA42AB226038A400BE2FF9 /* ColorWheelViewTests.swift */,
 				FCE07C05227B525000920217 /* ChromaControlStylableTests.swift */,
 				FC1BD8C12207D7B700817AF3 /* Info.plist */,
@@ -196,14 +201,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		FC4387C722625C5F00F739F1 /* Helpers */ = {
+		FC4387C722625C5F00F739F1 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
 				FCCA42A6226023F000BE2FF9 /* ChromaColorHandle.swift */,
 				FC4387CA22625DA800F739F1 /* SliderHandleView.swift */,
 				FC4387C822625C7000F739F1 /* SliderTrackView.swift */,
 			);
-			path = Helpers;
+			path = "Supporting Views";
 			sourceTree = "<group>";
 		};
 		FCCA42A82260325F00BE2FF9 /* Extensions */ = {
@@ -211,6 +216,7 @@
 			children = (
 				FC4387DC226972EB00F739F1 /* UIColor+Brightness.swift */,
 				FCCA42A92260329900BE2FF9 /* UIView+DropShadow.swift */,
+				FC89B7E32325C24F00D007AB /* UIView+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -228,18 +234,18 @@
 			isa = PBXGroup;
 			children = (
 				FCE07C00227B4C8B00920217 /* UIColor+TestHelpers.swift */,
+				FC89B7E12325B8B900D007AB /* FakeTouch.swift */,
 			);
 			path = TestHelpers;
 			sourceTree = "<group>";
 		};
-		FCE07C02227B4D9500920217 /* Helpers */ = {
+		FCE07C02227B4D9500920217 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
 				FCE07C0B228A0F7500920217 /* ChromaColorHandleTests.swift */,
 				FCE07C09228A0F6800920217 /* SliderHandleViewTests.swift */,
-				FCE07C07228A0F5C00920217 /* SliderTrackViewTests.swift */,
 			);
-			path = Helpers;
+			path = "Supporting Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +401,7 @@
 			files = (
 				FCEA4E272235AAA200C0A1B6 /* ChromaColorPicker.swift in Sources */,
 				FC4387CD2262B82600F739F1 /* ChromaControlStylable.swift in Sources */,
+				FC89B7E42325C24F00D007AB /* UIView+Utils.swift in Sources */,
 				FCCA42AA2260329900BE2FF9 /* UIView+DropShadow.swift in Sources */,
 				FC4387DE226974FD00F739F1 /* UIColor+Brightness.swift in Sources */,
 				FC4387C62262556600F739F1 /* ChromaBrightnessSlider.swift in Sources */,
@@ -419,11 +426,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE07C06227B525000920217 /* ChromaControlStylableTests.swift in Sources */,
+				FC89B7E02325B07F00D007AB /* ChromaBrightnessSliderTests.swift in Sources */,
+				FC89B7E22325B8B900D007AB /* FakeTouch.swift in Sources */,
 				FCE07C0C228A0F7500920217 /* ChromaColorHandleTests.swift in Sources */,
 				FC1BD8C02207D7B700817AF3 /* ChromaColorPickerTests.swift in Sources */,
 				FCE07BFE227B4A8100920217 /* UIColor+BrightnessTests.swift in Sources */,
 				FCE07C0A228A0F6800920217 /* SliderHandleViewTests.swift in Sources */,
-				FCE07C08228A0F5C00920217 /* SliderTrackViewTests.swift in Sources */,
 				FC4387C422603AE900F739F1 /* ColorWheelViewTests.swift in Sources */,
 				FCE07C01227B4C8B00920217 /* UIColor+TestHelpers.swift in Sources */,
 				FCE07C04227B4DB900920217 /* UIView+DropShadowTests.swift in Sources */,
