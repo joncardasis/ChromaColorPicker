@@ -27,22 +27,7 @@ let brightnessSlider = ChromaBrightnessSlider(frame: CGRect(x: 0, y: 0, width: 2
 addSubview(brightnessSlider)
 
 colorPicker.connect(brightnessSlider) // or `brightnessSlider.connect(to: colorPicker)`
-
 ```
-
-
-## Installation
-### Carthage
-```bash
-github "joncardasis/ChromaColorPicker"
-```
-
-### Cocoapods
-```bash
-pod 'ChromaColorPicker'
-```
-### Manually
-Add all files from the `Source` folder to your project.
 
 ## Usage
 ### Multiple Handles
@@ -57,6 +42,21 @@ Add all files from the `Source` folder to your project.
 {TODO}
 ```
 
+### Supported UIControlEvents
+
+## Installation
+### Carthage
+```bash
+github "joncardasis/ChromaColorPicker"
+```
+
+### Cocoapods
+```bash
+pod 'ChromaColorPicker'
+```
+### Manually
+Add all files from the `Source` folder to your project.
+
 ## Components
 ### ChromaColorPicker
 An HSB color picker with support for adding multiple color selection handles.
@@ -65,6 +65,17 @@ An HSB color picker with support for adding multiple color selection handles.
 [ChromaBrightnessSlider]() is a slider UIControl which can be attached to any `ChromaColorPicker` via the `connect(to:)` method. ChromaBrightnessSlider can also function as a stand-alone UIControl.
 
 ### Supported UIControlEvents
+You can observe on the following UIControlEvents via `UIControl`'s `addTarget` method:
+
+```Swift
+addTarget(self, action: #selector(sliderDidValueChange(_:)), for: .valueChanged)
+
+@objc func sliderDidValueChange(_ slider: ChromaBrightnessSlider) {
+  print("new color: \(slider.currentColor)")
+}
+```
+
+_ChromaColorPicker_
 | Event              | Description  |
 | :-----------------:|:-------------|
 | `.touchDown`       | Called when a handle is first grabbed. |
@@ -72,6 +83,12 @@ An HSB color picker with support for adding multiple color selection handles.
 | `.valueChanged`    | Called whenever the color has changed. |
 | `.touchDragInside` | Called when a handle has moved via a drag action. |
 | `.editingDidEnd`   | Called when either a handle is let go or slider is let go. |
+
+_ChromaBrightnessSlider_
+| Event              | Description  |
+| :-----------------:|:-------------|
+| `.valueChanged`    | Called whenever the slider is moved and the value has changed. |
+| `.editingDidEnd`   | Called when the slider handle is released. |
 
 ##### Example
 ```Swift

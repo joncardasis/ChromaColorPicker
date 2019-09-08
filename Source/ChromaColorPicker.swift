@@ -21,15 +21,15 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     public weak var delegate: ChromaColorPickerDelegate?
     
     @IBInspectable public var borderWidth: CGFloat = 6.0 {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     @IBInspectable public var borderColor: UIColor = .white {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     @IBInspectable public var showsShadow: Bool = true {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     /// A brightness slider attached via the `connect(_:)` method.
@@ -41,7 +41,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     /// The size handles should be displayed at.
     public var handleSize: CGSize = defaultHandleSize {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     /// An extension to handles' hitboxes in the +Y direction.

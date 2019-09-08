@@ -15,11 +15,11 @@ public class SliderHandleView: UIView {
     }
     
     public var borderWidth: CGFloat = 3.0 {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     public var borderColor: UIColor = .white {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     override public init(frame: CGRect) {

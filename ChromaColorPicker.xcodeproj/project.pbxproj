@@ -30,6 +30,9 @@
 		FCE07C01227B4C8B00920217 /* UIColor+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C00227B4C8B00920217 /* UIColor+TestHelpers.swift */; };
 		FCE07C04227B4DB900920217 /* UIView+DropShadowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C03227B4DB900920217 /* UIView+DropShadowTests.swift */; };
 		FCE07C06227B525000920217 /* ChromaControlStylableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C05227B525000920217 /* ChromaControlStylableTests.swift */; };
+		FCE07C08228A0F5C00920217 /* SliderTrackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C07228A0F5C00920217 /* SliderTrackViewTests.swift */; };
+		FCE07C0A228A0F6800920217 /* SliderHandleViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C09228A0F6800920217 /* SliderHandleViewTests.swift */; };
+		FCE07C0C228A0F7500920217 /* ChromaColorHandleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE07C0B228A0F7500920217 /* ChromaColorHandleTests.swift */; };
 		FCEA4E272235AAA200C0A1B6 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +50,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3503B82E1F2689BC00750356;
 			remoteInfo = ChromaColorPicker;
+		};
+		FC89B7DD2325706E00D007AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35C376C51D5CF5300069D7A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35C376CC1D5CF5300069D7A1;
+			remoteInfo = Example;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -91,6 +101,9 @@
 		FCE07C00227B4C8B00920217 /* UIColor+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+TestHelpers.swift"; sourceTree = "<group>"; };
 		FCE07C03227B4DB900920217 /* UIView+DropShadowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DropShadowTests.swift"; sourceTree = "<group>"; };
 		FCE07C05227B525000920217 /* ChromaControlStylableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaControlStylableTests.swift; sourceTree = "<group>"; };
+		FCE07C07228A0F5C00920217 /* SliderTrackViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackViewTests.swift; sourceTree = "<group>"; };
+		FCE07C09228A0F6800920217 /* SliderHandleViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderHandleViewTests.swift; sourceTree = "<group>"; };
+		FCE07C0B228A0F7500920217 /* ChromaColorHandleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorHandleTests.swift; sourceTree = "<group>"; };
 		FCEA4E262235AAA200C0A1B6 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +235,9 @@
 		FCE07C02227B4D9500920217 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FCE07C0B228A0F7500920217 /* ChromaColorHandleTests.swift */,
+				FCE07C09228A0F6800920217 /* SliderHandleViewTests.swift */,
+				FCE07C07228A0F5C00920217 /* SliderTrackViewTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -289,6 +305,7 @@
 			);
 			dependencies = (
 				FC1BD8C42207D7B700817AF3 /* PBXTargetDependency */,
+				FC89B7DE2325706E00D007AB /* PBXTargetDependency */,
 			);
 			name = ChromaColorPickerTests;
 			productName = ChromaColorPickerTests;
@@ -319,6 +336,7 @@
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = 9H97MWKJ22;
 						ProvisioningStyle = Automatic;
+						TestTargetID = 35C376CC1D5CF5300069D7A1;
 					};
 				};
 			};
@@ -401,8 +419,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE07C06227B525000920217 /* ChromaControlStylableTests.swift in Sources */,
+				FCE07C0C228A0F7500920217 /* ChromaColorHandleTests.swift in Sources */,
 				FC1BD8C02207D7B700817AF3 /* ChromaColorPickerTests.swift in Sources */,
 				FCE07BFE227B4A8100920217 /* UIColor+BrightnessTests.swift in Sources */,
+				FCE07C0A228A0F6800920217 /* SliderHandleViewTests.swift in Sources */,
+				FCE07C08228A0F5C00920217 /* SliderTrackViewTests.swift in Sources */,
 				FC4387C422603AE900F739F1 /* ColorWheelViewTests.swift in Sources */,
 				FCE07C01227B4C8B00920217 /* UIColor+TestHelpers.swift in Sources */,
 				FCE07C04227B4DB900920217 /* UIView+DropShadowTests.swift in Sources */,
@@ -421,6 +442,11 @@
 			isa = PBXTargetDependency;
 			target = 3503B82E1F2689BC00750356 /* ChromaColorPicker */;
 			targetProxy = FC1BD8C32207D7B700817AF3 /* PBXContainerItemProxy */;
+		};
+		FC89B7DE2325706E00D007AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35C376CC1D5CF5300069D7A1 /* Example */;
+			targetProxy = FC89B7DD2325706E00D007AB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -661,6 +687,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChromaColorPickerExample.app/ChromaColorPickerExample";
 			};
 			name = Debug;
 		};
@@ -685,6 +712,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChromaColorPickerExample.app/ChromaColorPickerExample";
 			};
 			name = Release;
 		};

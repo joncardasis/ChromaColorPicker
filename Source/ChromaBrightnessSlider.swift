@@ -29,15 +29,15 @@ public class ChromaBrightnessSlider: UIControl, ChromaControlStylable {
     public let handle = SliderHandleView()
     
     public var borderWidth: CGFloat = 4.0 {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     public var borderColor: UIColor = .white {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     public var showsShadow: Bool = true {
-        didSet { setNeedsLayout() }
+        didSet { layoutIfNeeded() }
     }
     
     //MARK: - Initialization
