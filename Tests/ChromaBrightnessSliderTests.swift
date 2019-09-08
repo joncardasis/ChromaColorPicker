@@ -93,6 +93,20 @@ class ChromaBrightnessSliderTests: XCTestCase {
         XCTAssertEqual(subject.handle.layer.shadowOpacity, 0)
     }
     
+    func testHandleIsRepositionedAccordingToCurrentValueOnLayout() {
+        // Given
+        let subject = ChromaBrightnessSlider(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
+        //subject.layoutIfNeeded()
+        let expectedPosition = subject.center
+        
+        // When
+        subject.currentValue = 0.5
+        subject.layoutIfNeeded()
+        
+        // Then
+        XCTAssertEqual(subject.handle.center, expectedPosition)
+    }
+    
     // MARK: - Convenience Functions
     
     func testConnectCallsConnectFunctionOfColorPicker() {
@@ -231,7 +245,23 @@ class ChromaBrightnessSliderTests: XCTestCase {
     }
     
     func testEndTrackingSendsTouchUpInsideAction() {
+        // Given
+        let subject = ChromaBrightnessSlider(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
+        subject.layoutIfNeeded()
+        let fakeTouch = FakeUITouch(locationInParent: CGPoint(x: 0, y: 0))
+        let eventReceiver = FakeEventReceiver(listensFor: .touchUpInside)
+        subject.addTarget(eventReceiver, action: #selector(FakeEventReceiver.catchEvent(_:)), for: .touchUpInside)
         
+        var eventDidTrigger = false
+        eventReceiver.eventCaught = {
+            eventDidTrigger = true
+        }
+        
+        // When
+        let _ = subject.endTracking(fakeTouch, with: nil)
+        
+        // Then
+        XCTAssertTrue(eventDidTrigger)
     }
 }
 
