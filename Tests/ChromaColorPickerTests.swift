@@ -190,6 +190,49 @@ class ChromaColorPickerTests: XCTestCase {
         // Then
        XCTAssertTrue(eventDidTrigger)
     }
+    
+    func testHitTestShouldReturnSelfWhenTouchIsWithinSelf() {
+        subject.colorWheelView.layoutIfNeeded()
+        
+        // Given
+        let touchLocation = subject.center
+        
+        // When
+        let hitView = subject.hitTest(touchLocation, with: UIEvent())
+        
+        // Then
+        XCTAssertEqual(hitView, subject)
+    }
+    
+    func testHitTestShouldReturnSelfWhenTouchIsWithinSelfPlusHandleRadius() {
+        subject.colorWheelView.layoutIfNeeded()
+        
+        // Given
+        let touchLocation = CGPoint(x: -subject.handleSize.width / 2.0, y: subject.center.y)
+        
+        // When
+        let hitView = subject.hitTest(touchLocation, with: UIEvent())
+        
+        // Then
+        XCTAssertEqual(hitView, subject)
+    }
+    
+    func testHitTestShouldReturnNilWhenTouchIsOutsideHitbox() {
+        subject.colorWheelView.layoutIfNeeded()
+        
+        // Given
+        let extendedSize: CGFloat = 12
+        subject.handleSize = CGSize(width: extendedSize, height: extendedSize)
+        let fakeHandle = makeFakeHandle()
+        let touchLocation = CGPoint(x: -extendedSize - 1, y: subject.center.y)
+        setCurrentHandle(to: fakeHandle)
+        
+        // When
+        let hitView = subject.hitTest(touchLocation, with: UIEvent())
+        
+        // Then
+        XCTAssertEqual(hitView, nil)
+    }
 }
 
 

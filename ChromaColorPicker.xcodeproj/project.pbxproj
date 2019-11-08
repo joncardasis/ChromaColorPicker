@@ -15,6 +15,8 @@
 		35C376D61D5CF5300069D7A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D41D5CF5300069D7A1 /* Main.storyboard */; };
 		35C376D81D5CF5300069D7A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D71D5CF5300069D7A1 /* Assets.xcassets */; };
 		35C376DB1D5CF5300069D7A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C376D91D5CF5300069D7A1 /* LaunchScreen.storyboard */; };
+		C83A935D23760C1600564E01 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A935C23760C1600564E01 /* UIColor+Utils.swift */; };
+		C83A936023760C5900564E01 /* UIColor+UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A935E23760C3800564E01 /* UIColor+UtilsTests.swift */; };
 		FC1BD8C02207D7B700817AF3 /* ChromaColorPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerTests.swift */; };
 		FC1BD8C22207D7B700817AF3 /* ChromaColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3503B82F1F2689BC00750356 /* ChromaColorPicker.framework */; };
 		FC4387C422603AE900F739F1 /* ColorWheelViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA42AB226038A400BE2FF9 /* ColorWheelViewTests.swift */; };
@@ -87,6 +89,8 @@
 		35C376D71D5CF5300069D7A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35C376DA1D5CF5300069D7A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35C376DC1D5CF5300069D7A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C83A935C23760C1600564E01 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
+		C83A935E23760C3800564E01 /* UIColor+UtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+UtilsTests.swift"; sourceTree = "<group>"; };
 		FC1BD8BD2207D7B700817AF3 /* ChromaColorPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChromaColorPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1BD8BF2207D7B700817AF3 /* ChromaColorPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaColorPickerTests.swift; sourceTree = "<group>"; };
 		FC1BD8C12207D7B700817AF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				FC4387DC226972EB00F739F1 /* UIColor+Brightness.swift */,
+				C83A935C23760C1600564E01 /* UIColor+Utils.swift */,
 				FCCA42A92260329900BE2FF9 /* UIView+DropShadow.swift */,
 				FC89B7E32325C24F00D007AB /* UIView+Utils.swift */,
 			);
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				FCE07BFD227B4A8100920217 /* UIColor+BrightnessTests.swift */,
+				C83A935E23760C3800564E01 /* UIColor+UtilsTests.swift */,
 				FCE07C03227B4DB900920217 /* UIView+DropShadowTests.swift */,
 			);
 			path = Extensions;
@@ -405,6 +411,7 @@
 				FCCA42AA2260329900BE2FF9 /* UIView+DropShadow.swift in Sources */,
 				FC4387DE226974FD00F739F1 /* UIColor+Brightness.swift in Sources */,
 				FC4387C62262556600F739F1 /* ChromaBrightnessSlider.swift in Sources */,
+				C83A935D23760C1600564E01 /* UIColor+Utils.swift in Sources */,
 				FCCA42A7226023F000BE2FF9 /* ChromaColorHandle.swift in Sources */,
 				FCCA42A5226022A800BE2FF9 /* ColorWheelView.swift in Sources */,
 				FC4387C922625C7000F739F1 /* SliderTrackView.swift in Sources */,
@@ -426,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE07C06227B525000920217 /* ChromaControlStylableTests.swift in Sources */,
+				C83A936023760C5900564E01 /* UIColor+UtilsTests.swift in Sources */,
 				FC89B7E02325B07F00D007AB /* ChromaBrightnessSliderTests.swift in Sources */,
 				FC89B7E22325B8B900D007AB /* FakeTouch.swift in Sources */,
 				FCE07C0C228A0F7500920217 /* ChromaColorHandleTests.swift in Sources */,

@@ -22,6 +22,13 @@ class ViewController: UIViewController {
         setupColorPickerHandles()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // MARK: - Private
+    private var homeHandle: ChromaColorHandle! // reference to home handle
+    
     private func setupColorPicker() {
         colorPicker.delegate = self
         colorPicker.translatesAutoresizingMaskIntoConstraints = false
@@ -57,14 +64,24 @@ class ViewController: UIViewController {
     }
     
     private func setupColorPickerHandles() {
+        // (Optional) Assign a custom handle size - all handles appear as the same size
+        // colorPicker.handleSize = CGSize(width: 48, height: 60)
+        
+        // 1. Add handle and then customize
         addHomeHandle()
         
+        // 2. Add a handle via a color
         let peachColor = UIColor(red: 1, green: 203 / 255, blue: 164 / 255, alpha: 1)
         colorPicker.addHandle(at: peachColor)
+        
+        // 3. Create a custom handle and add to picker
+        let customHandle = ChromaColorHandle()
+        customHandle.color = UIColor.purple
+        colorPicker.addHandle(customHandle)
     }
     
     private func addHomeHandle() {
-        let homeHandle = colorPicker.addHandle(at: .blue)
+        homeHandle = colorPicker.addHandle(at: .blue)
         
         // Setup custom handle view with insets
         let customImageView = UIImageView(image: #imageLiteral(resourceName: "home").withRenderingMode(.alwaysTemplate))
@@ -78,8 +95,18 @@ class ViewController: UIViewController {
 extension ViewController: ChromaColorPickerDelegate {
     func colorPickerHandleDidChange(_ colorPicker: ChromaColorPicker, handle: ChromaColorHandle, to color: UIColor) {
         colorDisplayView.backgroundColor = color
+        
+        // Here I can detect when the color is too bright to show a white icon
+        // on the handle and change its tintColor.
+        if handle === homeHandle, let imageView = homeHandle.accessoryView as? UIImageView {
+            let colorIsBright = color.isLight
+            print(color.lightness)
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                imageView.tintColor = colorIsBright ? .black : .white
+            }, completion: nil)
+        }
     }
-    
 }
 
 

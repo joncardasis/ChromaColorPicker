@@ -1,5 +1,5 @@
 //
-//  ChromaColorPicker2.swift
+//  ChromaColorPicker.swift
 //  ChromaColorPicker
 //
 //  Created by Jon Cardasis on 3/10/19.
@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Accelerate
 
 public protocol ChromaColorPickerDelegate: class {
     /// When a handle's value has changed.
@@ -41,7 +40,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     /// The size handles should be displayed at.
     public var handleSize: CGSize = defaultHandleSize {
-        didSet { layoutNow() }
+        didSet { setNeedsLayout() }
     }
     
     /// An extension to handles' hitboxes in the +Y direction.
