@@ -8,6 +8,10 @@
 
 import UIKit
 
+/// This value is used to expand the imageView's bounds and then mask back to its normal size
+/// such that any displayed image may have perfectly rounded corners.
+private let defaultImageViewCurveInset: CGFloat = 1.0
+
 public class ColorWheelView: UIView {
     
     public override init(frame: CGRect) {
@@ -26,11 +30,18 @@ public class ColorWheelView: UIView {
         layer.cornerRadius = radius
         
         let screenScale: CGFloat = UIScreen.main.scale
-        if let colorWheelImage = makeColorWheelImage(radius: radius * screenScale) {
+        if let colorWheelImage: CIImage = makeColorWheelImage(radius: radius * screenScale) {
             imageView.image = UIImage(ciImage: colorWheelImage, scale: screenScale, orientation: .up)
         }
+        
+        // Mask imageview so the generated colorwheel has smooth edges.
+        // We mask the imageview instead of image so we get the benefits of using the CIImage
+        // rendering directly on the GPU.
+        imageViewMask.frame = imageView.bounds.insetBy(dx: defaultImageViewCurveInset, dy: defaultImageViewCurveInset)
+        imageViewMask.layer.cornerRadius = imageViewMask.bounds.width / 2.0
+        imageView.mask = imageViewMask
     }
-    
+
     public var radius: CGFloat {
         return max(bounds.width, bounds.height) / 2.0
     }
@@ -119,6 +130,7 @@ public class ColorWheelView: UIView {
     
     // MARK: - Private
     internal let imageView = UIImageView()
+    internal let imageViewMask = UIView()
     
     internal func commonInit() {
         backgroundColor = .clear
@@ -127,14 +139,16 @@ public class ColorWheelView: UIView {
     
     internal func setupImageView() {
         imageView.contentMode = .scaleAspectFit
+        imageViewMask.backgroundColor = .black
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
+        
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageView.widthAnchor.constraint(equalTo: widthAnchor, constant: defaultImageViewCurveInset * 2),
+            imageView.heightAnchor.constraint(equalTo: heightAnchor, constant: defaultImageViewCurveInset * 2),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
     

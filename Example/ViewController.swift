@@ -100,7 +100,6 @@ extension ViewController: ChromaColorPickerDelegate {
         // on the handle and change its tintColor.
         if handle === homeHandle, let imageView = homeHandle.accessoryView as? UIImageView {
             let colorIsBright = color.isLight
-            print(color.lightness)
             
             UIView.animate(withDuration: 0.2, animations: {
                 imageView.tintColor = colorIsBright ? .black : .white
