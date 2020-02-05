@@ -39,9 +39,22 @@ open class ChromaAddButton: UIButton {
             self.layoutPlusIconLayer()
         }
     }
+    
+    open var plusIconIsHidden = false {
+        didSet {
+            guard let plusLayer = self.plusIconLayer else {
+                return
+            }
+            if self.plusIconIsHidden {
+                plusLayer.removeFromSuperlayer()
+            } else {
+                self.layer.addSublayer(plusLayer)
+            }
+        }
+    }
+    
     open var circleLayer: CAShapeLayer?
     open var plusIconLayer: CAShapeLayer?
-    
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,7 +81,10 @@ open class ChromaAddButton: UIButton {
         plusIconLayer = CAShapeLayer()
         self.layoutPlusIconLayer()
         plusIconLayer!.strokeColor = UIColor.white.cgColor
-        self.layer.addSublayer(plusIconLayer!)
+        if self.plusIconIsHidden == false {
+            self.layer.addSublayer(plusIconLayer!)
+        }
+        
     }
     
     open func layoutCircleLayer(){
@@ -79,7 +95,7 @@ open class ChromaAddButton: UIButton {
     }
     
     open func layoutPlusIconLayer(){
-        if let layer = plusIconLayer{
+        if let layer = plusIconLayer {
             let plusPath = UIBezierPath()
             plusPath.move(to: CGPoint(x: self.bounds.width/2 - self.bounds.width/8, y: self.bounds.height/2))
             plusPath.addLine(to: CGPoint(x: self.bounds.width/2 + self.bounds.width/8, y: self.bounds.height/2))

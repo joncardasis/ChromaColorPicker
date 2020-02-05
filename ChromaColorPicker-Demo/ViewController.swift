@@ -37,6 +37,8 @@ class ViewController: UIViewController {
         
         colorPicker.hexLabel.textColor = UIColor.white
         
+        colorPicker.addButton.plusIconIsHidden = true
+        
         /* Don't want an element like the shade slider? Just hide it: */
         //colorPicker.shadeSlider.hidden = true
         
@@ -45,6 +47,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: ChromaColorPickerDelegate{
+    func colorPickerDidUpdateColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
+        //
+    }
+    
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
         //Set color for the display view
         colorDisplayView.backgroundColor = color
