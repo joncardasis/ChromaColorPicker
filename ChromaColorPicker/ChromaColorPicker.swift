@@ -24,12 +24,14 @@
 
 import UIKit
 
-public protocol ChromaColorPickerDelegate {
+public protocol ChromaColorPickerDelegate: class {
     /* Called when the user taps the add button in the center */
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor)
 }
 
 open class ChromaColorPicker: UIControl {
+    public static let didUpdateColor = Notification.Name("ChromaColorPicker.didUpdateColor")
+    
     open var hexLabel: UILabel!
     open var shadeSlider: ChromaShadeSlider!
     open var handleView: ChromaHandle!
@@ -56,13 +58,17 @@ open class ChromaColorPicker: UIControl {
             }
         }
     }
-    open var delegate: ChromaColorPickerDelegate?
+    open weak var delegate: ChromaColorPickerDelegate?
     open var currentAngle: Float = 0
     open private(set) var radius: CGFloat = 0
     open var stroke: CGFloat = 1
     open var padding: CGFloat = 15
     open var handleSize: CGSize{
         get{ return CGSize(width: self.bounds.width * 0.1, height: self.bounds.height * 0.1) }
+    }
+    
+    deinit {
+        print("color picker is disposed. 👍")
     }
     
     //MARK: - Initialization
@@ -432,6 +438,9 @@ open class ChromaColorPicker: UIControl {
         currentColor = color
         addButton.color = color
         self.sendActions(for: .valueChanged)
+        
+        let nc = NotificationCenter.default
+        nc.post(name: ChromaColorPicker.didUpdateColor, object: self)
     }
     
   @objc open func togglePickerColorMode() {
