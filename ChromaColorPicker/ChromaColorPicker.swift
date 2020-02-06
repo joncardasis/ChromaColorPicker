@@ -40,6 +40,9 @@ open class ChromaColorPicker: UIControl {
     open var addButton: ChromaAddButton!
     open var colorToggleButton: ColorModeToggleButton!
     
+    /// Whether or not picker should auto update its current color based on wheel angle, when picker is added to a view as a subview.
+    public var shouldUpdateColorOnWillMoveToSuperView = true
+    
     private var modeIsGrayscale: Bool {
         return colorToggleButton.colorState == .grayscale
     }
@@ -143,15 +146,17 @@ open class ChromaColorPicker: UIControl {
     }
     
     override open func willMove(toSuperview newSuperview: UIView?) {
-        /* Get the starting color */
-        currentColor = colorOnWheelFromAngle(currentAngle)
-        handleView.center = positionOnWheelFromAngle(currentAngle) //update pos for angle
-        self.layoutHandleLine() //layout the lines positioning
-        
-        handleView.color = currentColor
-        addButton.color = currentColor
-        shadeSlider.primaryColor = currentColor
-        self.updateHexLabel() //update for hex value
+        if self.shouldUpdateColorOnWillMoveToSuperView {
+            /* Get the starting color */
+            currentColor = colorOnWheelFromAngle(currentAngle)
+            handleView.center = positionOnWheelFromAngle(currentAngle) //update pos for angle
+            self.layoutHandleLine() //layout the lines positioning
+            
+            handleView.color = currentColor
+            addButton.color = currentColor
+            shadeSlider.primaryColor = currentColor
+            self.updateHexLabel() //update for hex value
+        }
     }
     
     open func adjustToColor(_ color: UIColor){
