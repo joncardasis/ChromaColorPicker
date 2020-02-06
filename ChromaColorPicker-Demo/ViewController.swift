@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.leftButton.alpha = 0.0
-        self.rightButton.alpha = 0.0
+        self.leftButton.alpha = 1.0
+        self.rightButton.alpha = 1.0
         
         /* Calculate relative size and origin in bounds */
         let pickerSize = CGSize(width: view.bounds.width*0.8, height: view.bounds.width*0.8)
@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         colorPicker.hexLabel.textColor = UIColor.white
         
         colorPicker.addButton.plusIconIsHidden = true
+        colorPicker.addButton.isUserInteractionEnabled = false
         
         /* Don't want an element like the shade slider? Just hide it: */
         //colorPicker.shadeSlider.hidden = true
@@ -78,7 +79,7 @@ class ViewController: UIViewController {
     
     @IBAction func leftButtonTapped(_ sender: UIButton) {
         let color = self.colorOf(0xA1F000)
-        self.colorPicker.adjustToColor(color)
+        self.colorPicker.adjustToColor(color, shouldNotifyDelegate: false)
     }
     
     @IBAction func rightButtonTapped(_ sender: UIButton) {

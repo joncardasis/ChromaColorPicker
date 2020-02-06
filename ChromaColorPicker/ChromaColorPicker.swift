@@ -159,11 +159,23 @@ open class ChromaColorPicker: UIControl {
         }
     }
     
-    open func adjustToColor(_ color: UIColor){
-        
+    private var shouldNotifyDelegateOnColorUpdate = true
+    open func adjustToColor(_ color: UIColor, shouldNotifyDelegate: Bool = true) {
+        self.shouldNotifyDelegateOnColorUpdate = shouldNotifyDelegate
         if self.supportsShadesOfGray {
             if color.hasGrayHex && self.modeIsGrayscale == false {
+                self.updateCurrentColor(color)
+                shadeSlider.updateHandleLocation() //update the handle location now that the value is set
+                addButton.color = color
+                
+                /* Will layout based on new angle */
+                self.layoutHandle()
+                self.layoutHandleLine()
+                self.updateHexLabel()
                 colorToggleButton.sendActions(for: .touchUpInside)
+                self.shouldNotifyDelegateOnColorUpdate = true
+                
+                return
             } else if color.hasGrayHex == false && self.modeIsGrayscale {
                 colorToggleButton.sendActions(for: .touchUpInside)
             }
@@ -200,6 +212,8 @@ open class ChromaColorPicker: UIControl {
         self.layoutHandle()
         self.layoutHandleLine()
         self.updateHexLabel()
+        
+        self.shouldNotifyDelegateOnColorUpdate = true
     }
     
     //MARK: - Handle Touches
@@ -277,18 +291,18 @@ open class ChromaColorPicker: UIControl {
         self.updateHexLabel()
     }
     
-  @objc func addButtonPressed(_ sender: ChromaAddButton){
+    @objc func addButtonPressed(_ sender: ChromaAddButton){
         //Do a 'bob' animation
         UIView.animate(withDuration: 0.2,
-                delay: 0,
-                options: .curveEaseIn,
-                animations: { () -> Void in
-                    sender.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                }, completion: { (done) -> Void in
-                    UIView.animate(withDuration: 0.1, animations: { () -> Void in
-                        sender.transform = CGAffineTransform(scaleX: 1, y: 1)
-                    })
-                })
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: { () -> Void in
+                        sender.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }, completion: { (done) -> Void in
+            UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                sender.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        })
         
         delegate?.colorPickerDidChooseColor(self, color: sender.color) //Delegate call
     }
@@ -453,7 +467,9 @@ open class ChromaColorPicker: UIControl {
         currentColor = color
         addButton.color = color
         // Inform delegate that color is updated.
-        self.delegate?.colorPickerDidUpdateColor(self, color: color)
+        if self.shouldNotifyDelegateOnColorUpdate {
+            self.delegate?.colorPickerDidUpdateColor(self, color: color)
+        }
         self.sendActions(for: .valueChanged)
     }
     
@@ -483,6 +499,9 @@ open class ChromaColorPicker: UIControl {
             }
             //Update color for shade slider
             shadeSlider.primaryColor = gray
+            if self.currentColor.hasGrayHex {
+                self.updateHexLabel()
+            }
         }
         else {
             // Update for normal rainbow
