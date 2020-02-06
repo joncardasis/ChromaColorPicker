@@ -194,7 +194,7 @@ open class ChromaColorPicker: UIControl {
     }
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         let touchPoint = touches.first!.location(in: self)
-        if handleView.frame.contains(touchPoint) {
+        if handleView.isUserInteractionEnabled && handleView.frame.contains(touchPoint) {
             self.sendActions(for: .touchDown)
             
             /* Enlarge Animation */
