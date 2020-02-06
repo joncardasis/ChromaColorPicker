@@ -44,6 +44,17 @@ class ViewController: UIViewController {
         
         self.view.addSubview(colorPicker)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let f: CGFloat = 16/255.0
+        let color = UIColor(red: f, green: f, blue: f, alpha: 1.0)
+        self.colorPicker.adjustToColor(color)
+        if self.colorPicker.currentColor.hasGrayHex {
+            print("setting gray color, hex: \(self.colorPicker.currentColor.hexCode)")
+            self.colorPicker.colorToggleButton.sendActions(for: .touchUpInside)
+        }
+    }
 }
 
 extension ViewController: ChromaColorPickerDelegate{

@@ -443,7 +443,7 @@ open class ChromaColorPicker: UIControl {
         self.sendActions(for: .valueChanged)
     }
     
-  @objc open func togglePickerColorMode() {
+    @objc open func togglePickerColorMode() {
         colorToggleButton.isEnabled = false // Lock
         
         // Redraw Assets (i.e. Large circle ring)
@@ -458,14 +458,24 @@ open class ChromaColorPicker: UIControl {
             
             let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
             self.handleView.color = gray
-            self.updateCurrentColor(gray)
-            self.updateHexLabel()
-            
+            self.handleView.isUserInteractionEnabled = false
+            self.handleView.alpha = 0.25
+            self.handleLine.isHidden = true
+            // If current color is NOT a gray color, update it to default gray;
+            // otherwise, don't update current color.
+            if self.currentColor.hasGrayHex == false {
+                self.updateCurrentColor(gray)
+                self.updateHexLabel()
+            }
             //Update color for shade slider
             shadeSlider.primaryColor = gray
         }
         else {
             // Update for normal rainbow
+            
+            self.handleView.isUserInteractionEnabled = true
+            self.handleView.alpha = 1
+            self.handleLine.isHidden = false
             
             // Use color stored in toggle button (set above), or else default to the angle it is at
             var hueColor: UIColor

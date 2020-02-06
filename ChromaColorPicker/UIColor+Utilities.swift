@@ -34,6 +34,24 @@ public extension UIColor{
         }
     }
     
+    /**
+     True if each R, B and G component has exact same hex value; false, otherwise.
+    */
+    var hasGrayHex: Bool {
+        var firstTwo: [String.Element] = []
+        for (index, char) in self.hexCode.enumerated() {
+            if index < 2 {
+                firstTwo.append(char)
+            } else {
+                let i = index % 2
+                if firstTwo[i] != char {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
     //Amount should be between 0 and 1
     func lighterColor(_ amount: CGFloat) -> UIColor{
         return UIColor.blendColors(color: self, destinationColor: UIColor.white, amount: amount)
