@@ -45,6 +45,9 @@ public protocol ChromaShadeSliderDelegate: class {
 }
 
 open class ChromaShadeSlider: UIControl {
+    public static let didStartPan = Notification.Name("ChromaShadeSlider.didStartPan")
+    public static let didEndPan = Notification.Name("ChromaShadeSlider.didEndPan")
+    
     open var currentValue: CGFloat = 0.0 //range of {-1,1}
     
     public let trackLayer = ChromaSliderTrackLayer()
@@ -149,6 +152,8 @@ open class ChromaShadeSlider: UIControl {
         let location = touch.location(in: self)
         
         if handleView.frame.contains(location) {
+            let nc = NotificationCenter.default
+            nc.post(name: ChromaShadeSlider.didStartPan, object: nil)
             return true
         }
         return false
@@ -179,6 +184,8 @@ open class ChromaShadeSlider: UIControl {
     }
     
     override open func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        let nc = NotificationCenter.default
+        nc.post(name: ChromaShadeSlider.didEndPan, object: nil)
         self.sendActions(for: .editingDidEnd)
     }
     

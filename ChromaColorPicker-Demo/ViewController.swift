@@ -43,6 +43,10 @@ class ViewController: UIViewController {
         //colorPicker.shadeSlider.hidden = true
         
         self.view.addSubview(colorPicker)
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(self.shadeSliderDidStartPan(_:)), name: ChromaShadeSlider.didStartPan, object: nil)
+        nc.addObserver(self, selector: #selector(self.shadeSliderDidEndPan(_:)), name: ChromaShadeSlider.didEndPan, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,6 +58,16 @@ class ViewController: UIViewController {
             print("setting gray color, hex: \(self.colorPicker.currentColor.hexCode)")
             self.colorPicker.colorToggleButton.sendActions(for: .touchUpInside)
         }
+    }
+    
+    // MARK: - Event observers
+    
+    @objc func shadeSliderDidStartPan(_ notification: Notification) {
+        print("shade slider did start pan")
+    }
+    
+    @objc func shadeSliderDidEndPan(_ notification: Notification) {
+        print("shade slider did end pan")
     }
 }
 
