@@ -160,6 +160,15 @@ open class ChromaColorPicker: UIControl {
     }
     
     open func adjustToColor(_ color: UIColor){
+        
+        if self.supportsShadesOfGray {
+            if color.hasGrayHex && self.modeIsGrayscale == false {
+                colorToggleButton.sendActions(for: .touchUpInside)
+            } else if color.hasGrayHex == false && self.modeIsGrayscale {
+                colorToggleButton.sendActions(for: .touchUpInside)
+            }
+        }
+        
         /* Apply saturation and brightness from previous color to current one */
         var saturation: CGFloat = 0.0
         var brightness: CGFloat = 0.0

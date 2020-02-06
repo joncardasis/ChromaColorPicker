@@ -12,10 +12,15 @@ import ChromaColorPicker
 class ViewController: UIViewController {
     
     @IBOutlet weak var colorDisplayView: UIView!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
     var colorPicker: ChromaColorPicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.leftButton.alpha = 0.0
+        self.rightButton.alpha = 0.0
         
         /* Calculate relative size and origin in bounds */
         let pickerSize = CGSize(width: view.bounds.width*0.8, height: view.bounds.width*0.8)
@@ -58,6 +63,27 @@ class ViewController: UIViewController {
             print("setting gray color, hex: \(self.colorPicker.currentColor.hexCode)")
             self.colorPicker.colorToggleButton.sendActions(for: .touchUpInside)
         }
+    }
+    
+    // MARK: - Utilities
+    
+    func colorOf(_ hex: Int) -> UIColor {
+        let red = CGFloat((hex >> 16) & 0xff) / CGFloat(255)
+        let green = CGFloat((hex >> 8) & 0xff) / CGFloat(255)
+        let blue = CGFloat((hex >> 0) & 0xff) / CGFloat(255)
+        return UIColor(red:red, green:green, blue:blue, alpha: 1.0)
+    }
+    
+    // MARK: - User Interactions
+    
+    @IBAction func leftButtonTapped(_ sender: UIButton) {
+        let color = self.colorOf(0xA1F000)
+        self.colorPicker.adjustToColor(color)
+    }
+    
+    @IBAction func rightButtonTapped(_ sender: UIButton) {
+        let color = self.colorOf(0xA9A9A9)
+        self.colorPicker.adjustToColor(color)
     }
     
     // MARK: - Event observers
