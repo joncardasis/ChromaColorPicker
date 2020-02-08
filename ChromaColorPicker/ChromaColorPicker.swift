@@ -164,22 +164,11 @@ open class ChromaColorPicker: UIControl {
         self.shouldNotifyDelegateOnColorUpdate = shouldNotifyDelegate
         if self.supportsShadesOfGray {
             if color.hasGrayHex {
-                
-                
                 self.updateCurrentColor(color)
-                shadeSlider.updateHandleLocation() //update the handle location now that the value is set
-                addButton.color = color
-                
-                /* Will layout based on new angle */
-                self.layoutHandle()
-                self.layoutHandleLine()
-                self.updateHexLabel()
-                
+                // set gray mode to be false, and toggle it so the gray mode will be set properly.
                 colorToggleButton.colorState = .hue
-                
                 colorToggleButton.sendActions(for: .touchUpInside)
                 self.shouldNotifyDelegateOnColorUpdate = true
-                
                 return
             } else if color.hasGrayHex == false && self.modeIsGrayscale {
                 colorToggleButton.sendActions(for: .touchUpInside)

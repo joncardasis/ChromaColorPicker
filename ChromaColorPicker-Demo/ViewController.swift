@@ -74,12 +74,12 @@ class ViewController: UIViewController {
     
     @IBAction func leftButtonTapped(_ sender: UIButton) {
         let color = self.colorOf(0xA1F000)
-        self.colorPicker.adjustToColor(color, shouldNotifyDelegate: false)
+        self.colorPicker.adjustToColor(color, shouldNotifyDelegate: true)
     }
     
     @IBAction func rightButtonTapped(_ sender: UIButton) {
         let color = self.colorOf(0xA9A9A9)
-        self.colorPicker.adjustToColor(color, shouldNotifyDelegate: false)
+        self.colorPicker.adjustToColor(color, shouldNotifyDelegate: true)
     }
     
     // MARK: - Event observers
