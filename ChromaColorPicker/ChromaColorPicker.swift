@@ -163,7 +163,9 @@ open class ChromaColorPicker: UIControl {
     open func adjustToColor(_ color: UIColor, shouldNotifyDelegate: Bool = true) {
         self.shouldNotifyDelegateOnColorUpdate = shouldNotifyDelegate
         if self.supportsShadesOfGray {
-            if color.hasGrayHex && self.modeIsGrayscale == false {
+            if color.hasGrayHex {
+                
+                
                 self.updateCurrentColor(color)
                 shadeSlider.updateHandleLocation() //update the handle location now that the value is set
                 addButton.color = color
@@ -172,6 +174,9 @@ open class ChromaColorPicker: UIControl {
                 self.layoutHandle()
                 self.layoutHandleLine()
                 self.updateHexLabel()
+                
+                colorToggleButton.colorState = .hue
+                
                 colorToggleButton.sendActions(for: .touchUpInside)
                 self.shouldNotifyDelegateOnColorUpdate = true
                 
@@ -491,17 +496,19 @@ open class ChromaColorPicker: UIControl {
             self.handleView.isUserInteractionEnabled = false
             self.handleView.alpha = 0.25
             self.handleLine.isHidden = true
-            // If current color is NOT a gray color, update it to default gray;
-            // otherwise, don't update current color.
-            if self.currentColor.hasGrayHex == false {
+            // If current color is a gray color, update shade slider to current color.
+            if self.currentColor.hasGrayHex {
+                var red: CGFloat = 0
+                self.currentColor.getRed(&red, green: nil, blue: nil, alpha: nil)
+                let currentValue = (red - 0.5) * 2
+                shadeSlider.currentValue = currentValue
+                shadeSlider.updateHandleLocation()
+            } else {
                 self.updateCurrentColor(gray)
-                self.updateHexLabel()
             }
             //Update color for shade slider
+            self.updateHexLabel()
             shadeSlider.primaryColor = gray
-            if self.currentColor.hasGrayHex {
-                self.updateHexLabel()
-            }
         }
         else {
             // Update for normal rainbow

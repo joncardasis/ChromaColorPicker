@@ -43,7 +43,6 @@ class ViewController: UIViewController {
         colorPicker.hexLabel.textColor = UIColor.white
         
         colorPicker.addButton.plusIconIsHidden = true
-        colorPicker.addButton.isUserInteractionEnabled = false
         
         /* Don't want an element like the shade slider? Just hide it: */
         //colorPicker.shadeSlider.hidden = true
@@ -57,13 +56,9 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let f: CGFloat = 16/255.0
+        let f: CGFloat = 255/255.0
         let color = UIColor(red: f, green: f, blue: f, alpha: 1.0)
         self.colorPicker.adjustToColor(color)
-        if self.colorPicker.currentColor.hasGrayHex {
-            print("setting gray color, hex: \(self.colorPicker.currentColor.hexCode)")
-            self.colorPicker.colorToggleButton.sendActions(for: .touchUpInside)
-        }
     }
     
     // MARK: - Utilities
@@ -84,7 +79,7 @@ class ViewController: UIViewController {
     
     @IBAction func rightButtonTapped(_ sender: UIButton) {
         let color = self.colorOf(0xA9A9A9)
-        self.colorPicker.adjustToColor(color)
+        self.colorPicker.adjustToColor(color, shouldNotifyDelegate: false)
     }
     
     // MARK: - Event observers
