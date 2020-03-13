@@ -6,7 +6,6 @@
   <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" />
   <img src="https://img.shields.io/badge/platform-iOS-lightgray.svg" />
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
-  <img src="https://img.shields.io/badge/pod-1.7.1-green.svg" />
   <img src="https://img.shields.io/badge/Carthage-compatible-green.svg" />
   <img src="https://travis-ci.com/joncardasis/ChromaColorPicker.svg?branch=develop" />
 </p>
