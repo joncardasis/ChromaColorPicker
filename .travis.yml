@@ -2,6 +2,34 @@ language: objective-c
 osx_image: xcode10.1
 before_install: gem install bundler --version '2.0.1'
 install:
-  - bundle install
-script:
-  - fastlane test
+- bundle install
+# script:
+# - set -o pipefail && xcodebuild -project ChromaColorPicker.xcodeproj -scheme ChromaColorPicker -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+# - pod lib lint
+# deploy:
+#   provider: script
+#   script: ./scripts/push.sh
+#   on:
+#     tags: true
+jobs:
+  include:
+    - stage: test
+      script:
+        - set -o pipefail && xcodebuild -project ChromaColorPicker.xcodeproj -scheme ChromaColorPicker -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+    - stage: pod-lint
+      script:
+        - pod lib lint
+    - stage: deploy
+      script:
+        
+        - {put commit tagging and pod trhunk push here // 'fastlane release_pod' }
+stages:
+  - name: test
+    # require the type to be a PR
+    if: type = pull_request
+  - name: pod-lint
+    if: type = pull_request
+  - name: deploy:
+    # require the type to be a push to master
+    if: type = push AND branch = master
+
