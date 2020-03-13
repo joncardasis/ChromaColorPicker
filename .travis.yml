@@ -15,7 +15,7 @@ jobs:
         - pod lib lint
     - stage: deploy
       script:
-        - fastlane publish_podspec
+        - fastlane publish_pod
 stages:
   - test
   - pod-lint
