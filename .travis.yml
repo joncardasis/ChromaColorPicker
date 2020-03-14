@@ -1,6 +1,10 @@
 language: objective-c
 osx_image: xcode11.3
-before_install: gem install bundler --version '2.0.1'
+before_install: 
+  - gem install bundler --version '2.0.1'
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - git remote set-url origin https://joncardasis:${GH_TOKEN}@github.com/joncardasis/ChromaColorpicker.git > /dev/null 2>&1
 install:
   - bundle install
 jobs:

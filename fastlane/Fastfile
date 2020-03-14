@@ -25,7 +25,6 @@ end
 def publish_podspec
   podspec = ENV['PODSPEC']
   version = version_bump_podspec(path: podspec, bump_type: "patch")
-  puts "HERE: #{version}"
   commit(podspec, 'Updated Podspec version.')
   push_to_git_remote(local_branch: git_branch)
   tag_build(version)
@@ -54,8 +53,8 @@ def commit(path, message)
   ensure_git_branch(branch: git_branch)
 
   message = "Fastfile: #{message}"
-  #git_commit(
-  #    path: path,
-  #    message: message
-  #)
+  git_commit(
+      path: path,
+      message: message
+  )
 end
