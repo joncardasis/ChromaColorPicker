@@ -2,9 +2,6 @@ language: objective-c
 osx_image: xcode11.3
 before_install: 
   - gem install bundler --version '2.0.1'
-  - git config --global user.email "travis@travis-ci.org"
-  - git config --global user.name "Travis CI"
-  - git remote set-url origin https://joncardasis:${GH_TOKEN}@github.com/joncardasis/ChromaColorpicker.git > /dev/null 2>&1
 install:
   - bundle install
 jobs:
@@ -17,14 +14,8 @@ jobs:
     - stage: pod-lint
       script:
         - pod lib lint
-    - stage: deploy
-      script:
-        - fastlane publish_pod
 stages:
   - test
   - pod-lint
   - name: test-lint
     if: type = pull_request
-  - name: deploy
-    # require the type to be a push to specific branch
-    if: type = push AND branch = master

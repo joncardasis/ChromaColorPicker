@@ -17,6 +17,12 @@ An intuitive HSB color picker built in Swift. Supports multiple selection handle
     <img src=".github/ChromaColorPicker.gif" width="365" alt="ChromaColorPicker GIF" />
 </p>
 
+<details>
+<summary><b>Looking for version 1.x?</b></summary>
+Version 1.x.x can be found on the <b>legacy</b> branch. While the pod is still available, it is deprecated and projects should migrate to 2.0.<br/>
+<img src="../assets/Screenshot-With-BG.png?raw=true" height="350">
+</details>
+
 ## Examples
 ```Swift
 let colorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
