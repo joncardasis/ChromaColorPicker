@@ -5,12 +5,11 @@ before_install:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git remote set-url origin https://joncardasis:${GH_TOKEN}@github.com/joncardasis/ChromaColorpicker.git > /dev/null 2>&1
-  - echo "*** ${GH_TOKEN}"
 install:
   - bundle install
 jobs:
   exclude:
-    if: type = pull_request AND branch = develop
+    if: type = pull_request AND branch = master
   include:
     - stage: test
       script:
@@ -28,4 +27,4 @@ stages:
     if: type = pull_request
   - name: deploy
     # require the type to be a push to specific branch
-    if: type = push AND branch = develop
+    if: type = push AND branch = master
