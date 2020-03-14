@@ -5,8 +5,6 @@ before_install:
 install:
   - bundle install
 jobs:
-  exclude:
-    if: type = pull_request AND branch = master
   include:
     - stage: test
       script:
