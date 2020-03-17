@@ -14,7 +14,7 @@
 An intuitive HSB color picker built in Swift. Supports multiple selection handles and is customizable to your needs.
 
 <p align="center">
-    <img src=".github/ChromaColorPicker.gif" width="365" alt="ChromaColorPicker GIF" />
+    <img src=".github/ChromaColorPicker.gif" width="80%" alt="ChromaColorPicker GIF" />
 </p>
 
 <details>
