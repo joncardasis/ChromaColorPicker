@@ -91,6 +91,10 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         handles.append(handle)
         colorWheelView.addSubview(handle)
         brightnessSlider?.trackColor = handle.color
+        
+        if currentHandle == nil {
+            currentHandle = handle
+        }
     }
     
     public func connect(_ slider: ChromaBrightnessSlider) {
