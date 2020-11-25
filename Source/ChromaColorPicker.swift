@@ -71,9 +71,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         updateBorderIfNeeded()
         
         handles.forEach { handle in
-            let location = colorWheelView.location(of: handle.color)
-            handle.frame.size = handleSize
-            positionHandle(handle, forColorLocation: location)
+            positionHandle(handle, color: handle.color)
         }
     }
     
@@ -229,7 +227,13 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         frame.size.height += handleHitboxExtensionY
         return frame
     }
-    
+
+    public func positionHandle(_ handle: ChromaColorHandle, color: UIColor) {
+        let location = colorWheelView.location(of: color)
+        handle.frame.size = handleSize
+        positionHandle(handle, forColorLocation: location)
+    }
+
     internal func positionHandle(_ handle: ChromaColorHandle, forColorLocation location: CGPoint) {
         handle.center = location.applying(CGAffineTransform.identity.translatedBy(x: 0, y: -handle.bounds.height / 2))
     }
