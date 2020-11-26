@@ -89,9 +89,17 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         handles.append(handle)
         colorWheelView.addSubview(handle)
         brightnessSlider?.trackColor = handle.color
-        
+        positionHandle(handle, color: handle.color)
+
         if currentHandle == nil {
             currentHandle = handle
+        }
+    }
+
+    public func removeHandle(handle: ChromaColorHandle) {
+        if let handleIndex = handles.firstIndex(of: handle) {
+            handle.removeFromSuperview()
+            handles.remove(at: handleIndex)
         }
     }
     
