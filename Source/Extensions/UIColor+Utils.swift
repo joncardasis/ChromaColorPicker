@@ -25,4 +25,12 @@ public extension UIColor {
     var isLight: Bool {
         return lightness >= 0.5
     }
+
+    // Return a random color
+    static var random: UIColor {
+        let red = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        let green = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        let blue = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    }
 }
