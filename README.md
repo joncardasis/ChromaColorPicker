@@ -65,6 +65,15 @@ homeHandle.accessoryViewEdgeInsets = UIEdgeInsets(top: 2, left: 4, bottom: 4, ri
 colorPicker.addHandle(homeHandle)
 ```
 
+#### Using in a Modal Presentation
+If you are attempting to use this control in a modally presented view controller in iOS 13+, the built in swipe to dismiss behavior will interfere with this control.
+
+To fix this, you have to add the following to the view controller's `viewDidAppear`
+```Swift
+presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
+```
+Setting the [`isModalInPresentation` property](https://developer.apple.com/documentation/uikit/uiviewcontroller/3229894-ismodalinpresentation) will not fix the incorrect behavior.
+
 ## Installation
 ### Carthage
 ```bash
