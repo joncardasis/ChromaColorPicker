@@ -341,7 +341,7 @@
 					};
 					35C376CC1D5CF5300069D7A1 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 9H97MWKJ22;
+						DevelopmentTeam = YU598PK624;
 						LastSwiftMigration = 1000;
 					};
 					FC1BD8BC2207D7B700817AF3 = {
@@ -588,7 +588,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -640,7 +639,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -656,11 +654,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 9H97MWKJ22;
+				DEVELOPMENT_TEAM = YU598PK624;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jonathancardasis.ChromaColorPickerExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cjg.ChromaColorPickerExample;
 				PRODUCT_NAME = ChromaColorPickerExample;
 				SWIFT_VERSION = 5.0;
 			};
@@ -673,11 +671,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 9H97MWKJ22;
+				DEVELOPMENT_TEAM = YU598PK624;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jonathancardasis.ChromaColorPickerExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cjg.ChromaColorPickerExample;
 				PRODUCT_NAME = ChromaColorPickerExample;
 				SWIFT_VERSION = 5.0;
 			};

@@ -89,7 +89,7 @@ class ViewController: UIViewController {
 
     func setupColorDisplay () {
         if let colorSwatch = colorDisplayView {
-            shadowLayer(target: colorSwatch)
+            shadowLayer(targetButton: colorSwatch)
         }
     }
 
@@ -122,20 +122,17 @@ class ViewController: UIViewController {
         }
     }
 
-    func shadowLayer(target: Any) {
-
-        if #available(iOS 13.0, *) {
-            if let targetLayer = (target as AnyObject).layer {
-                targetLayer.masksToBounds = false
-                targetLayer.borderWidth = 0.5
-                targetLayer.borderColor = UIColor.gray.cgColor
-                targetLayer.cornerRadius = 10
-                targetLayer.shadowColor = UIColor.black.cgColor
-                targetLayer.shadowOpacity = 0.5
-                targetLayer.shadowRadius = 3
-                targetLayer.shadowOffset = CGSize(width: 3, height: 3)
-            }
-        } 
+    func shadowLayer(targetButton: Any) {
+      guard let targetview = (targetButton as AnyObject).object as? UIView else { return }
+      let targetLayer = targetview.layer
+      targetLayer.masksToBounds = false
+      targetLayer.borderWidth = 0.5
+      targetLayer.borderColor = UIColor.gray.cgColor
+      targetLayer.cornerRadius = 10
+      targetLayer.shadowColor = UIColor.black.cgColor
+      targetLayer.shadowOpacity = 0.5
+      targetLayer.shadowRadius = 3
+      targetLayer.shadowOffset = CGSize(width: 3, height: 3)
     }
 
 }
