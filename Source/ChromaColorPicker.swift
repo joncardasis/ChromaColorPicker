@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol ChromaColorPickerDelegate: class {
+public protocol ChromaColorPickerDelegate: AnyObject {
     /// When a handle's value has changed.
     func colorPickerHandleDidChange(_ colorPicker: ChromaColorPicker, handle: ChromaColorHandle, to color: UIColor)
 }
