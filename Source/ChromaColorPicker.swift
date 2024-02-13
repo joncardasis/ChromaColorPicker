@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol ChromaColorPickerDelegate: class {
+public protocol ChromaColorPickerDelegate: AnyObject {
     /// When a handle's value has changed.
     func colorPickerHandleDidChange(_ colorPicker: ChromaColorPicker, handle: ChromaColorHandle, to color: UIColor)
 }
@@ -71,9 +71,7 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         updateBorderIfNeeded()
         
         handles.forEach { handle in
-            let location = colorWheelView.location(of: handle.color)
-            handle.frame.size = handleSize
-            positionHandle(handle, forColorLocation: location)
+            positionHandle(handle, color: handle.color)
         }
     }
     
@@ -91,9 +89,17 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         handles.append(handle)
         colorWheelView.addSubview(handle)
         brightnessSlider?.trackColor = handle.color
-        
+        positionHandle(handle, color: handle.color)
+
         if currentHandle == nil {
             currentHandle = handle
+        }
+    }
+
+    public func removeHandle(handle: ChromaColorHandle) {
+        if let handleIndex = handles.firstIndex(of: handle) {
+            handle.removeFromSuperview()
+            handles.remove(at: handleIndex)
         }
     }
     
@@ -229,7 +235,13 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
         frame.size.height += handleHitboxExtensionY
         return frame
     }
-    
+
+    public func positionHandle(_ handle: ChromaColorHandle, color: UIColor) {
+        let location = colorWheelView.location(of: color)
+        handle.frame.size = handleSize
+        positionHandle(handle, forColorLocation: location)
+    }
+
     internal func positionHandle(_ handle: ChromaColorHandle, forColorLocation location: CGPoint) {
         handle.center = location.applying(CGAffineTransform.identity.translatedBy(x: 0, y: -handle.bounds.height / 2))
     }

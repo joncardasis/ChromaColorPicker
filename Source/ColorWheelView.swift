@@ -135,6 +135,12 @@ public class ColorWheelView: UIView {
     internal func commonInit() {
         backgroundColor = .clear
         setupImageView()
+
+        DispatchQueue.main.async {
+            self.imageView.image = nil
+            self.imageView.layer.sublayers?.removeAll()
+            self.layoutNow()
+        }
     }
     
     internal func setupImageView() {
